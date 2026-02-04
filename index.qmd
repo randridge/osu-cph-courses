@@ -1,9 +1,35 @@
 ---
-title: "Testing"
+title: "OSU CPH Biostatistics Supplemental Course Materials"
 ---
 
-## Welcome
 
-### PUBHBIO 6210
+# PUBHBIO 6210
 
-### PUBHBIO 6211
+*  [Practice Exercises 0A](./6210-practice-exercises/PracticeExercises_0A.qmd)
+*  [Practice Exercises 1A](./6210-practice-exercises/PracticeExercises_1A.qmd)
+*  [Practice Exercises 1B](./6210-practice-exercises/PracticeExercises_1B.qmd)
+*  [Practice Exercises 1C](./6210-practice-exercises/PracticeExercises_1C.qmd)
+*  [Practice Exercises 1D](./6210-practice-exercises/PracticeExercises_1D.qmd)
+*  [Practice Exercises 2A](./6210-practice-exercises/PracticeExercises_2A.qmd)
+*  [Practice Exercises 2B](./6210-practice-exercises/PracticeExercises_2B.qmd)
+*  [Practice Exercises 2C](./6210-practice-exercises/PracticeExercises_2C.qmd)
+*  [Practice Exercises 2D](./6210-practice-exercises/PracticeExercises_2D.qmd)
+*  [Practice Exercises 3A](./6210-practice-exercises/PracticeExercises_3A.qmd)
+*  [Practice Exercises 3B](./6210-practice-exercises/PracticeExercises_3B.qmd)
+*  [Practice Exercises 3C](./6210-practice-exercises/PracticeExercises_3C.qmd)
+*  [Practice Exercises 4A](./6210-practice-exercises/PracticeExercises_4A.qmd)
+*  [Practice Exercises 4B](./6210-practice-exercises/PracticeExercises_4B.qmd)
+*  [Practice Exercises 4C](./6210-practice-exercises/PracticeExercises_4C.qmd)
+*  [Practice Exercises 4D](./6210-practice-exercises/PracticeExercises_4D.qmd)
+*  [Practice Exercises 5A](./6210-practice-exercises/PracticeExercises_5A.qmd)
+*  [Practice Exercises 5B](./6210-practice-exercises/PracticeExercises_5B.qmd)
+*  [Practice Exercises 5C](./6210-practice-exercises/PracticeExercises_5C.qmd)
+*  [Practice Exercises 5D](./6210-practice-exercises/PracticeExercises_5D.qmd)
+*  [Practice Exercises 6A](./6210-practice-exercises/PracticeExercises_6A.qmd)
+*  [Practice Exercises 6B](./6210-practice-exercises/PracticeExercises_6B.qmd)
+*  [Practice Exercises 6C](./6210-practice-exercises/PracticeExercises_6C.qmd)
+*  [Practice Exercises 7A](./6210-practice-exercises/PracticeExercises_7A.qmd)
+*  [Practice Exercises 7B](./6210-practice-exercises/PracticeExercises_7B.qmd)
+*  [Practice Exercises 7C](./6210-practice-exercises/PracticeExercises_7C.qmd)
+
+# PUBHBIO 6211
