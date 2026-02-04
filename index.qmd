@@ -33,3 +33,15 @@ title: "OSU CPH Biostatistics Supplemental Course Materials"
 *  [Practice Exercises 7C](./6210-practice-exercises/PracticeExercises_7C.html)
 
 # PUBHBIO 6211
+
+*  [Practice Exercises Block 1](./6211-practice-exercises/PUBHBIO6211_Exercises_Block1.html)
+*  [Practice Exercises Block 2](./6211-practice-exercises/PUBHBIO6211_Exercises_Block2.html)
+*  [Practice Exercises Block 3](./6211-practice-exercises/PUBHBIO6211_Exercises_Block3.html)
+*  [Practice Exercises Block 4](./6211-practice-exercises/PUBHBIO6211_Exercises_Block4.html)
+*  [Practice Exercises Block 5](./6211-practice-exercises/PUBHBIO6211_Exercises_Block5.html)
+*  [Practice Exercises Block 6](./6211-practice-exercises/PUBHBIO6211_Exercises_Block6.html)
+*  [Practice Exercises Block 7](./6211-practice-exercises/PUBHBIO6211_Exercises_Block7.html)
+*  [Practice Exercises Block 8](./6211-practice-exercises/PUBHBIO6211_Exercises_Block8.html)
+*  [Practice Exercises Block 9](./6211-practice-exercises/PUBHBIO6211_Exercises_Block9.html)
+*  [Practice Exercises Block 10](./6211-practice-exercises/PUBHBIO6211_Exercises_Block10.html)
+*  [Practice Exercises Block 11](./6211-practice-exercises/PUBHBIO6211_Exercises_Block11.html)
