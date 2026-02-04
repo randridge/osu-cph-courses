@@ -1,0 +1,124 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+\toggletrue{solutions}
+%\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{7A}{Linear regression was used to investigate the relationship between age (years) and systolic blood pressure (mmHg) in a sample of adults ranging from 29 to 69 years old. Stata output is on the next page.
+
+(a) Write the estimated regression equation.
+
+\answer{1.5cm}{$\widehat{SBP} = 97.08 + 0.949 \times AGE$}
+
+(b) Interpret the estimated intercept. Is this a meaningful quantity?
+
+\answer{1.5cm}{$\hat{\beta}_0=97.08$\\
+We estimate that the mean SBP for a person who is 0 years old (a newborn) is 97.08 mmHg.\\
+While it is reasonable to have an SBP estimate for someone who is 0 years old, that is way outside the age range of our data, and so would not be a good estimate.}
+
+(c) Interpret the estimated slope.
+
+\answer{1.5cm}{$\hat{\beta}_1=0.949$\\
+We estimate that the mean change in SBP for a 1 year increase in age is 0.949 mmHg.}
+
+(d) What is the estimated mean SBP for a person who is 40 years old?
+
+\answer{1.5cm}{$\widehat{SBP} = 97.08 + 0.949 \times AGE = 97.08 + 0.949 \times 40 = 135.0$ mmHg}
+
+(e) What is the estimated change in SBP for 10 year increase in age?
+
+\answer{1.5cm}{$0.949 \times 10 = 9.49$ mmHg}
+
+(f) What is the estimated change in SBP for 5 year decrease in age?
+
+\answer{1.5cm}{$0.949 \times -5 = -4.745$ mmHg}
+
+~
+}
+
+Output for problem on previous page:
+\begin{stata}
+. regress sbp age
+
+      Source |       SS       df       MS              Number of obs =      29
+-------------+------------------------------           F(  1,    27) =   66.81
+       Model |  6110.10173     1  6110.10173           Prob > F      =  0.0000
+    Residual |  2469.34654    27  91.4572794           R-squared     =  0.7122
+-------------+------------------------------           Adj R-squared =  0.7015
+       Total |  8579.44828    28  306.408867           Root MSE      =  9.5633
+
+------------------------------------------------------------------------------
+         sbp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .9493225   .1161445     8.17   0.000     .7110137    1.187631
+       _cons |   97.07708   5.527552    17.56   0.000     85.73549    108.4187
+------------------------------------------------------------------------------
+\end{stata}
+
+%%%
+\newpage
+
+\exercise{7A}{In a study of factors associated with levels of HDL, the ``good cholesterol", investigators were interested in whether or not a person's education level might be a predictor of HDL (mg/dL). Education was measured as the number of years of education a person had. The researchers used linear regression and obtained the output on the next page. Use this to answer the questions below.
+
+(a) Write the estimated regression equation.
+
+\answer{1.5cm}{$\widehat{HDL} = 52.34 - 0.03225 \times EDUCATION$}
+
+(b) Interpret the estimated intercept. Is this a meaningful quantity?
+
+\answer{1.5cm}{$\hat{\beta}_0=52.34$\\
+We estimate that the mean HDL for a person with 0 years education is 52.34 mg/dL.\\
+Yes, this is meaningful. Someone could have 0 years of education, and in the sample there was at least one person who had this value (notice that the minimum value of education is 0).}
+
+(c) Interpret the estimated slope.
+
+\answer{1.5cm}{$\hat{\beta}_1=-0.03225$\\
+We estimate that the mean change in HDL for a 1 year increase in education is -0.03225 mg/dL. In other words, each year increase in age is associated with a decrease in HDL of 0.03225 mg/dL.}
+
+(d) What is the estimated mean HDL for a person with the average years of education that was observed in the sample?
+
+\answer{1.5cm}{Mean of education in the sample = $10.74725$\\
+$\widehat{HDL} = 52.34 - 0.03225 \times EDUCATION = 52.34 - 0.03225 \times 10.74725 = 51.99$ mg/dL}
+
+(e) What is the estimated difference in mean HDL for people with 12 years of education compared to people with 16 years of education? Make sure to indicate the direction of the difference (which is higher).
+
+\answer{1.5cm}{12 vs. 16 years: $-0.03225 \times (12-16) = -0.03225 \times -4 = 0.129$ mg/dL\\
+The estimated mean for people with 12 years education is 0.129 mg/dL HIGHER than for people with 16 years education.}
+
+~
+}
+
+Output for problem on previous page.
+\begin{stata}
+. summarize hdl education
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+         hdl |        91    51.98901    15.86645         14        101
+   education |        91    10.74725     4.03483          0         17
+
+. regress hdl education
+
+      Source |       SS       df       MS              Number of obs =      91
+-------------+------------------------------           F(  1,    89) =    0.01
+       Model |  1.52391634     1  1.52391634           Prob > F      =  0.9385
+    Residual |  22655.4651    89  254.555788           R-squared     =  0.0001
+-------------+------------------------------           Adj R-squared = -0.0112
+       Total |   22656.989    90  251.744322           Root MSE      =  15.955
+
+------------------------------------------------------------------------------
+         hdl |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   education |  -.0322503   .4168166    -0.08   0.939     -.860456    .7959553
+       _cons |   52.33561   4.781676    10.95   0.000     42.83452     61.8367
+------------------------------------------------------------------------------
+\end{stata}
+
+\end{document}

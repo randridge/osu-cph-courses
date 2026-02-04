@@ -1,0 +1,169 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 6C"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
+
+\begin{tabular}{lcc}
+ & CHD & No CHD \\ \hline
+ High CAT & 27 & 95 
+
+ Low CAT & 44 & 443\\ \hline
+\end{tabular}
+
+(a) Estimate the risk difference for CHD for people with high CAT compared to people with low CAT.
+
+::: {.answer .hidden}
+Let $p_1=$ risk for people with high CAT, $p_2=$ risk for people with low CAT
+
+$\displaystyle \widehat{RD}= \hat{p}_1 - \hat{p}_2 = \frac{27}{27+95} - \frac{44}{44+443} = 0.2213 - 0.0903 = 0.131$
+:::
+
+(b) Compute a 95% confidence interval for the true risk difference.
+
+::: {.answer .hidden}
+CI for risk difference: $(\hat{p}_1 - \hat{p}_2) \pm z^* \times \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$
+
+$z^* = 1.96, n_1=27+95=122, n_2=44+443=487$
+
+$0.131 \pm 1.96 \times \sqrt{\frac{0.2213(1-0.2213)}{122} + \frac{0.0903(1-0.0903)}{487}}$
+
+$0.131 \pm 1.96 \times \sqrt{0.001581}$
+
+$0.131 \pm 1.96 \times 0.03976$
+
+$(0.053, 0.209)$
+:::
+
+---
+
+# Exercise 2
+
+The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
+
+\begin{tabular}{lcc}
+ & CHD & No CHD \\ \hline
+ High CAT & 27 & 95 
+
+ Low CAT & 44 & 443\\ \hline
+\end{tabular}
+
+(a) Estimate the relative risk of CHD for people with high CAT compared to people with low CAT, and interpret this quantity.
+
+::: {.answer .hidden}
+$\widehat{RR}=\frac{\text{estimated risk of CHD for people with high CAT}}{\text{estimated risk of CHD for people with low CAT}} = \frac{27/(27+95)}{44/(44+443)} = \frac{27/122}{44/487} = \frac{0.2213}{0.0903} = 2.45$
+
+The estimated risk of CHD for people with high CAT is 2.45 times the risk for people with low CAT.
+:::
+
+(b) Compute a 95% confidence interval for the true relative risk.
+
+::: {.answer .hidden}
+$\widehat{RR}=2.45$ calculated in (a)
+
+Table is in the correct format to use the SE formula with a=27, b=95, c=44, d=443
+
+CI for log-relative risk: $\ln(\widehat{RR}) \pm z^* \times \sqrt{\frac{b}{a(a+b)} + \frac{d}{c(c+d)}}$
+
+$z^* = 1.96$
+
+$\ln(2.45) \pm 1.96 \times \sqrt{\frac{95}{27(27+95)} + \frac{443}{44(44+443)}}$
+
+$0.896 \pm 1.96 \times \sqrt{0.0495}$
+
+$0.896 \pm 1.96 \times 0.2225$
+
+$(0.460, 1.33)$ ***CI for the log-relative risk***
+
+Exponentiate to get CI for relative risk: $(e^{0.460}, e^{1.33}) = (1.58, 3.78)$
+:::
+
+---
+
+# Exercise 3
+
+The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
+
+\begin{tabular}{lcc}
+ & CHD & No CHD \\ \hline
+ High CAT & 27 & 95 
+
+ Low CAT & 44 & 443\\ \hline
+\end{tabular}
+
+(a) Estimate the odds ratio for CHD for people with high CAT compared to people with low CAT, and interpret this quantity.
+
+::: {.answer .hidden}
+$\widehat{OR}=\frac{\text{estimated odds of CHD for people with high CAT}}{\text{estimated odds of CHD for people with low CAT}} = \frac{27/95}{44/443} = \frac{0.2842}{0.0993} = 2.86$
+
+The estimated odds of CHD for people with high CAT is 2.86 times the odds for people with low CAT.
+:::
+
+(b) Compute a 95% confidence interval for the true odds ratio.
+
+::: {.answer .hidden}
+$\widehat{OR}=2.86$ calculated in (a)
+
+Table is in the correct format to use the SE formula with a=27, b=95, c=44, d=443
+
+CI for log-odds ratio: $\ln(\widehat{OR}) \pm z^* \times \sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}}$
+
+$z^* = 1.96$
+
+$\ln(2.86) \pm 1.96 \times \sqrt{\frac{1}{27}+\frac{1}{95}+\frac{1}{44}+\frac{1}{443}}$
+
+$1.051 \pm 1.96 \times \sqrt{0.07255}$
+
+$1.051 \pm 1.96 \times 0.269$
+
+$(0.524, 1.58)$ ***CI for the log-odds ratio***
+
+Exponentiate to get CI for odds ratio: $(e^{0.524}, e^{1.58}) = (1.69, 4.85)$
+:::
+
+---
+
+# Exercise 4
+
+A study evaluated the use of ecinacea for upper respiratory infections (URIs) in children. Each child with a URI was randomized to receive either echinacea or placebo. One outcome recorded was the presence or absence of adverse events. The data are below.
+
+\begin{tabular}{lcc}
+ & Placebo & Echinacea \\ \hline
+Adverse Event & 146 & 152
+
+No Adverse Event & 224 & 185 \\ \hline
+\end{tabular}
+
+(a) Estimate and interpret each of the three measures of association between presence of side effects and receiving treatment with echinacea (compared to placebo).
+
+::: {.answer .hidden}
+$p_1 =$ probability of adverse event  given echinacea, $p_2 =$ probability of adverse event  given placebo
+
+$\hat{p}_1 = \frac{152}{152+185} = \frac{152}{337} = 0.451$  and   $\displaystyle \hat{p}_2 = \frac{146}{146+224} = \frac{146}{370} = 0.395$
+
+Estimated Risk Difference = $\hat{p}_1 - \hat{p}_2 = 0.451 - 0.395 = 0.056$
+
+The risk of an adverse event is 5.6 percentage points higher for people on echinacea compared to placebo.
+
+Estimated Relative Risk = $\displaystyle \frac{\hat{p}_1}{\hat{p}_2} = \frac{0.451}{0.395} = 1.14$
+
+The risk of an adverse event when taking echinacea is 1.14 times the risk when taking placebo.
+
+Estimated Odds Ratio = $\displaystyle \frac{\hat{p}_1/(1-\hat{p}_1)}{\hat{p}_2/(1-\hat{p}_2)} = \frac{0.451/(1-0.451)}{0.395/(1-0.395)} = \frac{0.821}{0.653} = 1.26$
+
+The odds of an adverse event when taking echinacea are 1.26 times the odds when taking placebo.
+:::
+
+(b) What type of hypothesis test would you do to test whether there is a significant association between taking echinacea and having adverse events?
+
+::: {.answer .hidden}
+Chi-square test (or Two-sample Z-test) 
+:::

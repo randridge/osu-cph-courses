@@ -1,0 +1,141 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{2D}{
+Suppose the distribution of height in feet in the U.S. is normally distributed with a mean of 5.5 feet and a standard deviation of 0.25 feet. What is the distribution of height in inches?
+
+\answer{5.5cm}{ANSWER: N(66, 9)\\
+~\\
+$X=$ height in feet\\
+$E(X)=5.5$\\
+$SD(X)=0.25$\\
+$V(X)=SD(X)^2=0.25^2=0.0625$\\
+$Y=$ height in inches\\
+$Y=12X$\\
+$E(Y)=E(12X)=12E(X)=12\times 5.5=66$ inches\\
+$V(Y)=V(12X0=12^2V(X)=144\times 0.0625=9$ inches$^2$\\
+Since $X$ is normally distributed, $Y$ will be too\\
+$Y \sim N(66,9)$}
+}
+
+%%%
+\newpage
+
+\exercise{2D}{
+One kilogram is equal to 2.2 pounds. The weight of a randomly selected full term infant can be modeled as a random variable with mean 7.8 and standard deviation 1.77 pounds. Describe this distribution in kilograms.
+
+\answer{4cm}{ANSWER: mean = 3.55 kg; standard deviation = 0.805; variance = 0.647\\
+~\\
+$L=$ weight of a randomly selected full term infant in \underline{pounds} (lbs)\\
+$E(L)=7.8$ lbs\\
+$SD(L)=1.77$ lbs\\
+$V(L)=SD(L)^2=1.77^2=3.1329$ lbs$^2$\\
+$K=$ weight of a randomly selected full term infant in \underline{kilograms} (kg)\\
+$K=L/2.2$ (if 1 kg = 2.2 lbs, then you would take the number of lbs and divide by 2.2 to get kg)\\
+$E(K)=E(L/2.2)=E(L)/2.2=7.8/2.2=3.545$ kg\\
+$V(K)=V(L/2.2)=(1/2.2)^2 V(L) = (1/2.2)^2 \times 3.1329 = 0.6473$ kg$^2$\\
+$SD(K)=\sqrt{V(K)}=\sqrt{0.6473}=0.8045$}
+}
+
+%%%
+\newpage
+
+\exercise{2D}{
+If a random variable $Z$ is standard normal, what is the distribution of $2Z - 10$?
+
+\answer{5.5cm}{ANSWER: $N(-10, 4)$\\
+~\\
+$Z\sim N(0,1) \rightarrow E(Z)=0, V(Z)=1$\\
+$E(2Z - 10)=2E(Z)-10=2\times 0 - 10 = -10$\\
+$V(2Z - 10)=2^2 \times V(Z) = 4 \times 1 = 4$\\
+Since $Z$ is normally distributed, $2Z-10$ will be too\\
+Distribution is $N(-10,4)$}
+}
+
+%%%
+\newpage
+
+\exercise{2D}{
+If a random variable $X$ is normally distributed with a mean of 25 and a standard deviation of 5, what will be the distribution of $ \frac{X-25}{5}$?
+
+\answer{4cm}{ANSWER: $N(0,1)$\\
+~\\
+This is just a z-score transformation -- subtracting the mean and then dividing by the standard deviation, thus the distribution will be standard normal: $N(0,1)$}
+}
+
+%%%
+\newpage
+
+\exercise{2D}{
+The weight of jaguars is normally distributed with a mean of 168 pounds and a variance of 121 pounds$^2$.
+
+(a) A single jaguar is captured and its weight is measured; it weighs 192 pounds. What is the z-score for this jaguar?
+
+\answer{2cm}{ANSWER: 2.18\\
+~\\
+$x=192$ (weight of the specific jaguar captured)\\
+$\mu=168, \sigma^2=121 \rightarrow \sigma=\sqrt{121}=11$\\[5pt]
+$\displaystyle z=\frac{x-\mu}{\sigma} = \frac{192-168}{11} = 2.18$}
+
+(b) What is the probability that a randomly captured jaguar weighs 192 pounds or more?
+
+\answer{5cm}{ANSWER: 0.0146\\
+~\\
+$X=$ weight of a randomly captured jaguar\\
+$X \sim N(168, 121)$\\[5pt]
+$\displaystyle P(X>192)=P\left(Z>\frac{192-168}{11}\right)=P(Z>2.18)=0.0146$ (Normal Table, Column B)}
+
+(c) Another jaguar is captured and it weighs 152 pounds. What is the probability that a randomly captured jaguar weighs 152 pounds or less?
+
+\answer{2cm}{ANSWER: 0.0735\\
+~\\
+$P(X<152)=P\left(Z<\frac{152-168}{11}\right)=P(Z<-1.45)=P(Z>1.45)=0.0735$ (Column B)}
+}
+
+%%%
+\newpage
+
+\exercise{2D}{
+Let $X$ be the IQ scores for a certain population, and assume that $X$ follows a normal distribution with $\mu = 100$ and $\sigma = 15$. Find $x$ such that:
+
+(a) $P(X > x) = 0.25$ \quad (What percentile is this?)
+
+\answer{4cm}{ANSWER: 110.05 (75th percentile)\\[-5pt]
+~\\[-5pt]
+25\% of values \underline{above} $\rightarrow$ 75\% of values \underline{below} $\rightarrow$ 75th percentile $\rightarrow P(Z<a)=0.75$\\
+From Normal Table, Column A: $P(Z<0.67)=0.7486 \rightarrow a=0.67$\\
+$x=a \times \sigma + \mu = 0.67 \times 15 + 100=110.05$}
+
+(b) $P(X < x)=0.95$ (What percentile is this?)
+
+\answer{4cm}{ANSWER: 124.75 (95th percentile)\\[-5pt]
+~\\[-5pt]
+95\% of values \underline{below} $\rightarrow$ 95th percentile $\rightarrow P(Z<a)=0.95$\\
+From Normal Table, Column A: $P(Z<1.65)=0.9505 \rightarrow a=1.65$\\
+$x=a \times \sigma + \mu = 1.65 \times 15 + 100=124.75$}
+
+(c) $P(X>x) = 0.75$ \quad (What percentile is this?)
+
+\answer{3cm}{ANSWER: 89.95 (25th percentile)\\[-5pt]
+~\\[-5pt]
+75\% of values \underline{above} $\rightarrow$ 25\% of values \underline{below} $\rightarrow$ 25th percentile
+$\rightarrow P(Z<a)$\\
+Need trick of symmetry to find in table: $P(Z<a)=P(Z>-a)=0.25$\\ 
+From Normal Table, Column A: $P(Z>0.67)=0.2514 \rightarrow -a=0.67 \rightarrow a = -0.67$\\
+$x=a \times \sigma + \mu = -0.67 \times 15 + 100=89.95$\\
+~\\[-5pt]
+{\tiny Note: could recognize that the 25th percentile would be as far below the mean as the 75th was above\dots \\
+The 75th percentile is $110.05=100+10.05$, thus the 25th percentile $=100-10.05=89.95$}}
+}
+
+\end{document}

@@ -1,0 +1,89 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 4B"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+A researcher wants to determine the effect of an experimental diet on serum cholesterol levels in men aged 40-59. He knows that in this population the standard deviation of cholesterol levels is 45 mg/dL. He computes the mean serum cholesterol level for a sample of 81 subjects who have been on the diet for 4 weeks and obtains an average of 200 mg/dL.
+
+(a) Construct a 95% confidence interval for the true mean cholesterol level for men in this population after 4 weeks on the experimental diet, and interpret this interval.
+
+::: {.answer .hidden}
+ANSWER: (190.2, 209.8)
+
+$\bar{x} \pm z^* \frac{\sigma}{\sqrt{n}}$
+
+$n=81, \bar{x}=200, \sigma=45$
+
+$z^* = 1.96$ since 2.5% of the area under the standard normal is to the left of 1.96
+
+$200 \pm 1.96 \times \frac{45}{\sqrt{81}} = (190.2, 209.8)$
+
+We are 95% confident that the true mean cholesterol level for men aged 40-59 after being on the experimental diet for 4 weeks is between 190.2 and 209.8 mg/dL.
+:::
+
+(b) Construct a 90% confidence interval for the true mean cholesterol level for men in this population after 4 weeks on the experimental diet, and interpret this interval.
+
+::: {.answer .hidden}
+ANSWER: (191.8, 208.2)
+
+Only change from (a) is $z^*$, need 10% of area in both tails together $\rightarrow$ 5% in upper tail $\rightarrow z^*=1.64$
+
+(note: could have also used 1.65 since 0.05 is between 1.64 and 1.65 on the table)
+
+$200 \pm 1.64 \times \frac{45}{\sqrt{81}} = (191.8, 208.2)$
+:::
+
+---
+ 
+
+# Exercise 2
+
+A study is investigating factors that contribute to heart disease in women in the Appalachian region of Ohio. Study investigators have recruited a sample of 100 women from Appalachia and measured their height and weight, and from this have calculated each woman's body mass index (BMI). The average BMI in their sample is 29.2. Suppose that the standard deviation of BMI is known to be 5.1.
+
+Calculate a 99% confidence interval for the mean BMI in the population and interpret this interval.
+
+::: {.answer .hidden}
+ANSWER: (27.9, 30.5)
+
+$\bar{x} \pm z^* \frac{\sigma}{\sqrt{n}}$
+
+$n=100, \bar{x}=29.2, \sigma=5.1$
+
+$z^* = 2.58 $ since 0.5% of the area under the standard normal is to the left of 2.58
+
+(note: could have also used 2.57 since 0.005 is between 2.57 and 2,58 on the table)
+
+$29.2 \pm 2.58 \times \frac{5.1}{\sqrt{100}} = (27.9, 30.5)$
+
+We are 95% confident that the true mean BMI for women in Appalachia is between 27.9 and 30.5.
+:::
+
+---
+ 
+
+# Exercise 3
+
+The National Loan Survey collects data to examine questions related to the amount of money that borrowers owe. The survey selected a sample of 1280 borrowers, whose mean debt was \$18,900. Assume that we know the standard deviation is \$49,000.
+
+Construct a 95% confidence interval for the true mean debt for all borrowers. Interpret this interval.
+
+::: {.answer .hidden}
+ANSWER: (16216, 21584)
+
+$\bar{x} \pm z^* \frac{\sigma}{\sqrt{n}}$
+
+$n=1280, \bar{x}=18900, \sigma=49000$
+
+$z^* = 1.96$ since 2.5% of the area under the standard normal is to the left of 1.96
+
+$18900 \pm 1.96 \times \frac{49000}{\sqrt{1280}} = (16216, 21584)$
+
+We are 95% confident that the true mean debt for all borrowers is between \$16,216 and \$21,584.
+:::

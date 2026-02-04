@@ -1,0 +1,93 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 5D"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+In the general population, the gestational length of uncomplicated pregnancies varies according to a normal distribution with mean 39 weeks and (known) standard deviation 2 weeks. An investigator wishes to test whether gestational ages of African American women have a different mean length, and believes that the true mean for these women is 38.5 weeks. How large a sample would be needed to detect a difference in gestational lengths of this size with 80% power for a two-sided test with level $\alpha=0.05$?
+
+::: {.answer .hidden}
+$\mu_0=39, \mu_a=38.5$
+
+$\sigma=2$
+
+type I error = $\alpha = 0.05$, two-sided test, $\rightarrow z^*_{\alpha/2} = 1.96$
+
+power = 80% $\rightarrow 1-\beta=0.8 \rightarrow \beta=0.2 \rightarrow z^*_\beta = 0.84$
+
+$\displaystyle n = \frac{\sigma^2 \left(z^*_{\alpha/2} + z^*_\beta \right)^2}{(\mu_a-\mu_0)^2} = \frac{2^2 (1.96+0.84)^2}{(38.5-39)^2} = 125.44$
+
+Round up: Need 126 women in the study.
+
+Stata code to confirm answer: 
+
+\texttt{power onemean 39 38.5, power(0.8) alpha(0.05) sd(2) knownsd}
+:::
+
+---
+
+# Exercise 2
+
+How large a sample is needed for a one-sided z-test with 90% power and $\alpha=0.05$, if the null hypothesis assumes $\mu=170$, we want to detect a difference of +20, and the standard deviation is known to be 40?
+
+::: {.answer .hidden}
+$\mu_a-\mu_0=20$
+
+$\sigma=40$
+
+type I error = $\alpha = 0.05$, one-sided test, $\rightarrow z^*_{\alpha} = 1.645$
+
+power = 90% $\rightarrow 1-\beta=0.9 \rightarrow \beta=0.1 \rightarrow z^*_\beta = 1.28$
+
+$\displaystyle n = \frac{\sigma^2 \left(z^*_\alpha + z^*_\beta \right)^2}{(\mu_a-\mu_0)^2} = \frac{40^2 (1.645+1.28)^2}{20^2} = 34.2$
+
+Round up: Need sample size of 35.
+
+Stata code to confirm answer: 
+
+\texttt{power onemean 170 190, power(0.9) alpha(0.05) sd(40) knownsd onesided}
+:::
+
+---
+
+# Exercise 3
+
+The Ohio Department of Education is planning a study of SAT math scores of Ohio high school seniors. They will randomly give the exam to 500 students. Assume that the population standard deviation is known to be $\sigma=100$. The hypotheses are:
+
+$H_0: \mu=450$
+
+$H_a: \mu>450$
+
+Is this test sufficiently powerful to detect an increase of 12 points in the population mean SAT score? Answer this question by calculating the power of the Z-test at $\alpha=0.01$ against the alternative $\mu=462$.
+
+::: {.answer .hidden}
+(1) Hypotheses stated in problem $(\mu_0=450)$
+
+(2) Specific alternative to detect: $\mu_a=462$
+
+(3) Find rejection region:
+
+one-sided z-test with $\alpha=0.01 \rightarrow$ all 0.01 in upper tail $\rightarrow$ critical value is $z^*=2.33$
+
+reject $H_0$ if $z>z*$ (matches direction of alternative hypothesis)
+
+$\displaystyle z = \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}=\frac{\bar{x}-450}{100/\sqrt{500}} > 2.33 \rightarrow \bar{x} > 450 + 2.33 \times \frac{100}{\sqrt{500}} = 460.41$
+
+reject $H_0$ if $\bar{x} > 460.41$
+
+(4) Power = Probability of being in rejection region given $H_a$ is true
+
+$\displaystyle P(\overline{X} > 460.41|\mu_a=462) = P\left(Z > \frac{460.41-462}{100/\sqrt{500}}\right) = P(Z>-0.36) = 0.6406$
+
+Study has 64.1% power
+
+Stata code to confirm answer: 
+
+\texttt{power onemean 450 462, n(500) alpha(0.01) sd(100) knownsd onesided}
+:::

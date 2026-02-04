@@ -1,0 +1,91 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+\toggletrue{solutions}
+%\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{2A}{
+In the example from the lecture, the following probability mass function was given for $X$, where $X$ is the final grade in 6210:
+
+\begin{tabular}{|l|p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}|}
+\hline
+Grade: & F & D & C & B & A\\
+Value of $X$: & 0 & 1 & 2 & 3 & 4 \\
+Probability: & 0.05 & 0.05 & 0.1 & 0.6 & 0.2 \\
+\hline
+\end{tabular}
+
+What is $E(X)$?
+
+\answer{3cm}{ANSWER: 2.85\\
+~\\
+$E(X) = 0 \times P(X=0) + 1 \times P(X=1) + 2 \times P(X=2) + 3 \times P(X=3) + 4 \times P(X=4)$\\
+\qquad\quad$ = 0 \times 0.05 + 1 \times 0.05 + 2 \times 0.1 + 3 \times 0.6 + 4 \times 0.2$\\
+\qquad\quad$ = 2.85$}
+}
+
+%%%
+\newpage
+
+\exercise{2A}{
+Consider a game in which you (the contestant) and the banker flip a coin. Based on the result of the fair coin flip, the following occurs:
+\begin{itemize}
+	\item Heads: The banker pays the contestant \$10
+	\item Tails: The contestant pays the banker \$10
+\end{itemize}
+How much do you expect to win in the long run? Is this a fair game?
+
+\answer{1.5cm}{ANSWER: \$0; the game is fair since you expect to ``break even"\\
+~\\
+Let $X$ be the ``winnings" on a single flip, so that the two options are:\\
+Heads $\rightarrow$ you win \$10 $\rightarrow X=+10$\\
+Tails $\rightarrow$ you lose \$10 $\rightarrow X=-10$\\
+Since the coin is fair, the probability of heads is the same as tails, so:\\
+ $P(X=+10)=P(X=-10)=0.5$\\
+Thus we can calculate the expected winnings, i.e., the expected value of $X$:\\
+$E(X)= (+10) \times P(X=+10) + (-10) \times P(X=-10) = (+10) \times 0.5 + (-10) \times 0.5 = 0$}
+}
+
+%%%
+\newpage
+
+\exercise{2A}{
+According to the U.S. Census Bureau, the number of people per household in the U.S. had the distributions below for the years 1900 and 2006:
+
+\begin{tabular}{lccccccc}
+ & \multicolumn{7}{c}{Number of People in the Household} \\ \cmidrule{2-8}
+Year & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+\hline
+1900 & 5.1\% & 15.0\% & 17.6\% & 16.9\% & 14.2\% & 10.9\% & 20.3\% \\
+2006 & 25.5\% & 33.1\% & 16.4\% & 14.6\% & 6.7\% & 2.3\% & 1.4\% \\
+\hline
+\end{tabular}
+
+(a) If one household was randomly selected in 1900, how many people do you expect to live there?
+
+\answer{5cm}{ANSWER: 4.34\\
+~\\
+Let $X$ be the number of people in a randomly selected 1900 household\\
+$E(X) = 1 \times P(X=1) + 2 \times P(X=2) + \dots + 6 \times P(X=6) + 7 \times P(X=7)$\\
+\qquad\quad $=1 \times 0.051 + 2 \times 0.15 + 3 \times 0.176 + 4 \times 0.169 + 5 \times 0.142 + 6 \times 0.109 + 7 \times 0.203$\\
+\qquad\quad $=4.34$}
+
+(b) If one household was randomly selected in 2006, how many people do you expect to live there?
+
+\answer{1.5cm}{ANSWER: 2.564\\
+~\\
+Let $X$ be the number of people in a randomly selected 2006 household\\
+$E(X) = 1 \times P(X=1) + 2 \times P(X=2) + \dots + 6 \times P(X=6) + 7 \times P(X=7)$\\
+\qquad\quad $=1 \times 0.255 + 2 \times 0.331 + 3 \times 0.164 + 4 \times 0.146 + 5 \times 0.067 + 6 \times 0.023 + 7 \times 0.014$\\
+\qquad\quad $=2.564$}
+
+}
+
+\end{document}

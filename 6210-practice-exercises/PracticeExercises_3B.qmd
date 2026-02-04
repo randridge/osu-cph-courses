@@ -1,0 +1,80 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 3B"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+Answer the following questions:
+
+(a) What kind of data is best summarized by a histogram?
+
+::: {.answer .hidden}
+ANSWER: discrete and continuous
+:::
+
+(b) What kind of data can be summarized by bar charts?  
+
+::: {.answer .hidden}
+ANSWER: nominal and ordinal
+:::
+
+(c) Are the data shown in the histogram below symmetric, right skewed, left skewed, or none of those?
+
+![A Plot](./figures/3B1.png){fig-alt="A histogram with reddish-pink bars on a light tan background. The tallest bar is on the far left. The bars decrease significantly in height as they move to the right, with several very short bars trailing off toward the end of the x-axis. There are no visible labels, titles, or numerical values on the axes" width=40%}
+
+::: {.answer .hidden}
+ANSWER: right skewed
+:::
+
+(d) For the histogram above, which would we expect to be larger -- the mean or the median?
+
+::: {.answer .hidden}
+ANSWER: mean, since for right-skewed data the mean $>$ median
+:::
+
+---
+
+# Exercise 2
+
+A small sample of undergraduate students was randomly selected from a chemistry course. Their GPAs were recorded and are shown below. Use these data to calculate the requested summary measures.
+
+GPAs: 3.08, 2.5, 3.33, 3.75, 3.1, 2.64
+
+(a) Mean
+
+::: {.answer .hidden}
+ANSWER: 3.07
+
+$\displaystyle \bar{x} = \frac{3.08+ 2.5+ 3.33+ 3.75+ 3.1+ 2.64}{6} = \frac{18.4}{6}=3.07$
+:::
+
+(b) Median
+
+::: {.answer .hidden}
+ANSWER: 3.09
+
+Sort data values: 2.5, 2.64, 3.08, 3.1, 3.33, 3.75
+
+Even number of values (6) so the median is the average of the middle two: $\displaystyle \frac{3.08+3.1}{2}=3.09$
+:::
+
+(c) Geometric mean
+
+::: {.answer .hidden}
+ANSWER: 3.04
+
+Log-transform (natural log being used here):
+
+ \{ln(3.08), ln(2.5), ln(3.33), ln(3.75), ln(3.1), ln(2.64)\} = \{1.125, 0.916, 1.203, 1.322, 1.131, 0.971\}
+
+Take (arithmetic) mean of these values: $\displaystyle \frac{1.125+0.916+\dots+0.971}{6} = \frac{6.668}{6}=1.111$
+
+Back-transform: $ e^{1.111}= 3.04$
+
+:::

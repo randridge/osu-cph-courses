@@ -1,0 +1,239 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 5A"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+Much discussion has appeared in the medical literature in recent years on the role of diet in the development of heart disease. The serum cholesterol levels of a group of people who eat a primarily macrobiotic diet are measured. Among 10 of them, aged 20-39, the mean cholesterol level was found to be 210 mg/dL. The mean cholesterol level in the general population in this age group is 230 mg/dL. The standard deviation of cholesterol levels is known to be 35 mg/ dL.
+
+(a) Test the hypothesis that people on a macrobiotic diet have cholesterol levels that are not equal to those of the general population.
+
+::: {.answer .hidden}
+$H_0: \mu=230$  where $\mu=$ mean cholesterol of people who eat macrobiotic diet
+
+$H_a: \mu \ne 230$
+
+$\displaystyle z = \frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}} = \frac{210-230}{35/\sqrt{10}} = -1.81$
+
+Under $H_0, Z \sim N(0,1)$
+
+p-value = $2 \times P(Z > |-1.81|) = 2 \times P(Z>1.81) = 2 \times 0.0351 = 0.0702$
+
+Is p-value $< \alpha$?
+
+No, $0.0702 > 0.05 \rightarrow$ Fail to reject $H_0$
+
+There is no evidence that the mean cholesterol for people on a macrobiotic diet is different from 230 mg/dL.
+:::
+
+---
+
+(b) Suppose instead the hypothesis is that people on a macrobiotic diet have cholesterol levels lower than those of the general population. Perform the appropriate significance test.
+
+::: {.answer .hidden}
+$H_0: \mu=230$
+
+$H_a: \mu < 230$
+
+$\displaystyle z = -1.81$ (same as part (a))
+
+Under $H_0, Z \sim N(0,1)$
+
+p-value = $P(Z < -1.81) = P(Z>1.81) = 0.0351$  (using symmetry) 
+
+Is p-value $< \alpha$?
+
+Yes, $0.0351 < 0.05 \rightarrow$ Reject $H_0$
+
+There is evidence that the mean cholesterol for people on a macrobiotic diet is lower than 230 mg/dL.
+:::
+
+---
+
+# Exercise 2
+
+A study was undertaken to measure the amount of vitamin C in corn soy blend (CSB), a low-cost, fortified food that can be incorporated into different food preparations (especially useful in emergency relief programs). Regulations state that there should be 40 mg/100g of vitamin C in CSB. Measurements of vitamin C were taken on eight samples of CSB produced in a factory. The mean vitamin C level was 22.5 mg/100 g with standard deviation 7.19 mg/100 g.  Does the mean vitamin C level conform to the regulations?
+
+::: {.answer .hidden}
+$H_0: \mu=40$  where $\mu=$ mean vitamin C level in CSB produced by factory
+
+$H_a: \mu \ne 40$
+
+$\displaystyle t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}} = \frac{22.5-40}{7.19/\sqrt{8}} = -6.88$
+
+Under $H_0, T \sim t_{n-1}=t_{7}$
+
+**P-value Method:**
+
+p-value = $2 \times P(t_7 > |-6.88|) = 2 \times P(t_7>6.88)$
+
+From table, $P(t_7>5.048)=0.0005$ so we know $P(t_7>6.88) < 0.0005$
+
+Thus p-value $< 2 \times 0.0005 = 0.001$  (Exact p-value from Stata = $0.0002$)
+
+Is p-value $< \alpha$? Yes, $0.001 < 0.05 \rightarrow$ Reject $H_0$
+
+**Critical Value Method:**
+
+critical value from $t_7$ with 0.025 in the tail is $t^*=2.365$
+
+Is $|t |> t^*$? Yes, $|-6.88| > 2.365 \rightarrow$ Reject $H_0$
+
+There is evidence that the mean vitamin C level in CSB at this factory is not equal to 40 mg/100g.
+:::
+
+---
+
+# Exercise 3
+
+To test how accurate home radon detectors are, researchers placed 12 detectors in a chamber that exposed them to 105 picocuries per liter (pCi/l) of radon. They analyzed the detector readings using a t-test. Complete the Stata output below.
+
+```{.text .stata}
+
+. ttest radon = 105
+
+One-sample t test
+------------------------------------------------------------------------
+Variable |  Obs       Mean   Std. Err.  Std. Dev.   [95
+---------+--------------------------------------------------------------
+   radon |   12   104.1333   ________   9.397422     _______    ________
+------------------------------------------------------------------------
+    mean = mean(radon)                                      t =  _______
+Ho: mean = 105                             degrees of freedom =       __
+
+   Ha: mean < 105            Ha: mean != 105            Ha: mean > 105
+ Pr(T < t) = 0.3777      Pr(|T| > |t|) = 0.7554       Pr(T > t) = 0.6223
+
+```
+
+::: {.answer .hidden}
+Test is of $H_0: \mu=105$ with $n=12, \bar{x}=104.1333, s=9.397422$
+
+Std.Err. = $SE = \frac{s}{\sqrt{n}} = \frac{9.397422}{12}=2.713$
+
+DF = $n-1 = 12-1=11$
+
+Critical value from $t_{11}$ with 0.025 in tail = $t^* = 2.201$
+
+95% CI: $\bar{x} \pm t^* \frac{s}{\sqrt{n}} \rightarrow 104.1333 \pm 2.201 \times 2.713 \rightarrow (98.16, 110.1)$  (note that $\frac{s}{\sqrt{n}}$ is the SE)
+
+Test statistic $\displaystyle t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}} = \frac{104.1333-105}{2.713} = -0.321$
+:::
+
+---
+
+# Exercise 4
+
+We are interested in knowing if the amount of phosphorous in the soil is equal to 35.0. The mean phosphorous level from 43 independent, randomly selected soil samples is 32.4 and the sample standard deviation is 5.5. What do we conclude?
+
+::: {.answer .hidden}
+$H_0: \mu=35.0$  where $\mu=$ mean phosphorous in the soil
+
+$H_a: \mu \ne 35.0$
+
+$\displaystyle t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}} = \frac{32.4-35}{5.5/\sqrt{43}} = -3.10$
+
+Under $H_0, T \sim t_{n-1}=t_{42}$
+
+**P-value Method:**
+
+p-value = $2 \times P(t_{42} > |-3.10|) = 2 \times P(t_{42}>3.10)$
+
+DF=42 not on table, use DF=40 (closest smaller value)
+
+From table, $P(t_{40}>2.704)=0.005$ and $P(t_{40}>3.551)=0.0005$,
+
+so we know $P(t_{40}>3.10)=$ between $0.005$ and $0.0005$
+
+Thus p-value = between $0.01$ and $0.001$  (Exact p-value from Stata = $0.003$)
+
+Is p-value $< \alpha$? Yes, since $0.01 < 0.05 \rightarrow$ Reject $H_0$
+
+**Critical Value Method:**
+
+critical value from $t_{40}$ (since DF=42 not on table) with 0.025 in the tail is $t^*=2.021$
+
+Is $|t |> t^*$? Yes, $|-3.10| > 2.021 \rightarrow$ Reject $H_0$
+
+There is evidence that the mean phosphorous in the soil is not equal to 35.
+:::
+
+---
+
+# Exercise 5
+
+We are interested in knowing if the concentration of cadmium in the soil is greater than 1.2. The mean cadmium level from 29 independent, randomly selected soil samples is 1.45 and the sample standard deviation is 0.55. What do we conclude?
+
+::: {.answer .hidden}
+$H_0: \mu=1.2$  where $\mu=$ mean cadmium in the soil
+
+$H_a: \mu > 1.2$
+
+$\displaystyle t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}} = \frac{1.45-1.2}{0.55/\sqrt{29}} = 2.45$
+
+Under $H_0, T \sim t_{n-1}=t_{28}$
+
+**P-value Method:**
+
+p-value = $P(t_{28} > 2.45)$ (only the one tail since one-sided alternative, inequality matches $H_a$)
+
+From table, $P(t_{28}>2.048)=0.025$ and $P(t_{28}>2.467)=0.01$,
+
+so we know $P(t_{28} > 2.45) =$ between $0.025$ and $0.01$
+
+Thus p-value = between $0.025$ and $0.01$  (Exact p-value from Stata = $0.0104$)
+
+Is p-value $< \alpha$? Yes, since $0.025 < 0.05 \rightarrow$ Reject $H_0$
+
+**Critical Value Method:**
+
+critical value from $t_{28}$ with 0.05 in the tail is $t^*=1.701$
+
+Is $|t |> t^*$? Yes, $|2.45| > 1.701 \rightarrow$ Reject $H_0$
+
+There is evidence that the mean cadmium in the soil is greater than 1.2.
+:::
+
+---
+
+# Exercise 6
+
+We are interested in knowing if the amount of nitrogen in the soil is less than 8.0. The mean nitrogen level from 28 soil samples is 8.2 and the sample standard deviation is 0.74. What do we conclude?
+
+::: {.answer .hidden}
+$H_0: \mu=8.0$  where $\mu=$ mean nitrogen in the soil
+
+$H_a: \mu < 8.0$
+
+$\displaystyle t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}} = \frac{8.2-8.0}{0.74/\sqrt{28}} = 1.43$
+
+Under $H_0, T \sim t_{n-1}=t_{27}$
+
+**P-value Method:**
+
+p-value = $P(t_{27} < 1.43)$ (only the one tail since one-sided alternative, inequality matches $H_a$)
+
+From table, $P(t_{27} < 1.314)=0.90$ and $P(t_{27}<1.703)=0.95$,
+
+so we know $P(t_{27} < 1.43)$ between $0.90$ and $0.95$
+
+Thus p-value = between $0.90$ and $0.95$  (Exact p-value from Stata = $0.9179$)
+
+Is p-value $< \alpha$? No $\rightarrow$ Fail to reject $H_0$
+
+**Critical Value Method:**
+
+critical value from $t_{27}$ with 0.05 in the tail is $t^*=1.703$
+
+Is $t < -t^*$? No, $1.43 > -1.703 \rightarrow$ Fail to reject $H_0$
+
+There is no evidence that the mean nitrogen in the soil is less than 8.0.
+
+NOTE: This test result makes intuitive sense. We are testing whether the true mean is less than 8.0 -- but the sample mean was actually GREATER than 8.2. So we definitely should not reject the null, and the p-value should be greater than 0.5.
+:::

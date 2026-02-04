@@ -1,0 +1,96 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{2B}{
+Assume that everyone in Ohio Appalachia has a probability of developing lung cancer within the next year of 0.001 and each resident is independent of one another. The population of Ohio Appalachia is 1.5 million. Let $X$ be the number of people in Ohio Appalachia who will develop lung cancer within the next year.
+
+(a) Define the distribution of $X$.
+
+\answer{1.5cm}{ANSWER: $X\sim Binomial(1500000, 0.001)$}
+
+(b) How many people do we expect to develop lung cancer in this population within the next year?
+
+\answer{3cm}{ANSWER: 1500 people\\
+~\\
+$E(X)=np=1500000 \times 0.001 = 1500$}
+
+(c) Calculate the standard deviation of $X$ (be explicit about the units).
+
+\answer{3cm}{ANSWER: 38.7 people\\
+~\\
+$V(X)=np(1-p) = 1500000 \times 0.001 \times (1-0.001) = 1498.5$ people$^2$\\
+$SD(X)=\sqrt{V(X)}=\sqrt{1498.5}=38.71$ people}
+}
+
+%%%
+\newpage
+
+\exercise{2B}{
+Births in a hospital occur randomly at an average rate of 1.8 births per hour.
+
+(a) What is the probability of observing 4 births in a given hour at the hospital?
+
+\answer{3cm}{ANSWER: 0.0723\\
+~\\
+$X=$ number of births in one hour, $X\sim Poisson(1.8)$\\
+$P(X=4)=\frac{e^{-1.8}1.8^4}{4!} = 0.0723$}
+
+(b) What is the probability of observing no births in a given hour at the hospital?
+
+\answer{3cm}{ANSWER: 0.1653\\
+~\\
+$P(X=0)=\frac{e^{-1.8}1.8^0}{0!} = 0.1653$}
+
+(c) What is the probability of observing 2 or more births in a given hour at the hospital?
+
+\answer{3cm}{ANSWER: 0.5372\\
+~\\
+$P(X \ge 2) = 1 - P(X < 2) = 1 - [P(X=0) + P(X=1)] = 1 - \left[\frac{e^{-1.8}1.8^0}{0!} + \frac{e^{-1.8}1.8^1}{1!}\right] $\\
+\qquad\qquad\quad$ = 1 - [0.1653 + 0.2975] = 1 - 0.4628 = 0.5372$}
+
+(d) How many births do we expect to see in a given hour at the hospital?
+
+\answer{2.5cm}{ANSWER: 1.8\\
+~\\
+$E(X)=\lambda=1.8$}
+}
+
+%%%
+\newpage
+
+\exercise{2B}{
+What is the probability that if you throw a (fair, 6-sided) die 10 times it will land on ``6" exactly 4 times?
+
+\answer{6cm}{ANSWER: 0.0543\\
+~\\
+$X=$ number of times the die lands on 6\\
+$X\sim Binomial(10,1/6)$ since there are $n=10$ rolls and $p=P($land on a 6$)=1/6$\\[10pt]
+$\displaystyle P(X=4)={10 \choose4} 0.1667^4 (1-0.1667)^{10-4} = 210 \times 0.0007716 \times 0.3349 = 0.0543$\\
+~\\
+Note: if you tried to solve this via the counting method, you would find that there are $6^{10}=60466176$ different outcomes of the 10 rolls! It sure would take you a long time to write out all those outcomes and figure out which ones had exactly 4 sixes\dots.}
+}
+
+\exercise{2B}{
+What is the probability that if you throw a (fair, 6-sided) die 10 times it will land on an even number on exactly half the rolls?
+
+\answer{4cm}{ANSWER: 0.2461\\
+~\\
+$X=$ number of times the die lands on an even number\\
+$X\sim Binomial(10,0.5)$ since there are $n=10$ rolls and $p=P($land on even$)=3/6=0.5$\\
+``exactly half the rolls" = 5 rolls\\
+$\displaystyle P(X=5) = {10 \choose 5} 0.5^5  (1-0.5)^{10-5} = 252 \times 0.03125 \times 0.03125 = 0.2461$\\
+~\\
+Note: could also find this probability in the Binomial table}
+}
+
+\end{document}

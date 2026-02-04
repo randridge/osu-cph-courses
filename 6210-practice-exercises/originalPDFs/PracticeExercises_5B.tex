@@ -1,0 +1,133 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{5B}{A multimedia program designed to improve dietary behavior among low-income women was evaluated by randomly assigning women to intervention and control groups. One outcome was the score on a knowledge test taken about 2 months after the program. A summary of the data is below:
+
+\begin{tabular}{lccc}
+Group & $n$ & $\xb$ & s \\
+\midrule
+Intervention & 15 & 5.08 & 1.15 \\
+Control & 12 & 4.33 & 1.16\\
+\bottomrule
+\end{tabular}
+
+Is there evidence that there is a difference between intervention and control?
+
+
+\answer{1.5cm}{$n_1=15, \bar{x}_1=5.08, s_1=1.15$ \quad and \quad $n_2=12, \bar{x}_2=4.33, s_2=1.16$\\[5pt]
+$ s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} =  \frac{(15-1)1.15^2+(12-1)1.16^2}{15+12-2} = 1.33 \rightarrow s_p=\sqrt{1.33}=1.15$\\
+$H_0: \mu_1=\mu_2$\\
+$H_a: \mu_1 \ne \mu_2$\\[5pt]
+$ t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} = \frac{5.08 - 4.33}{1.15 \sqrt{\frac{1}{15}+\frac{1}{12}}}= \frac{0.75}{0.4454} = 1.68$\\
+Under $H_0, T \sim t_{n_1+n_2-2}=t_{25}$\\
+\textbf{Critical Value Method:}\\
+critical value from $t_{25}$ with 0.025 in the tail is $t^*=2.060$\\
+Is $|t |> t^*$? No, $|1.68| < 2.060 \rightarrow$ Fail to reject $H_0$\\
+~\\
+\textbf{P-value Method:}\\
+p-value $= 2 \times P(t_{25} > |1.68|) = 2 \times P(t_{25}>1.68)$\\
+$P(t_{25}>1.708)=0.05$ and $P(t_{25}>1.316)=0.1$, so $P(t_{25}>1.68)$ between 0.05 \& 0.1\\
+Thus p-value = between $0.1$ and $0.2$ \quad (Exact p-value from Stata = $0.105$)\\
+Is p-value $< \alpha$? No, $\rightarrow$ Fail to reject $H_0$}
+}
+
+%%%
+\newpage
+
+\exercise{5B}{An entrepreneur wants to compare the daily sales for two different designs of web pages for her Internet business. She randomly assigns the next 60 days to either Design A or Design B, 30 days to each.
+
+(a) Would you use a one-sided or two-sided significance test? Why?
+
+\answer{2.5cm}{two-sided; no reason to think A$>$B or vice-versa}
+
+(b) How many degrees of freedom will the test statistic have?
+
+\answer{2.5cm}{$n_1=30, n_2=30$\\
+DF = $n_1+n_2-2 = 30+30-2=58$}
+
+(c) The $t$ statistic for comparing the mean sales is 2.06. Draw a conclusion for the entrepreneur.
+
+\answer{1.5cm}{$H_0: \mu_A=\mu_B$ \qquad where $\mu_A=$ mean sales under Design A, $\mu_B=$ mean sales under Design B\\
+$H_a: \mu_A \ne \mu_B$\\
+$t=2.06$ (given)\\
+Under $H_0$, $T \sim t_{58}$ \quad DF=58 not on table, approximate with DF=50 (closest smaller value)\\
+~\\
+\textbf{Critical Value Method:}\\
+critical value from $t_{50}$ with 0.025 in the tail is $t^*=2.009$\\
+Is $|t |> t^*$? Yes, $|2.06| > 2.009 \rightarrow$ Reject $H_0$\\
+~\\
+\textbf{P-value Method:}\\
+p-value $\approx 2 \times P(t_{50} > |2.06|) = 2 \times P(t_{50}>2.06)$\\
+$P(t_{50}>2.403)=0.01$ and $P(t_{50}>2.009)=0.025$, so $P(t_{50}>2.06)$ between 0.01 \& 0.025\\
+Thus p-value = between $0.02$ and $0.05$ \quad (Exact p-value from Stata = $0.044$)\\
+Is p-value $< \alpha$? Yes, $\rightarrow$ Reject $H_0$}
+}
+
+%%%
+\newpage
+
+\exercise{5B}{In the University of New Hampshire student survey data, information is collected on each student's gender and his/her GPA. This sample was used to test whether there is a difference in GPA between male and female students (at UNH in 1988). Use the Stata output below to answer the questions  on the next page.}
+
+\begin{stata}
+. ttest gpa, by(gender)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+  Female |     119    2.882941    .0412487    .4499705    2.801257    2.964625
+    Male |      99    2.718788    .0458589      .45629    2.627782    2.809793
+---------+--------------------------------------------------------------------
+combined |     218    2.808394    .0310989    .4591705      2.7471    2.869689
+---------+--------------------------------------------------------------------
+    diff |            .1641533    .0616013                .0427366      .28557
+------------------------------------------------------------------------------
+    diff = mean(Female) - mean(Male)                              t =   2.6648
+Ho: diff = 0                                     degrees of freedom =      216
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.9959         Pr(|T| > |t|) = 0.0083          Pr(T > t) = 0.0041
+\end{stata}
+
+%%%
+\newpage
+
+(a) What is the estimate of the difference in GPA, females minus males?
+
+\answer{1.5cm}{0.1641533}
+
+(b) What is the 95\% confidence interval for the mean difference in GPA between females and males?
+
+\answer{1.5cm}{(0.0427366, 0.28557)}
+
+(c) What is the null hypothesis being tested?
+
+\answer{1.5cm}{$H_0: \mu_F=\mu_M$\quad where $\mu_F=$ mean GPA for females, $\mu_M=$ mean GPA for males}
+
+(d) What is the test statistic for the test?
+
+\answer{1.5cm}{$t$=2.6648}
+
+(e) What is the distribution of this test statistic under the null hypothesis? 
+
+\answer{1.5cm}{$T \sim t_{216}$}
+
+(f) If my alternative hypothesis is that females and males have different GPAs, what is the p-value?
+
+\answer{1.5cm}{0.0083}
+
+(g) If my alternative hypothesis is that females have higher GPA than males, what is the p-value?
+
+\answer{1.5cm}{0.0041}
+
+\end{document}

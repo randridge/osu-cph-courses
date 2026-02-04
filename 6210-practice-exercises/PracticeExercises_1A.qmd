@@ -1,0 +1,53 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 1A"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+A deck of cards has 52 total cards: \{A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2\}\\ in each of 4 suits: \{diamonds $\diamondsuit$, hearts $\heartsuit$, spades $\spadesuit$, clubs $\clubsuit$\}.
+
+Diamonds and hearts are red, spades and clubs are black.
+
+You randomly draw 1 card from the deck. Define:
+
+$A$ = event that the card is a king (K)
+
+$B$ = event that the card is a "face card" (J, Q, or K)
+
+$C$ = event that the card is "red" (either hearts or diamonds)
+
+(a) What is the complement of $C$?
+
+::: {.answer .hidden}
+card is black ("not red")
+:::
+
+(b) Are any of these events disjoint?
+
+::: {.answer .hidden}
+no
+:::
+
+(c) Is $A$ a subset of $B$ or $B$ a subset of $A$?
+
+::: {.answer .hidden}
+A a subset of B
+:::
+
+(d) What is $A \cap B$?
+
+::: {.answer .hidden}
+card is a king (event A)
+:::
+
+(e) How many outcomes (cards) are in $A \cap B \cap C$?
+
+::: {.answer .hidden}
+$A \cap B \cap C$ = "red king" = \{$\diamondsuit$K, $\heartsuit$K\} = 2 possible outcomes
+:::

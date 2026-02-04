@@ -1,0 +1,145 @@
+%%% Practice Exercises Commands
+% Last modified: 2017.01.08 RA
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multicol,multirow}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{fancyvrb} % for pasting in Stata commands nicely
+%\usepackage{fancybox}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage[parfill]{parskip}
+\usepackage{pdftricks}
+ \begin{psinputs}
+  \usepackage{pstricks}
+  \usepackage[usenames]{color}
+ \end{psinputs}
+ \usepackage{etoolbox}
+\usepackage{ifthen}
+% Set footers, headers, logo (bottom left)
+\rightheader{}
+\leftheader{}
+%\rightfooter{}
+\MyLogo{} % (left footer)
+
+% Set margins
+\topmargin -0.75in   % move slide title closer to top of page
+\textheight 7in   % increase height of text on page FOR LANDSCAPE
+\setlength{\foilheadskip}{-0.25in}  % shift top line of text closer to slide title
+
+% Allow ragged right format
+\raggedright
+
+% Change spacing between paragraphs, etc.
+\makeatletter
+\renewcommand\@listIa{\leftmargin\leftmargini
+\topsep 6\p@ \@plus 2\p@ \@minus 4\p@
+\parsep 6\p@ \@plus 4\p@ \@minus 4\p@
+\itemsep 0\p@ \@plus 4\p@ \@minus 2\p@}
+\makeatother
+
+% OSU red
+\definecolor{osured}{rgb}{0.6,0,0}
+% darker green
+\definecolor{myGreen}{rgb}{0,0.5,0}
+% purple
+\definecolor{purple}{rgb}{0.58,0,0.82}
+% gray
+\definecolor{myGray}{rgb}{0.65,0.65,0.65}
+% orange
+\definecolor{orange}{rgb}{1,0.55,0}
+% dark pink
+\definecolor{pink}{rgb}{0.77,0.10,0.54}
+
+% New commands
+\newcommand{\alert}[1]{\textcolor{osured}{#1}}
+\newcommand{\alertb}[1]{\textbf{\textcolor{osured}{#1}}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\redb}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\blueb}[1]{\textbf{\textcolor{blue}{#1}}}
+\newcommand{\gray}[1]{\textcolor{myGray}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\purpleb}[1]{\textbf{\textcolor{purple}{#1}}}
+\newcommand{\green}[1]{\textcolor{myGreen}{#1}}
+\newcommand{\greenb}[1]{\textbf{\textcolor{myGreen}{#1}}}
+\newcommand{\pink}[1]{\textcolor{pink}{#1}}
+\newcommand{\pinkb}[1]{\textbf{\textcolor{pink}{#1}}}
+\newcommand{\Stata}[0]{\textcolor{purple}{\textbf{Stata}}}
+\newcommand{\xb}[0]{\bar{x}}
+\newcommand{\Xb}[0]{\overline{X}}
+\newcommand{\yb}[0]{\bar{y}}
+\newcommand{\ph}[0]{\hat{p}}
+\newcommand{\bzh}[0]{\hat{\beta}_0}
+\newcommand{\boh}[0]{\hat{\beta}_1}
+\newcommand{\bth}[0]{\hat{\beta}_2}
+\newcommand{\bih}[0]{\hat{\beta}_i}
+\newcommand{\sh}[0]{\hat{\sigma}^2}
+\newcommand{\syx}[0]{s_{y|x}}
+\newcommand{\yh}[0]{\hat{y}}
+\newcommand{\F}[0]{\text{F}}
+\newcommand{\X}[0]{\text{X}}
+\newcommand{\C}[0]{\mathrm{Cov}}
+\newcommand{\V}[0]{\mathrm{Var}}
+\newcommand{\SD}[0]{\mathrm{SD}}
+\newcommand{\simapprox}[0]{\buildrel \cdot \over \sim}
+\newcommand{\code}[1]{\tiny \tt #1}
+\newcommand{\example}[0]{\redb{\small Example}}
+\newcommand{\superscript}[1]{\ensuremath{^{\text{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\cmd}[1]{\texttt{\purple{#1}}}
+
+% Change itemize bullet for 3rd level to triangle (instead of asterisk)
+\renewcommand\labelitemiii{{$\triangleright$}}
+% Change 4th level bullet to open circle
+\renewcommand{\labelitemiv}{$\circ$}
+
+% Solutions - conditional expression
+\newtoggle{solutions}
+
+% New environment that will print exercise numbers
+% Also automatically numbers the problems
+% Two arguments are #1=module (e.g., 1A, 1B); #2=text of problem
+\newcounter{exernum}
+
+\newcommand{\exercise}[2]{
+\small
+  \stepcounter{exernum}
+  {\bf \red{Exercise #1.\theexernum}}\\ 
+  #2
+}
+
+\newcommand{\answer}[2]{
+\small
+\iftoggle{solutions}{
+  \emph{\red{#2}}\\
+  ~\\
+}{
+\vspace{#1}
+}
+}
+
+% Stata commands verbatim environment
+\DefineVerbatimEnvironment{stata}{Verbatim}{frame=single,fontsize=\tiny} 
+\DefineVerbatimEnvironment{statacommand}{Verbatim}{frame=single,fontsize=\tiny,commandchars=\\\{\}} 
+\DefineVerbatimEnvironment{statabig}{Verbatim}{frame=single}
+\DefineVerbatimEnvironment{statalarge}{Verbatim}{frame=single,fontsize=\large}
+\DefineVerbatimEnvironment{statanobox}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+  
+% Trick for removing extra vertical space above first bullet in itemized lists
+% To use, precede the \begin{itemize} with the command \compress
+\makeatletter
+\newcommand*{\compress}{\@minipagetrue}
+\makeatother

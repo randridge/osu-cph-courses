@@ -1,0 +1,163 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{1D}{
+A bag contains 3 red balls and 2 blue balls. Define the events:
+
+$A$ = get a red on the first draw
+
+$B$ = get a blue on the second draw assuming the first ball is removed (but you don't know the color)
+
+What is $P(B)$?
+
+\emph{Hint: Use the Law of Total Probability}
+
+\answer{1.5cm}{ANSWER: 0.4\\
+~\\
+$P(A)=3/5 = 0.6$\\
+$P(A^C)=1-P(A) = 1-0.6 = 0.4$\\
+$P(B|A) = P(\text{blue on 2nd draw}|\text{first was red}) = \frac{\text{2 blue left}}{\text{4 balls left}} = 1/2 = 0.5$\\
+$P(B|A^C) = P(\text{blue on 2nd draw}|\text{first was blue}) = \frac{\text{1 blue left}}{\text{4 balls left}} = 1/4 = 0.25$\\
+$P(B) = P(B|A)P(A) + P(B|A^C)P(A^C) = 0.5 \times 0.6 + 0.25 \times 0.4 = 0.4$}
+}
+
+%%%
+\newpage
+
+\exercise{1D}{
+There are three candidates in the election for governor of a certain state, Mr.~Bluth, Ms.~F\"unke, and Mr.~Loblaw. The biggest campaign issue is that of lowering property taxes. If Mr.~Bluth is elected there is an 80\% chance that he will lower taxes, if Ms.~F\"unke is elected there is a 10\% chance she will lower taxes, and if Mr.~Loblaw is elected there is a 55\% chance he will lower taxes. The last election poll showed that there was a 60\% chance that Mr.~Bluth would win the election, a 20\% chance that Ms.~F\"unke will win, and a 20\% chance that Mr.~Loblaw will win. What is the probability that property taxes will be lowered after the election?
+
+\emph{Hint: Use the Law of Total Probability}
+
+\answer{1cm}{ANSWER: 0.61\\
+~\\
+$P(\text{lower taxes}|\text{Bluth elected})=0.8$\\
+$P(\text{lower taxes}|\text{Funke elected})=0.1$\\
+$P(\text{lower taxes}|\text{Loblaw elected})=0.55$\\
+$P(\text{Bluth elected})=0.6$\\
+$P(\text{Funke elected})=0.2$\\
+$P(\text{Loblaw elected})=0.2$\\
+By Law of Total Probability:\\
+$P(\text{lower taxes})$\\
+\quad $=P(\text{lower}|\text{Bluth})\times P(\text{Bluth}) + P(\text{lower}|\text{Funke})\times P(\text{Funke})  + P(\text{lower}|\text{Loblaw})\times P(\text{Loblaw})$\\
+\quad $=0.8 \times 0.6 + 0.1 \times 0.2 + 0.55 \times  0.2$\\
+\quad $= 0.61$}
+}
+
+%%%
+\newpage
+
+\exercise{1D}{
+A pregnancy test claims that it is ``99\% accurate" -- if 100 pregnant woman took the test, 99 of them would get a positive result. If 100 non-pregnant women took the test, 10 would (falsely) test positive. Jane takes a pregnancy test and it comes up positive.
+
+(a) Assume that the overall proportion of pregnant women in the population is 5\%. What is the probability that Jane really is pregnant?
+
+\answer{2.5in}{ANSWER: 0.34\\
+~\\
+Let $A$ = pregnant, $B$ = positive test\\
+$P(A) = 0.05 \rightarrow P(A^C) = 1-0.05 = 0.95$\\
+$P(B|A) = 99/100 = 0.99$\\
+$P(B|A^C) = 10/100 = 0.1$\\
+$\displaystyle P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A) + P(B|A^C)P(A^C)} = \frac{0.99\times0.05}{0.99\times0.05 + 0.1\times0.95} =0.34$}
+
+(b) Assume that the overall proportion of pregnant women in the population is 50\%. What is the probability that Jane really is pregnant?
+
+\answer{1in}{ANSWER: 0.91\\
+~\\
+$P(A) = 0.5 \rightarrow P(A^C) = 1-0.5 = 0.5$ (different from before)\\
+$P(B|A) = 99/100 = 0.99$ (same as before)\\
+$P(B|A^C) = 10/100 = 0.1$ (same as before)\\
+$\displaystyle P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A) + P(B|A^C)P(A^C)} = \frac{0.99\times0.5}{0.99\times0.5 + 0.1\times0.5} =0.91$}
+}
+
+%%%
+\newpage
+
+\exercise{1D}{
+Suppose on a particular multiple choice exam, a student has a 1 in 4 chance of getting the question right if she does not know the correct answer.
+
+(a) If the student guesses on 15\% of the questions, what percentage of all the questions on the test do you expect the student to answer correctly?
+
+\answer{2.5in}{ANSWER: 0.8875\\
+~\\
+$P(\text{correct}|\text{guess})=1/4=0.25$\\
+$P(\text{correct}|\text{not guess})=1$ (knows the answer, assume correct)\\
+$P(\text{guess})=0.15 \rightarrow P(\text{not guess})=1-0.15=0.85$\\
+Law of Total Probability:\\
+$P(\text{correct}) = P(\text{correct}|\text{guess}) \times P(\text{guess}) + P(\text{correct}|\text{not guess}) \times P(\text{not guess})$\\
+\quad\qquad\qquad$=0.25 \times 0.15 + 1 \times 0.85 = 0.8875$
+}
+
+(b) Given that the student got a particular answer correct, what is the probability that she actually knew the answer?
+
+\answer{1in}{ANSWER: 0.96\\
+~\\
+Want $P(\text{not guess}|\text{correct}) \rightarrow$ need Bayes' Rule to flip conditioning\\
+$\displaystyle P(\text{not guess}|\text{correct}) = \frac{P(\text{correct}|\text{not guess}) \times P(\text{not guess})}{P(\text{correct}|\text{guess}) \times P(\text{guess}) + P(\text{correct}|\text{not guess}) \times P(\text{not guess})}$\\[10pt]
+\qquad\qquad\qquad\qquad\qquad $\displaystyle=\frac{1 \times 0.85}{0.25 \times 0.15 + 1 \times 0.85} = \frac{0.85}{0.8875}=0.96$\\[10pt]
+(note denominator is answer from part (a))
+}
+}
+
+%%%
+\newpage
+
+\exercise{1D}{
+Patients with newly diagnosed heart failure can be treated at three hospitals: A, B, and C.  Suppose that for a particular year, 500 patients went to A, 200 went to B, and 300 went to C (no patient went to more than one hospital). The proportions of patients who survived for at least 6 months were 50\%, 80\%, and 75\%, at hospitals A, B, and C, respectively.
+
+(a) What is the probability that a randomly selected patient was treated at hospital A or B?
+
+\answer{1.2in}{ANSWER: 0.7\\
+~\\
+$P(A)=500/1000=0.5$ \quad $P(B)=200/1000=0.2$\\
+$P(A \cup B) = P(A) + P(B) = 0.5 + 0.2 = 0.7$ (no intersection to subtract, $A$ and $B$ are disjoint)}
+
+(b) What is the probability that a randomly selected patient was treated at hospitals A and B?
+
+\answer{1.2in}{ANSWER: 0\\
+~\\
+$P(A \cap B) = 0$ since $A$ and $B$ are disjoint}
+
+(c) What is the probability that a patient who was treated at hospital B survived at least 6 months?
+
+\answer{1in}{ANSWER: 0.8\\
+~\\
+$P(\text{survive}|B) = 0.8$, given in text of problem}
+
+%\iftoggle{solutions}{}{\newpage}
+
+\newpage
+
+(d) What is the probability that a randomly selected patient was treated at hospital B and survived at least 6 months?
+
+\answer{1.5in}{ANSWER: 0.16\\
+~\\
+$P(B \cap \text{survive}) = P(\text{survive}|B) \times P(B) = 0.8 \times 0.2 = 0.16$}
+
+(e) Sue and Joe both went to hospital B. What is the probability they both survived at least 6 months?
+
+\answer{1.5in}{ANSWER: 0.64\\
+~\\
+$P(\text{Sue survived} \cap \text{Joe survived}|B) = P(\text{Sue survived}|B) \times P(\text{Joe survived}|B)$ (independence)\\
+\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad$ = 0.8 \times 0.8 = 0.64$}
+
+(f) Given that Danielle survived at least 6 months, what is the probability that she went to hospital B?
+
+\answer{2in}{ANSWER: 0.252\\
+~\\
+$\displaystyle P(B|\text{survived}) = \frac{P(\text{survived}|B)P(B)}{P(\text{survived})}$\\
+\qquad\qquad\qquad\quad $\displaystyle = \frac{P(\text{survived}|B)P(B)}{P(\text{survived}|A)P(A)  + P(\text{survived}|B)P(B) + P(\text{survived}|C)P(C)}$\\[10pt]
+\qquad\qquad\qquad\quad $ \displaystyle = \frac{0.8 \times 0.2}{0.5 \times 0.5 + 0.8 \times 0.2 + 0.75 \times 0.3} = 0.252$}
+}
+
+\end{document}

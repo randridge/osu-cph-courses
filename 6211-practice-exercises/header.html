@@ -1,0 +1,63 @@
+<style>
+  /* Base Answer Styling */
+  .answer.hidden { display: none; }
+  .answer { 
+    background: #fdfdfe; 
+    border: 1px solid #dee2e6; 
+    border-left: 5px solid #0d6efd; 
+    padding: 15px; 
+    margin: 15px 0; 
+    border-radius: 4px; 
+  }
+
+  /* Floating Buttons on the LEFT */
+  .control-buttons {
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+  }
+  .control-buttons:hover { opacity: 1.0; }
+
+  /* Hide buttons and hidden answers when printing */
+  @media print {
+    .control-buttons { display: none !important; }
+    .answer.hidden { display: none !important; }
+  }
+</style>
+
+<script>
+  function toggleSolutions() {
+    document.querySelectorAll('.answer').forEach(el => el.classList.toggle('hidden'));
+    let btn = document.getElementById('toggle-btn');
+    btn.innerText = btn.innerText === 'Show Solutions' ? 'Hide Solutions' : 'Show Solutions';
+  }
+  function printPDF() { window.print(); }
+</script>
+
+<div class="control-buttons">
+  <button id="toggle-btn" onclick="toggleSolutions()" class="btn btn-danger btn-sm">Show Solutions</button>
+  <button onclick="printPDF()" class="btn btn-outline-secondary btn-sm">Download PDF</button>
+</div>
+
+<style>
+/* Stata code Styling */
+  .stata {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    line-height: 1.2;
+    overflow-x: auto; /* Adds a scrollbar if the Stata output is too wide */
+  }
+</style>

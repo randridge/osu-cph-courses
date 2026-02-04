@@ -1,0 +1,146 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{1B}{
+While visiting the Three Bears' house, Goldilocks finds three bowls of porridge. Upon tasting a bowl she will declare it either Too Hot, Too Cold, or Just Right. How many possible outcomes are there?
+
+\answer{1in}{ANSWER: 27\\
+~\\
+$n=3$ bowls tasted\\
+$k=3$ possible outcomes for each bowl.\\
+Total number of outcomes = $k^n = 3^3 = 27$}
+}
+
+%%%
+\newpage
+
+\exercise{1B}{
+We have 4 imaging modalities available for diagnosing a brain tumor: CT, MRI, MRS, PET.
+
+(a) If all four modalities have to be used, in how many different orders can the physician request them?
+
+\answer{1.5in}{ANSWER: 24 \\
+~\\
+$n=4$ modalities\\
+\# of ways to order = $n! = 4! = 24$
+}
+
+(b) Suppose that only three modalities are used and if they all agree, the patient will be considered positive for a brain tumor.  How many different combinations of the three chosen modalities can the physician use?
+
+\answer{1.5in}{ANSWER: 4\\
+~\\
+$n=4$ modalities\\
+$k=3$ chosen without regard to order\\
+\# of ways = $\displaystyle _nC_k = {n \choose k} = {4 \choose 3} = \frac{4!}{3!(4-3)!} = 4$
+}
+
+(c) How many different sequences (orderings) of three modalities could the physician order?  
+
+\answer{1in}{ANSWER: 24\\
+~\\
+$n=4$ modalities\\
+$k=3$ chosen \textbf{with} regard to order\\
+\# of ways = $\displaystyle _nP_k = {_4}P_3 = \frac{4!}{(4-3)!} = 24$
+}
+}
+
+%%%
+\newpage
+
+\exercise{1B}{
+A pair of (standard, six-sided) dice are rolled. Let $A$ be the event that the first die is a 6 and $B$ be the event that the second die is a 6.
+
+(a) Calculate $P(A \cap B)$.
+
+\answer{2in}{ANSWER: 1/36\\
+~\\
+$A \cap B$ = 6 on first roll and 6 on second roll\\
+Each roll has $k=6$ outcomes and we are repeating the experiment $n=2$ times\\
+Total number of outcomes = $k^n = 6^2 = 36$\\
+Total number of outcomes associated with the event of interest = 1 (\{6,6\})\\
+$P(A \cap B)=1/36$}
+
+(b) Calculate $P(A \cup B)$.
+
+\answer{1in}{ANSWER: 11/36 \\
+~\\
+$P(A) = P(\text{6 on first roll}) = 1/6$\\
+$P(B) = P(\text{6 on second roll}) = 1/6$\\
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/6 + 1/6 - 1/36 = 11/36$}
+}
+
+%%%
+\newpage
+
+\exercise{1B}{
+A social scientist is recruiting adults who have either diabetes or asthma to participate in a pilot study investigating strategies for managing chronic disease. She will cold-call adults in Columbus, Ohio to recruit study subjects. In Ohio, 6.8\% of adults have asthma, 10.5\% of adults have diabetes, and 0.8\%  of adults have both.
+
+(a) What is the probability that a randomly called adult will be eligible for her study?
+
+\answer{2.5in}{ANSWER: 0.165\\
+~\\
+$A$ = subject has asthma, $P(A) = 0.068$\\
+$B$ = subject has diabetes, $P(B) = 0.105$\\
+$A \cap B$ = subject has asthma and diabetes, $P(A \cap B) = 0.008$\\
+``eligible" = has asthma OR diabetes = $P(A \cup B)$\\
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.068 + 0.105 - 0.008 = 0.165$}
+
+(b) What is the probability that a randomly called adult will not be eligible for her study?
+
+\answer{1in}{ANSWER: 0.835\\
+~\\
+``not eligible" = complement of ``eligible" = $(A \cup B)^C$\\
+$P((A \cup B)^C) = 1 - P(A \cup B) = 1 - 0.165 = 0.835$}
+}
+
+%%%
+\newpage
+
+\exercise{1B}{
+Suppose there are two tests for a disease, test G and test H. In the whole population, test G gives a positive result 20\% of the time and test H gives a positive result 30\% of the time. Test G and test H both give a positive result 10\% of the time.
+
+(a) What is the probability of either test G or test H being positive?
+
+\answer{2in}{ANSWER: 0.4\\
+~\\
+$P(G) = 0.2$\\
+$P(H) = 0.3$\\
+$P(G \cap H) = 0.1$\\
+$P(G \cup H) = P(G) + P(H) - P(G \cap H) = 0.2 + 0.3 - 0.1 = 0.4$}
+
+(b) What is the probability of test G being negative and test H being positive? (A Venn Diagram may be useful\dots)
+
+\answer{1in}{ANSWER: 0.2\\
+~\\
+We want ``H and not G", which in the Venn diagram is shaded:\\
+\includegraphics[width=2in]{./figures/1B5}\\
+$P(H \cap G^C) = P(H) - P(G \cap H)$ \quad (all of H, minus the intersection with G)\\
+$P(H \cap G^C) = 0.3 - 0.1 = 0.2$}
+}
+
+%%%
+\newpage
+
+\exercise{1B}{
+CHALLENGE: In Texas Hold 'Em poker, each player makes the strongest hand he can with 5 cards. Strength of the hand is based on the probability of that specific combination of 5 cards. How likely is four of a kind? (``four of a kind" = 4 cards all the same \#, plus 1 other card) Note that there are 52 cards in a standard deck.
+
+\answer{1in}{ANSWER: 0.00024\\
+~\\
+Number of possible hands of 5 cards = ${52 \choose 5} = 2598960$\\
+Number of ways to have a hand with 4 of same \#, plus one other card \\
+\quad = (\# of ways to have 4 of same \#) $\times$ (\# of ways to select the other card, i.e., not one of those 4)\\
+\quad = $13 \times (52-4) = 13 \times 48 = 624$\\
+$P(\text{4 of a kind}) = 624 / 2598960 = 0.00024$}
+}
+
+\end{document}

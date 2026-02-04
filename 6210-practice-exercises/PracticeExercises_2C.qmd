@@ -1,0 +1,57 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 2C"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+Suppose scores on a certain standardized test are normalized so that they follow the normal distribution with mean 0 and variance 1.
+
+(a) What is the probability that a randomly selected exam taker gets a score greater than 2?
+
+::: {.answer .hidden}
+ANSWER: 0.0228
+
+~
+
+$P(Z>2) = 0.0228$ (Normal Table, Column B)
+:::
+
+(b) What is the probability that a randomly selected exam taker gets a score lower than than -3.5?
+
+::: {.answer .hidden}
+ANSWER: 0.0002
+
+~
+
+$P(Z<-3.5)=P(Z>3.5)=0.0002$ (Column B)
+:::
+
+(c) What is the probability that a randomly selected exam taker gets a score between -1 and +1?
+
+::: {.answer .hidden}
+ANSWER: 0.6826
+
+~
+
+$P(-1 < Z < 1) = P(Z<1) - P(Z<-1) $
+
+$= P(Z<1) - P(Z>1) = 0.8413 - 0.1587 = 0.6826$ (Columns A and B)
+:::
+
+(d) What is the probability that a randomly selected exam taker gets a score either greater than 2 or less than -2?
+
+::: {.answer .hidden}
+ANSWER: 0.0456
+
+~
+
+$P(Z<-2 \text{ OR } Z>2)=P(Z<-2) + P(Z>2) $
+
+$= P(Z>2)+P(Z>2)=2 \times P(Z>2)=2 \times 0.0228=0.0456$
+:::

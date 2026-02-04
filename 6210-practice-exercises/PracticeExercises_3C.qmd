@@ -1,0 +1,70 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 3C"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+A small sample of undergraduate students was randomly selected from a chemistry course. Their GPAs were recorded and are shown below. Use these data to calculate the requested summary measures.
+
+GPAs: 3.08, 2.5, 3.33, 3.75, 3.1, 2.64
+
+(a) Standard deviation
+
+::: {.answer .hidden}
+ANSWER: 0.456
+
+Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B.2)
+
+\begin{tabular}{lcc}
+$x_i$ & $x_i-\bar{x}$ & $(x_i-\bar{x})^2$\\ \hline
+3.08    & 0.01  & 0.0001
+
+2.5 & -0.57 & 0.3249
+
+3.33    & 0.26  & 0.0676
+
+3.75    & 0.68  & 0.4624
+
+3.1 & 0.03  & 0.0009
+
+2.64    & -0.43 & 0.1849\\ \hline
+\multicolumn{2}{r}{Sum:} & 1.0408 
+
+\multicolumn{2}{r}{Divide by 5 to get $s^2$:} & 0.208 
+
+\multicolumn{2}{r}{$s=\sqrt{s^2}$:} & 0.456 
+
+\end{tabular}
+
+:::
+
+(b) Coefficient of variation
+
+::: {.answer .hidden}
+ANSWER: 0.149
+
+Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B.2)
+
+Standard deviation: $s=0.456$ (part (a) above)
+
+$\displaystyle cv = \frac{s}{\bar{x}}=\frac{0.456}{3.07}=0.149$
+
+:::
+
+(c) 75th percentile
+
+::: {.answer .hidden}
+ANSWER: 3.33
+
+Sort data values: 2.5, 2.64, 3.08, 3.1, 3.33, 3.75
+
+$nk/100 = 6\times75/100 = 4.5$ = not an integer, so round up to next integer $\rightarrow$ 5
+
+5th observation (in order) = 3.33
+:::

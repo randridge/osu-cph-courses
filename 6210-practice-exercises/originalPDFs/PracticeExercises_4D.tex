@@ -1,0 +1,92 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{4D}{A test of the null hypothesis $H_0: \mu=\mu_0$ gives test statistic $z=-2.12$.
+
+(a) What is the p-value if the alternative is $H_a: \mu \ne \mu_0$?
+
+\answer{4cm}{ANSWER: 0.0340\\
+~\\
+p-value = $P(Z > |-2.12|) + P(Z < -|-2.12|)$\\
+~\quad\qquad$=P(Z>2.12)+P(Z<-2.12)$\\
+~\quad\qquad$=2 \times P(Z>2.12)$ by symmetry\\
+~\quad\qquad$= 2\times 0.0170 = 0.0340$
+}
+
+(b) What is the p-value if the alternative is $H_a: \mu < \mu_0$?
+
+\answer{4cm}{ANSWER: 0.0170\\
+~\\
+p-value = $P(Z < -2.12)$\\
+~\quad\qquad$=P(Z>2.12)$ by symmetry\\
+~\quad\qquad$= 0.0170$}
+
+(c) What is the p-value if the alternative is $H_a: \mu > \mu_0$?
+
+\answer{2cm}{ANSWER: 0.983\\
+~\\
+p-value = $P(Z > -2.12)$\\
+~\quad\qquad$=1 - P(Z<-2.12)$ by complement rule\\
+~\quad\qquad$=1 - P(Z>2.12)$ by symmetry\\
+~\quad\qquad$= 1-0.0170 = 0.983$}
+
+}
+
+%%%
+\newpage
+
+\exercise{4D}{The p-value for a two-sided significance test of $H_0: \mu=9$ is 0.082.
+
+(a) Do you reject the null hypothesis at level $\alpha=0.05$?
+
+\answer{3cm}{ANSWER: No, since 0.082 $>$ 0.05}
+
+(b) Do you reject the null hypothesis at level $\alpha=0.1$?
+
+\answer{3cm}{ANSWER: Yes, since 0.082 $<$ 0.1}
+
+(c) Would a 95\% confidence interval for $\mu$ contain 9? Why?
+
+\answer{3cm}{ANSWER: Yes. Since we fail to reject at $\alpha=0.05$, the null hypothesis value of 9 will be in the 95\% confidence interval.}
+
+(d) Would a 90\% confidence interval for $\mu$ contain 9? Why?
+
+\answer{1.5cm}{ANSWER: No. Since we reject at the $\alpha=0.1$ level, the null hypothesis value of 9 will not be in the 90\% confidence interval.}
+}
+
+%%%
+\newpage
+
+\exercise{4D}{For each of the following scenarios, state whether a type I error, a type II error, or no error will be made. Assume all tests are two-sided at the $\alpha = 0.05$ level.
+
+(a) A test of $H_0: \mu = 10$ produces a p-value = 0.31 and the true population mean is 14.
+
+\answer{4cm}{ANSWER: Type II error\\
+~\\
+The p-value 0.31 $>$ 0.05, so you fail to reject the null, but this is the wrong conclusion because the null hypothesis is not true (truth is $\mu$ = 14). Failing to reject when you should reject is a Type II error.}
+
+(b) A test of $H_0: \mu=6$ produces a p-value = 0.02, and the true population mean is 10.
+
+\answer{4cm}{ANSWER: No error made.\\
+~\\
+The p-value 0.02 $<$ 0.05, so you reject the null, which is the correct conclusion because the null is not true (truth is $\mu$ = 10).}
+
+(c) A test of $H_0: \mu=12$ produces a p-value = 0.005 and the true population mean is 12.
+
+\answer{4cm}{ANSWER: Type I error\\
+~\\
+The p-value 0.005 $<$ 0.05, so you reject the null, but this is the wrong conclusion because the null hypothesis is true (truth is $\mu$ = 12). Rejecting when you shouldn't reject is a Type I error.}
+
+}
+
+\end{document}

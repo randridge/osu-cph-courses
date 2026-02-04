@@ -1,0 +1,175 @@
+%%% PUBHBIO 6211 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+\toggletrue{solutions}
+%\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{9}{A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of aggression. Students were classified as either having or not having aggression (\texttt{aggression}: 1=has aggression, 0=does not) based on responses to a validated questionnaire. We are interested in potential differences in aggression comparing students who belong and don't belong to a fraternity/sorority (\texttt{frat}: 1=belong to a fraternity or sorority, 0=do not belong to one).}
+
+(a) A logistic regression model was run using fraternity/sorority membership to predict aggression (output below). Based on this model, interpret the effect of fraternity/sorority membership as an odds ratio.
+
+\begin{stata}
+. logistic aggression frat, coef
+
+Logistic regression                             Number of obs     =        243
+                                                LR chi2(1)        =       6.78
+                                                Prob > chi2       =     0.0092
+Log likelihood = -161.90393                     Pseudo R2         =     0.0205
+
+------------------------------------------------------------------------------
+  aggression |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        frat |    .906812   .3639366     2.49   0.013     .1935094    1.620115
+       _cons |   .1636294   .1433355     1.14   0.254     -.117303    .4445619
+------------------------------------------------------------------------------
+\end{stata}
+
+\answer{1.5cm}{$\widehat{OR} = \exp(\hat{\beta}_1) = \exp(0.906812) = 2.48$\\
+The odds of having aggression among people in a fraternity/sorority are 2.48 times higher than the odds among people who are not in a fraternity/sorority.}
+
+%%%
+\newpage
+
+(b) Is there a significant effect of fraternity/sorority membership on aggression? Cite specific output in your answer. (Assume $\alpha=0.05$)
+
+\answer{2.5cm}{Yes, there is evidence that fraternity/sorority membership is associated with aggression, $p=0.013$.}
+
+(c) There is a 95\% CI for \texttt{frat} on the logistic regression output. Report this CI, state what population parameter this is a CI for, and explain how the 95\% CI could be used to answer part (b).
+
+\answer{4cm}{(0.194, 1.62) -- this is a 95\% CI for the true regression coefficient $\beta_1$ (log-odds ratio)\\
+Look for 0 in the CI to test $H_0: \beta_1=0$, and if 0 is NOT in the 95\% CI, then reject $H_0$\\
+0 is not in the CI, so we would reject $H_0$ -- there is a significant effect of fraternity/sorority membership on aggression.}
+
+(d) Calculate the estimated probability of aggression for people not in a fraternity/sorority based on the logistic regression result.
+
+\answer{2 cm}{$\hat{\beta}_0=0.1636294$\\
+\begin{align*}
+\text{Estimated prob of aggression for people not in frat/sorority} = \frac{\exp(\hat{\beta}_0)}{1+\exp(\hat{\beta}_0)} &{}=\frac{\exp(0.1636294)}{1+\exp(0.1636294)}\\
+&{}=\frac{1.17778}{1+1.17778}\\
+&{} = 0.54
+\end{align*}
+We estimate that 54\% of people not in a fraternity/sorority have aggression.}
+
+%%%
+\newpage
+
+(e) Next, belonging to a fraternity/sorority and aggression were cross-tabulated (output below). Use this to calculate the appropriate odds ratio to confirm your answer to (a) -- the estimated OR from the logistic regression.
+\begin{stata}
+. tabulate aggression frat
+
+           |         frat
+aggression |         0          1 |     Total
+-----------+----------------------+----------
+         0 |        90         12 |       102 
+         1 |       106         35 |       141 
+-----------+----------------------+----------
+     Total |       196         47 |       243 
+\end{stata}
+
+\answer{3cm}{Odds of aggression for people in frat = $\frac{35/47}{12/47} = \frac{35}{12} = 2.9166667$\\
+Odds of aggression for people not in frat = $\frac{106/196}{90/196} = \frac{106}{90} = 1.1777778$\\
+$OR=\frac{2.9166667}{1.1777778} = 2.48$\\
+Same as answer to (a).}
+
+(f) Use this cross-tabulation to confirm your answer to (d) -- the estimated probability of aggression among people not in a fraternity/sorority.
+
+\answer{2cm}{$P$(aggression$|$not in frat/sorority$) = \frac{106}{196} = 0.54$\\
+Same as answer to (d).}
+
+%%%
+\newpage
+
+\exercise{9}{Using the New Hampshire survey, we are also interested in whether age is a predictor of aggression. A logistic regression model was run using age (\texttt{age}, in years) to predict aggression (\texttt{aggression}: 1=has aggression, 0=does not). Note that the \texttt{coef} option was left off the \texttt{logistic} command.}
+\begin{stata}
+. logistic aggression age
+
+Logistic regression                             Number of obs     =        243
+                                                LR chi2(1)        =       3.88
+                                                Prob > chi2       =     0.0489
+Log likelihood = -163.35176                     Pseudo R2         =     0.0117
+
+------------------------------------------------------------------------------
+  aggression | Odds Ratio   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         age |   .9132199   .0453706    -1.83   0.068     .8284875    1.006618
+       _cons |   8.774296   8.920195     2.14   0.033     1.196346    64.35283
+------------------------------------------------------------------------------
+\end{stata}
+
+(a) Interpret the effect of age on aggression. Is there a significant effect? (Assume $\alpha=0.05$)
+
+\answer{1.5cm}{$\widehat{OR}=0.913$; The estimated odds of aggression multiply by 0.913 for each one year increase in age\\ (The estimated odds decrease by 8.7\% for a one year increase in age).\\
+There is not a significant effect of age on aggression, $p=0.068$, though this is close to the $\alpha$ cutoff.}
+
+%%%
+\newpage
+
+(b) There is a 95\% CI for \texttt{age} on the logistic regression output. Report this CI, state what population parameter this is a CI for, and explain how the 95\% CI could be used to determine if there is a significant effect of age on aggression.
+
+\answer{1.5cm}{(0.828, 1.007) -- this is a 95\% CI for the true odds ratio, i.e., for $\exp(\beta_1)$\\
+Look for 1 in the CI to test $H_0: OR=1$, and if 1 is NOT in the 95\% CI, then reject $H_0$\\
+1 is in the CI, so we would fail to reject $H_0$; there is not a significant effect of age on aggression.}
+
+%%%
+\newpage
+
+\exercise{9}{Using the New Hampshire survey, we are also interested in whether there are differences in the probability of having aggression across the years in school. A logistic regression model was run using year in school (\texttt{year}, 1=freshman, 2=sophomore, 3=junior, 4=senior) to predict aggression (\texttt{aggression}: 1=has aggression, 0=does not). Use the Stata output on the next page to answer the questions below.}
+
+(a) Is there evidence of significant differences in aggression by year in school? Provide specific evidence to support your claim. (Assume $\alpha=0.05$)
+
+\answer{2cm}{Yes, p-value = 0.0193 from the ``chunk test" (multivariate Wald test) of the 3 regression coefficients}
+
+(b) Interpret completely the effect of year in school on aggression (using odds ratios). For each comparison you interpret, provide evidence that the comparison is or is not significant. (Assume $\alpha=0.05$)
+
+\answer{5cm}{$\hat{\beta}_{year2}=-0.040822 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year2}) = \exp(-0.040822) = 0.96$\\
+The estimated odds of aggression for sophomores are 0.96 times the odds of freshman; this effect is not significant $(p=0.922)$.\\
+$\hat{\beta}_{year3}=0.1823216 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year3}) = \exp(0.1823216) = 1.20$\\
+The estimated odds of aggression for juniors are 1.20 times the odds of freshman; this effect is not significant $(p=0.655)$.\\
+$\hat{\beta}_{year4}=-0.863647 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year4}) = \exp(-0.863647) = 0.42$\\
+The estimated odds of aggression for juniors are 0.42 times the odds of freshman; this effect is significant $(p=0.037)$.}
+
+(c) CHALLENGE QUESTION: What is the estimated odds ratio comparing the odds of aggression for juniors compared to seniors?
+
+\answer{1.5cm}{$\widehat{OR}=\exp(\hat{\beta}_{year3}-\hat{\beta}_{year4})=\exp(0.1823216 - -0.863647)=\exp(1.0459686) = 2.85$
+}
+%%%
+\newpage
+
+\begin{stata}
+. generate year2 = (year==2) if !missing(year)
+. generate year3 = (year==3) if !missing(year)
+. generate year4 = (year==4) if !missing(year)
+. logistic aggression year2 year3 year4, coef
+
+Logistic regression                             Number of obs     =        243
+                                                LR chi2(3)        =      10.16
+                                                Prob > chi2       =     0.0173
+Log likelihood = -160.21221                     Pseudo R2         =     0.0307
+
+------------------------------------------------------------------------------
+  aggression |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       year2 |   -.040822   .4143268    -0.10   0.922    -.8528875    .7712435
+       year3 |   .1823216   .4082483     0.45   0.655    -.6178304    .9824735
+       year4 |   -.863647   .4149159    -2.08   0.037    -1.676867   -.0504267
+       _cons |   .5108256   .3265986     1.56   0.118    -.1292959    1.150947
+------------------------------------------------------------------------------
+
+. test year2 year3 year4
+
+ ( 1)  [aggression]year2 = 0
+ ( 2)  [aggression]year3 = 0
+ ( 3)  [aggression]year4 = 0
+
+           chi2(  3) =    9.92
+         Prob > chi2 =    0.0193
+\end{stata}
+
+\end{document}

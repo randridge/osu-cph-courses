@@ -1,0 +1,43 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+%\toggletrue{solutions}
+\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{2C}{
+Suppose scores on a certain standardized test are normalized so that they follow the normal distribution with mean 0 and variance 1.
+
+(a) What is the probability that a randomly selected exam taker gets a score greater than 2?
+
+\answer{2cm}{ANSWER: 0.0228\\
+~\\[-5pt]
+$P(Z>2) = 0.0228$ (Normal Table, Column B)}
+
+(b) What is the probability that a randomly selected exam taker gets a score lower than than -3.5?
+
+\answer{3cm}{ANSWER: 0.0002\\
+~\\[-5pt]
+$P(Z<-3.5)=P(Z>3.5)=0.0002$ (Column B)}
+
+(c) What is the probability that a randomly selected exam taker gets a score between -1 and +1?
+
+\answer{3cm}{ANSWER: 0.6826\\
+~\\[-5pt]
+$P(-1 < Z < 1) = P(Z<1) - P(Z<-1) $\\
+\qquad\qquad\qquad\qquad$= P(Z<1) - P(Z>1) = 0.8413 - 0.1587 = 0.6826$ (Columns A and B)}
+
+(d) What is the probability that a randomly selected exam taker gets a score either greater than 2 or less than -2?
+
+\answer{3cm}{ANSWER: 0.0456\\
+~\\[-5pt]
+$P(Z<-2 \text{ OR } Z>2)=P(Z<-2) + P(Z>2) $\\
+\qquad\quad\qquad\qquad\qquad\qquad$= P(Z>2)+P(Z>2)=2 \times P(Z>2)=2 \times 0.0228=0.0456$}}
+
+\end{document}

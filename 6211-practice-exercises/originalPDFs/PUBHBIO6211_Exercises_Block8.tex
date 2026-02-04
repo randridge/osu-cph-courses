@@ -1,0 +1,219 @@
+%%% PUBHBIO 6211 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+\toggletrue{solutions}
+%\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{8}{
+A small study of two new herbal supplements for weight loss for severely obese subjects was conducted. A total of 12 subjects were recruited and were randomized to receive either placebo, herb 1, or herb 2. Researchers wanted to know if the average weight at the six-month point of the study is the same in all three groups, so they conducted an ANOVA analysis. A partial Stata output is below.}
+\begin{stata}
+. oneway weight group
+
+                        Analysis of Variance
+    Source              SS         df      MS            F     Prob > F
+------------------------------------------------------------------------
+Between groups      14816.6667    (a)   ____(c)___     _(e)_     __(f)_
+ Within groups            5275    (b)   ____(d)___
+------------------------------------------------------------------------
+    Total           20091.6667     11   1826.51515
+
+Bartlett's test for equal variances:  chi2(2) =   1.5752  Prob>chi2 = 0.455
+\end{stata}
+
+(a) Fill in all the blanks with the missing quantities (labeled with letters.) (Use Stata to find p-value.)
+
+\answer{5cm}{$k=3$ groups, $N=12$ subjects\\
+(a)  DF Between groups = $k-1=3-1=2$\\
+(b) DF Within groups = $N-k=12-3=9$\\
+(c) Between-group variance = $\hat{\sigma}_B^2 = MSB = \frac{SSB}{k-1} = \frac{14816.667}{3-1} = 7408.3$\\
+(d) Within-group variance = $\hat{\sigma}_W^2 = MSW = \frac{SSW}{N-k} = \frac{5275}{12-3} = 586.1$\\
+(e) F statistic = $\frac{\hat{\sigma}_B^2}{\hat{\sigma}_W^2}=\frac{7408.3}{586.1}=12.64$\\
+(f) P-value from Stata: \texttt{display Ftail(2,9,12.64)} $\rightarrow$ 0.0024}
+
+%%%
+\newpage
+
+(b) Write a one-sentence conclusion summarizing the result of the ANOVA.
+
+\answer{2cm}{There is evidence of a difference in mean weight across the three groups (placebo, herb 1, herb 2). At least one of the groups has a mean that is significantly different from the others.}
+
+(c) Pairwise comparisons were conducted, resulting in the output below. The *unadjusted* p-values are shown. Calculate the Bonferroni-adjusted p-values and summarize the results.
+
+\begin{stata}
+. anova weight group
+. pwcompare group, mcompare(noadjust) effects
+
+------------------------------------------------------------------------------------
+                   |                            Unadjusted           Unadjusted
+                   |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------------+----------------------------------------------------------------
+             group |
+herb 1 vs placebo  |       67.5   17.11887     3.94   0.003     28.77444    106.2256
+herb 2 vs placebo  |      -12.5   17.11887    -0.73   0.484    -51.22556    26.22556
+ herb 2 vs herb 1  |        -80   17.11887    -4.67   0.001    -118.7256   -41.27444
+------------------------------------------------------------------------------------
+\end{stata}
+
+\answer{1.5cm}{herb 2 vs.\ placebo: Bonferroni-adjusted p-value = $3 \times 0.003 = 0.009$\\
+herb 2 vs.\ placebo: Bonferroni-adjusted p-value = $3 \times 0.484 = 1.452 \rightarrow$ set to $1$\\
+herb 2 vs.\ herb 1: Bonferroni-adjusted p-value = $3 \times 0.001 = 0.003$\\
+There are significant differences in mean weight between the herb 1 group and the placebo group (herb 1 group has an estimated mean that is 67.5 pounds higher) and between the herb1 group and the herb 2 group (herb 2 group has an estimated mean that is 80 pounds lower). There is not a significant difference between the placebo and herb 2 group (estimated 12.5 pounds lower mean weight in herb 2 group).}
+
+%%%
+\newpage
+
+\exercise{8}{A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of grade point average (GPA), which is measured on a 4-point scale. We are interested in whether there are differences in GPA by students' religious preferences (\texttt{relig}: 1=Protestant, 2=Catholic, 3=Jewish, 4=Other). Use the Stata output on the next page to write a short summary of the findings.}
+
+\answer{1.5cm}{A one-way ANOVA model was used to test for differences in mean GPA by religious preference (Protestant, Catholic, Jewish, Other). There is evidence of a significant association between GPA and religious preference (p=0.024). When comparing pairs of groups using a Tukey-Kramer adjustment, we find that, on average, Jewish students have a average GPA that is 0.26 points higher than Catholic students (p=0.049). No other significant differences between the groups were found (all p$>$0.05).}
+
+%%%
+\newpage
+
+\begin{stata}
+. anova gpa relig
+
+                         Number of obs =        214    R-squared     =  0.0439
+                         Root MSE      =    .448623    Adj R-squared =  0.0302
+
+                  Source | Partial SS         df         MS        F    Prob>F
+              -----------+----------------------------------------------------
+                   Model |  1.9385636          3   .64618787      3.21  0.0240
+                         |
+                   relig |  1.9385636          3   .64618787      3.21  0.0240
+                         |
+                Residual |  42.265126        210    .2012625  
+              -----------+----------------------------------------------------
+                   Total |   44.20369        213   .20752906  
+
+. pwcompare relig, mcompare(tukey) effects
+
+------------------------------------------------------------------------------
+             |                              Tukey                Tukey
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       relig |
+     2 vs 1  |  -.1750524   .0824899    -2.12   0.149    -.3886782    .0385735
+     3 vs 1  |   .0894643    .114795     0.78   0.864    -.2078228    .3867514
+     4 vs 1  |  -.0399107   .0947889    -0.42   0.975    -.2853874     .205566
+     3 vs 2  |   .2645167   .1019733     2.59   0.049     .0004342    .5285991
+     4 vs 2  |   .1351417   .0787756     1.72   0.318    -.0688651    .3391484
+     4 vs 3  |   -.129375   .1121557    -1.15   0.657     -.419827     .161077
+------------------------------------------------------------------------------
+\end{stata}
+
+%%%
+\newpage
+
+\exercise{8}{A survey of a random sample of students at the University of New Hampshire was conducted. Information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (\texttt{year}: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by sex (\texttt{gender}: 1=male, 0=female).
+
+(a) The result of a two-way ANOVA is on the next page. Explain the results of the appropriate hypothesis tests.}
+
+\answer{3cm}{The overall F-test is significant, with $p<0.00005$, so we move on to examine the interaction effect. There is not evidence of a significant interaction $(p=0.2210)$, so we move to the individual effects. There are significant effects of both year in school $(p=0.0041)$ and of sex $(p<0.00005)$.}
+
+(b) What is an appropriate next analysis to do?
+
+\answer{1.5cm}{Pairwise comparisons of means among the years in school, appropriately adjusted for multiple comparisons (e.g., with Tukey-Kramer or Bonferroni adjustment). We don't need to do pairwise tests for sex, because there are only two categories.}
+
+(c) An ANOVA plot for this model is also shown on the next page. Explain how the results of the ANOVA are illustrated by the plot.
+
+\answer{1.5cm}{The lines are roughly parallel (the up-and-down difference between the lines is roughly the same for all years), consistent with no interaction. The up-and-down difference shows the significant difference between the two sexes (and it is roughly the same for all years). It's hard to see the significant effect of year, but notice that the (pairs of) dots are not all at the same height all along the plot -- looks like they are lower for senior year than the other years. We would need the pairwise comparisons to confirm where significant differences are among the years.}
+
+%%%
+\newpage
+
+\begin{stata}
+. anova drink year gender year#gender
+
+                         Number of obs =        243    R-squared     =  0.1548
+                         Root MSE      =    6.27145    Adj R-squared =  0.1296
+
+                  Source | Partial SS         df         MS        F    Prob>F
+             ------------+----------------------------------------------------
+                   Model |  1692.4077          7   241.77253      6.15  0.0000
+                         |
+                    year |  535.75564          3   178.58521      4.54  0.0041
+                  gender |  690.66036          1   690.66036     17.56  0.0000
+             year#gender |  174.46164          3    58.15388      1.48  0.2210
+                         |
+                Residual |  9242.8104        235   39.331108  
+             ------------+----------------------------------------------------
+                   Total |  10935.218        242   45.186852  
+\end{stata}
+
+\includegraphics[width=4in]{./figures/anovaplot_drink_year_gender}
+
+%%%
+\newpage
+
+\exercise{8}{A lab experiment was conducted to assess the effect of 4 levels of exercise and 3 types of diets on weight gain in hamsters. Two hamsters were assigned to each exercise/diet group and the weight gain for each hamster was measured (in grams). The result of a two-way ANOVA is below. Explain the results of the appropriate hypothesis tests.}
+\begin{stata}
+. anova wtgain exercise diet diet#exercise
+
+                         Number of obs =         24    R-squared     =  0.7736
+                         Root MSE      =    2.82843    Adj R-squared =  0.5660
+
+                  Source | Partial SS         df         MS        F    Prob>F
+           --------------+----------------------------------------------------
+                   Model |        328         11   29.818182      3.73  0.0163
+                         |
+                exercise |        144          3          48      6.00  0.0097
+                    diet |        112          2          56      7.00  0.0097
+           diet#exercise |         72          6          12      1.50  0.2586
+                         |
+                Residual |         96         12           8  
+           --------------+----------------------------------------------------
+                   Total |        424         23   18.434783  
+\end{stata}
+
+\answer{1.5cm}{The overall F-test is significant $(p=0.0163)$, so we look next at the interaction. There is not evidence of an interaction between exercise and diet $(p=0.2586)$, so we look at the individual effects. There are significant effects of both exercise $(p=0.0097)$ and diet $(p=0.0097)$.}
+
+%%%
+\newpage
+
+\exercise{8}{Continuing the analysis from the previous problem, pairwise comparisons were conducted using a Tukey adjustment. Stata output is on the next page. Write a short summary of the results. The levels of the variables are as follows. \\\texttt{exercise}: 1=None, 2=Mild, 3=Moderate, 4=Heavy\\
+\texttt{diet}: 1=Diet A, 2=Diet B, 3=Diet C}
+
+\answer{1.5cm}{After a Tukey-adjustment to control Type 1 error, hamsters in the heavy exercise group had significantly higher weight gain than hamsters in the no exercise group (estimated difference = 6 grams, $p=0.015$) and than hamsters in the moderate exercise group (estimated difference = 6 grams, $p=0.015$), controlling for diet. There were no other significant differences among the groups (all $p>0.12$).\\
+~\\
+After a Tukey-adjustment to control Type 1 error, hamsters on Diet A had significantly lower weight gain than hamsters on Diet B (estimated difference = 5 grams, $p=0.011$) and lower weight gain than hamsters on Diet C (estimated difference = 4 grams, $p=0.038$), controlling for exercise. The difference between Diet B and Diet C was not significant $(p=0.764)$.}
+
+%%%
+\newpage
+
+\begin{stata}
+. pwcompare exercise, mcompare(tukey) effects
+
+------------------------------------------------------------------------------
+             |                              Tukey                Tukey
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    exercise |
+     2 vs 1  |          2   1.632993     1.22   0.624    -2.848195    6.848195
+     3 vs 1  |   8.88e-16   1.632993     0.00   1.000    -4.848195    4.848195
+     4 vs 1  |          6   1.632993     3.67   0.015     1.151805     10.8482
+     3 vs 2  |         -2   1.632993    -1.22   0.624    -6.848195    2.848195
+     4 vs 2  |          4   1.632993     2.45   0.120    -.8481952    8.848195
+     4 vs 3  |          6   1.632993     3.67   0.015     1.151805     10.8482
+------------------------------------------------------------------------------
+
+. pwcompare diet, mcompare(tukey) effects
+
+------------------------------------------------------------------------------
+             |                              Tukey                Tukey
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        diet |
+     2 vs 1  |          5   1.414214     3.54   0.011     1.227071    8.772929
+     3 vs 1  |          4   1.414214     2.83   0.038     .2270711    7.772929
+     3 vs 2  |         -1   1.414214    -0.71   0.764    -4.772929    2.772929
+------------------------------------------------------------------------------
+\end{stata}
+
+\end{document}

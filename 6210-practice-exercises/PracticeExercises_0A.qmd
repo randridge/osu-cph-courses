@@ -1,0 +1,37 @@
+---
+title: "PUBHBIO 6210: Practice Exercises 0A"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    html-math-method: mathjax
+    include-in-header: header.html
+---
+
+# Exercise 1
+
+A study was designed to examine how well different exterior paints withstand the elements. Investigators prepared wooden panels and then exposed them to the weather. Here are some of the variables recorded. Indicate the data type for each variable.
+
+(a) Type of wood (yellow poplar, pine, cedar)
+
+::: {.answer .hidden}
+categorical -- nominal
+:::
+
+(b) Paint thickness (mm)
+
+::: {.answer .hidden}
+continuous
+:::
+
+(c) Paint color (white, gray, light blue)
+
+::: {.answer .hidden}
+categorical -- nominal
+:::
+
+(d) Weathering time in days
+
+::: {.answer .hidden}
+discrete
+:::

@@ -1,0 +1,71 @@
+%%% PUBHBIO 6210 - PRACTICE EXERCISES
+\documentclass[17pt,landscape]{foils}
+
+% Include command file
+\usepackage{commandsExercises}
+ 
+ %print numbers
+\toggletrue{solutions}
+%\togglefalse{solutions}
+
+% Exercises
+\begin{document}
+
+\exercise{5C}{You are interested in studying if systolic blood pressure in older males varies after sitting for 30 minutes. You sample 20 men and collect their blood pressures before (\texttt{bp\_before}) and after (\texttt{bp\_after}) sitting for 30 minutes. These data are summarized in the Stata output below. Use this information to test your hypothesis (that BP is different before and after sitting).}
+
+\begin{stata}
+. generate diff = bp_after - bp_before
+
+. summarize
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+   bp_before |        20       165.3    8.844267        147        180
+    bp_after |        20      162.85    11.63604        146        185
+        diff |        20       -2.45    14.32875        -29         29
+\end{stata}
+
+\answer{1.5cm}{Use the data for the variable \texttt{diff} and do a one-sample t-test: $n=11, \bar{d}=-2.45, s_d=14.3$\\
+$H_0: \delta=0$ \quad where $\delta=$ mean difference in BP, after sitting minus before sitting\\
+$H_a: \delta \ne 0$\\[5pt]
+$\displaystyle t = \frac{\bar{d}-0}{s_d/\sqrt{n}} = \frac{-2.45}{14.3/\sqrt{20}} = -0.766$ \quad Under $H_0, T \sim t_{n-1}=t_{19}$\\
+~\\
+\textbf{P-value Method:}\\
+p-value = $2 \times P(t_{19} > |-0.766|) = 2 \times P(t_{19}>0.766)$\\
+From table, $P(t_{19}>0.688)=0.25$ and $P(t_{19}>0.861)=0.2$\\
+So we know $P(t_{19}>0.766)$ between 0.2 \& 0.25 \\
+Thus p-value = between $0.4$ and $0.5$ \quad (Exact p-value from Stata = $0.453$)\\
+Is p-value $< \alpha$? No $\rightarrow$ Fail to reject $H_0$\\
+~\\
+\textbf{Critical Value Method:}\\
+critical value from $t_{19}$ with 0.025 in the tail is $t^*=2.093$\\
+Is $|t |> t^*$? No, $|0.766| < 2.093 \rightarrow$ Fail to reject $H_0$\\
+~\\
+There is no evidence that mean BP is different when sitting compared to standing in the population of older males.}
+
+
+%%%
+\newpage
+
+\exercise{5C}{Do piano lessons improve the spacial-temporal reasoning of preschool children? A study designed to test this hypothesis measured the spacial-temporal reasoning of 30 preschool children before and after 6 months of piano lessons. The average change in reasoning scores was +3.83 with a standard deviation of 3.0. Test the hypothesis that there was a change in reasoning. Will the 95\% CI contain the value 0?
+
+\answer{1.5cm}{$n=30, \bar{d}=3.83, s_d=3.0$\\
+$H_0: \delta=0$ \quad where $\delta=$ mean difference in reasoning scores\\
+$H_a: \delta \ne 0$ \quad  (assume before $-$ after, but doesn't matter for 2-sided test)\\[5pt]
+$\displaystyle t = \frac{\bar{d}}{s_d/\sqrt{n}} = \frac{3.83}{3.0/\sqrt{30}} = 6.99$ \quad Under $H_0, T \sim t_{n-1}=t_{29}$\\
+~\\
+\textbf{P-value Method:}\\
+p-value = $2 \times P(t_{29} > |6.99|) = 2 \times P(t_{29}>6.99)$\\
+From table, $P(t_{29}>3.659)=0.0005$  so we know $P(t_{29}>6.99)<0.0005$\\
+Thus p-value $< 2 \times 0.0005=0.001$ \quad (Exact p-value from Stata = $0.0000001$)\\
+Is p-value $< \alpha$? Yes, $0.001 < 0.05 \rightarrow$ Reject $H_0$\\
+~\\
+\textbf{Critical Value Method:}\\
+critical value from $t_{29}$ with 0.025 in the tail is $t^*=2.045$\\
+Is $|t |> t^*$? Yes, $|6.99| > 2.045 \rightarrow$ Reject $H_0$\\
+~\\
+There is evidence that mean reasoning scores are different before and after 6 months of piano lessons.\\
+~\\
+The 95\% CI will \textbf{not} contain 0 since we reject $H_0: \delta=0$ at level $\alpha=0.05$.}
+}
+\end{document}
