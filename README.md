@@ -1,2 +1,3 @@
-# osu-cph-courses
-shared materials for OSU CPH courses
+# OSU CPH Course Materials
+
+Shared materials for select OSU CPH courses
