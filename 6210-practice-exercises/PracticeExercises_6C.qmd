@@ -12,12 +12,12 @@ format:
 
 The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
 
-\begin{tabular}{lcc}
- & CHD & No CHD \\ \hline
- High CAT & 27 & 95 
+| CAT Group | CHD | No CHD |
+|-----------|-----|--------|
+| High CAT  | 27  | 95     |
+| Low CAT   | 44  | 443    |
 
- Low CAT & 44 & 443\\ \hline
-\end{tabular}
+: Data table of CHD and CAT levels
 
 (a) Estimate the risk difference for CHD for people with high CAT compared to people with low CAT.
 
@@ -43,18 +43,18 @@ $0.131 \pm 1.96 \times 0.03976$
 $(0.053, 0.209)$
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 2
 
 The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
 
-\begin{tabular}{lcc}
- & CHD & No CHD \\ \hline
- High CAT & 27 & 95 
+| CAT Group | CHD | No CHD |
+|-----------|-----|--------|
+| High CAT  | 27  | 95     |
+| Low CAT   | 44  | 443    |
 
- Low CAT & 44 & 443\\ \hline
-\end{tabular}
+: Data table of CHD and CAT levels
 
 (a) Estimate the relative risk of CHD for people with high CAT compared to people with low CAT, and interpret this quantity.
 
@@ -86,18 +86,18 @@ $(0.460, 1.33)$ ***CI for the log-relative risk***
 Exponentiate to get CI for relative risk: $(e^{0.460}, e^{1.33}) = (1.58, 3.78)$
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 3
 
 The Evans county heart disease study assessed the association between endogenous catecholamine level (CAT) and the subsequent seven-year incidence of coronary heart disease (CHD) in a cohort of 609 white males.
 
-\begin{tabular}{lcc}
- & CHD & No CHD \\ \hline
- High CAT & 27 & 95 
+| CAT Group | CHD | No CHD |
+|-----------|-----|--------|
+| High CAT  | 27  | 95     |
+| Low CAT   | 44  | 443    |
 
- Low CAT & 44 & 443\\ \hline
-\end{tabular}
+: Data table of CHD and CAT levels
 
 (a) Estimate the odds ratio for CHD for people with high CAT compared to people with low CAT, and interpret this quantity.
 
@@ -129,25 +129,25 @@ $(0.524, 1.58)$ ***CI for the log-odds ratio***
 Exponentiate to get CI for odds ratio: $(e^{0.524}, e^{1.58}) = (1.69, 4.85)$
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 4
 
 A study evaluated the use of ecinacea for upper respiratory infections (URIs) in children. Each child with a URI was randomized to receive either echinacea or placebo. One outcome recorded was the presence or absence of adverse events. The data are below.
 
-\begin{tabular}{lcc}
- & Placebo & Echinacea \\ \hline
-Adverse Event & 146 & 152
+| Adverse Event Group | Placebo | Echinacea |
+|---------------------|---------|-----------|
+| Adverse Event       | 146     | 152       |
+| No Adverse Event    | 224     | 185       |
 
-No Adverse Event & 224 & 185 \\ \hline
-\end{tabular}
+: Data table of adverse events by group
 
 (a) Estimate and interpret each of the three measures of association between presence of side effects and receiving treatment with echinacea (compared to placebo).
 
 ::: {.answer .hidden}
-$p_1 =$ probability of adverse event  given echinacea, $p_2 =$ probability of adverse event  given placebo
+$p_1 =$ probability of adverse event given echinacea, $p_2 =$ probability of adverse event given placebo
 
-$\hat{p}_1 = \frac{152}{152+185} = \frac{152}{337} = 0.451$  and   $\displaystyle \hat{p}_2 = \frac{146}{146+224} = \frac{146}{370} = 0.395$
+$\hat{p}_1 = \frac{152}{152+185} = \frac{152}{337} = 0.451$ and $\displaystyle \hat{p}_2 = \frac{146}{146+224} = \frac{146}{370} = 0.395$
 
 Estimated Risk Difference = $\hat{p}_1 - \hat{p}_2 = 0.451 - 0.395 = 0.056$
 
@@ -165,5 +165,5 @@ The odds of an adverse event when taking echinacea are 1.26 times the odds when 
 (b) What type of hypothesis test would you do to test whether there is a significant association between taking echinacea and having adverse events?
 
 ::: {.answer .hidden}
-Chi-square test (or Two-sample Z-test) 
+Chi-square test (or Two-sample Z-test)
 :::

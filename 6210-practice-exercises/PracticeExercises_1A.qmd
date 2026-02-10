@@ -10,7 +10,7 @@ format:
 
 # Exercise 1
 
-A deck of cards has 52 total cards: \{A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2\}\\ in each of 4 suits: \{diamonds $\diamondsuit$, hearts $\heartsuit$, spades $\spadesuit$, clubs $\clubsuit$\}.
+A deck of cards has 52 total cards: \{A, K, Q, J, 10, 9, 8, 7, 6, 5, 4, 3, 2\}\ in each of 4 suits: \{diamonds $\diamondsuit$, hearts $\heartsuit$, spades $\spadesuit$, clubs $\clubsuit$\}.
 
 Diamonds and hearts are red, spades and clubs are black.
 

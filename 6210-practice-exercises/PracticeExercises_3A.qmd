@@ -12,25 +12,7 @@ format:
 
 In the New Hampshire student survey data, one of the variables collected was where the student lives. Complete the table below with the appropriate summaries (as labeled at the top of the columns).
 
-::: {.answer .hidden}
-ANSWER: (see below)
-
-\begin{tabular}{rrrr}
-Guessed & & & 
-
-grades & Freq. & Percent & Cum.\\ \hline
-    As & Bs &        110   &    110/242=0.45   &    110/242=0.45
-
-    Bs & Cs &        120   &    120/242=0.50   &    (110+120)/242=0.95
-
-    Cs & Ds &         12    &    12/242=0.050   &   (110+120+12)/242=1\\ \hline
-    Total & 242 & 100 & -- 
-
-\end{tabular}
-
-:::
-
-```{.text .stata}
+``` {.text .stata}
 
 . tab grades
 
@@ -43,24 +25,34 @@ grades this |
     Cs & Ds |         12
 ------------+-----------------------------------
       Total |        242      100.00         --
-
 ```
 
----
+::: {.answer .hidden}
+ANSWER: (see below)
+
+| Guessed Grades | Freq. | Percent      | Cum,               |
+|----------------|-------|--------------|--------------------|
+| As & Bs        | 110   | 110/242=0.45 | 110/242=0.45       |
+| Bs & Cs        | 120   | 120/242=0.50 | (110+120)/242=0.95 |
+| Cs & Ds        | 12    | 12/242=0.050 | (110+120+12)/242=1 |
+| Total          | 242   | 100          | \-                 |
+
+: Completed table with answers
+:::
+
+------------------------------------------------------------------------
 
 # Exercise 2
 
 In a study of asthma in minority youth in Detroit, Michigan, two pieces of information collected about the children were their asthma severity (3 levels: intermittent, mild persistent, moderate/severe persistent) and their family income. These data were obtained and summarized in the table below:
 
-\begin{tabular}{lccc}
- & \multicolumn{3}{c}{Asthma Severity}\\ \cmidrule{2-4}
-Income & Intermittent & Mild Persistent & Moderate/Severe Persistent \\ \hline
-$<$\$15,000         & 71 (43%)     & 41 (53%) & 34 (49%) 
+| Income | Asthma Severity: Intermittent | Asthma Severity: Mild Persistent | Asthma Severity: Severe Persistent |
+|----|----|----|----|
+| \<\$15,000 | 71 (43%) | 41 (53%) | 34 (49%) |
+| \$15,000-\$40,000 | 66 (40%) | 27 (35%) | 29 (41%) |
+| \$40,000+ | 28 (17%) | 10 (13%) | 7 (10%) |
 
-\$15,000-\$40,000   & 66 (40%)     & 27 (35%) & 29 (41%) 
-
-\$40,000+       & 28 (17%) & 10 (13%) & 7 (10%)  \\ \hline
-\end{tabular}
+: Income distribution and asthma severity
 
 (a) Are the percentages in this table overall percentages, row percentages, or column percentages?
 

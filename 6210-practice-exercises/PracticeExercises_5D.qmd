@@ -27,7 +27,7 @@ Round up: Need 126 women in the study.
 
 Stata code to confirm answer: 
 
-\texttt{power onemean 39 38.5, power(0.8) alpha(0.05) sd(2) knownsd}
+**power onemean 39 38.5, power(0.8) alpha(0.05) sd(2) knownsd**
 :::
 
 ---

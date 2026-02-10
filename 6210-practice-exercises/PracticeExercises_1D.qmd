@@ -18,7 +18,7 @@ $B$ = get a blue on the second draw assuming the first ball is removed (but you 
 
 What is $P(B)$?
 
-\emph{Hint: Use the Law of Total Probability}
+*Hint: Use the Law of Total Probability*
 
 ::: {.answer .hidden}
 ANSWER: 0.4
@@ -40,7 +40,7 @@ $P(B) = P(B|A)P(A) + P(B|A^C)P(A^C) = 0.5 \times 0.6 + 0.25 \times 0.4 = 0.4$
 
 There are three candidates in the election for governor of a certain state, Mr.~Bluth, Ms.~F\"unke, and Mr.~Loblaw. The biggest campaign issue is that of lowering property taxes. If Mr.~Bluth is elected there is an 80% chance that he will lower taxes, if Ms.~F\"unke is elected there is a 10% chance she will lower taxes, and if Mr.~Loblaw is elected there is a 55% chance he will lower taxes. The last election poll showed that there was a 60% chance that Mr.~Bluth would win the election, a 20% chance that Ms.~F\"unke will win, and a 20% chance that Mr.~Loblaw will win. What is the probability that property taxes will be lowered after the election?
 
-\emph{Hint: Use the Law of Total Probability}
+*Hint: Use the Law of Total Probability*
 
 ::: {.answer .hidden}
 ANSWER: 0.61
@@ -176,8 +176,6 @@ ANSWER: 0.8
 $P(\text{survive}|B) = 0.8$, given in text of problem
 :::
 
----
-
 (d) What is the probability that a randomly selected patient was treated at hospital B and survived at least 6 months?
 
 ::: {.answer .hidden}
@@ -193,7 +191,7 @@ ANSWER: 0.64
 
 $P(\text{Sue survived} \cap \text{Joe survived}|B) = P(\text{Sue survived}|B) \times P(\text{Joe survived}|B)$ (independence)
 
-$ = 0.8 \times 0.8 = 0.64$
+$= 0.8 \times 0.8 = 0.64$
 :::
 
 (f) Given that Danielle survived at least 6 months, what is the probability that she went to hospital B?
@@ -205,5 +203,5 @@ $\displaystyle P(B|\text{survived}) = \frac{P(\text{survived}|B)P(B)}{P(\text{su
 
  $\displaystyle = \frac{P(\text{survived}|B)P(B)}{P(\text{survived}|A)P(A)  + P(\text{survived}|B)P(B) + P(\text{survived}|C)P(C)}$
 
- $ \displaystyle = \frac{0.8 \times 0.2}{0.5 \times 0.5 + 0.8 \times 0.2 + 0.75 \times 0.3} = 0.252$
+ $\displaystyle = \frac{0.8 \times 0.2}{0.5 \times 0.5 + 0.8 \times 0.2 + 0.75 \times 0.3} = 0.252$
 :::

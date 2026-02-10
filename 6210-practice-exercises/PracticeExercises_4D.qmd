@@ -19,11 +19,11 @@ ANSWER: 0.0340
 
 p-value = $P(Z > |-2.12|) + P(Z < -|-2.12|)$
 
-~$=P(Z>2.12)+P(Z<-2.12)$
+$=P(Z>2.12)+P(Z<-2.12)$
 
-~$=2 \times P(Z>2.12)$ by symmetry
+$=2 \times P(Z>2.12)$ by symmetry
 
-~$= 2\times 0.0170 = 0.0340$
+$= 2\times 0.0170 = 0.0340$
 
 :::
 
@@ -34,9 +34,9 @@ ANSWER: 0.0170
 
 p-value = $P(Z < -2.12)$
 
-~$=P(Z>2.12)$ by symmetry
+$=P(Z>2.12)$ by symmetry
 
-~$= 0.0170$
+$= 0.0170$
 :::
 
 (c) What is the p-value if the alternative is $H_a: \mu > \mu_0$?
@@ -46,11 +46,11 @@ ANSWER: 0.983
 
 p-value = $P(Z > -2.12)$
 
-~$=1 - P(Z<-2.12)$ by complement rule
+$=1 - P(Z<-2.12)$ by complement rule
 
-~$=1 - P(Z>2.12)$ by symmetry
+$=1 - P(Z>2.12)$ by symmetry
 
-~$= 1-0.0170 = 0.983$
+$= 1-0.0170 = 0.983$
 :::
 
 ---

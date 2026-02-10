@@ -71,10 +71,10 @@ ANSWER: 3.04
 
 Log-transform (natural log being used here):
 
- \{ln(3.08), ln(2.5), ln(3.33), ln(3.75), ln(3.1), ln(2.64)\} = \{1.125, 0.916, 1.203, 1.322, 1.131, 0.971\}
+{ln(3.08), ln(2.5), ln(3.33), ln(3.75), ln(3.1), ln(2.64)} = {1.125, 0.916, 1.203, 1.322, 1.131, 0.971}
 
 Take (arithmetic) mean of these values: $\displaystyle \frac{1.125+0.916+\dots+0.971}{6} = \frac{6.668}{6}=1.111$
 
-Back-transform: $ e^{1.111}= 3.04$
+Back-transform: $e^{1.111}= 3.04$
 
 :::

@@ -2373,7 +2373,7 @@ window.Quarto = {
 <p><span class="math inline">\(A\)</span> = get a red on the first draw</p>
 <p><span class="math inline">\(B\)</span> = get a blue on the second draw assuming the first ball is removed (but you don’t know the color)</p>
 <p>What is <span class="math inline">\(P(B)\)</span>?</p>
-<p></p>
+<p><em>Hint: Use the Law of Total Probability</em></p>
 <div class="answer hidden">
 <p>ANSWER: 0.4</p>
 <p><span class="math inline">\(P(A)=3/5 = 0.6\)</span></p>
@@ -2387,7 +2387,7 @@ window.Quarto = {
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
 <p>There are three candidates in the election for governor of a certain state, Mr.~Bluth, Ms.~F&quot;unke, and Mr.~Loblaw. The biggest campaign issue is that of lowering property taxes. If Mr.~Bluth is elected there is an 80% chance that he will lower taxes, if Ms.~F&quot;unke is elected there is a 10% chance she will lower taxes, and if Mr.~Loblaw is elected there is a 55% chance he will lower taxes. The last election poll showed that there was a 60% chance that Mr.~Bluth would win the election, a 20% chance that Ms.~F&quot;unke will win, and a 20% chance that Mr.~Loblaw will win. What is the probability that property taxes will be lowered after the election?</p>
-<p></p>
+<p><em>Hint: Use the Law of Total Probability</em></p>
 <div class="answer hidden">
 <p>ANSWER: 0.61</p>
 <p><span class="math inline">\(P(\text{lower taxes}|\text{Bluth elected})=0.8\)</span></p>
@@ -2482,7 +2482,6 @@ window.Quarto = {
 <p>ANSWER: 0.8</p>
 <p><span class="math inline">\(P(\text{survive}|B) = 0.8\)</span>, given in text of problem</p>
 </div>
-<hr>
 <ol start="4" type="a">
 <li>What is the probability that a randomly selected patient was treated at hospital B and survived at least 6 months?</li>
 </ol>
@@ -2496,7 +2495,7 @@ window.Quarto = {
 <div class="answer hidden">
 <p>ANSWER: 0.64</p>
 <p><span class="math inline">\(P(\text{Sue survived} \cap \text{Joe survived}|B) = P(\text{Sue survived}|B) \times P(\text{Joe survived}|B)\)</span> (independence)</p>
-<p>$ = 0.8 = 0.64$</p>
+<p><span class="math inline">\(= 0.8 \times 0.8 = 0.64\)</span></p>
 </div>
 <ol start="6" type="a">
 <li>Given that Danielle survived at least 6 months, what is the probability that she went to hospital B?</li>
@@ -2505,7 +2504,7 @@ window.Quarto = {
 <p>ANSWER: 0.252</p>
 <p><span class="math inline">\(\displaystyle P(B|\text{survived}) = \frac{P(\text{survived}|B)P(B)}{P(\text{survived})}\)</span></p>
 <p><span class="math inline">\(\displaystyle = \frac{P(\text{survived}|B)P(B)}{P(\text{survived}|A)P(A)  + P(\text{survived}|B)P(B) + P(\text{survived}|C)P(C)}\)</span></p>
-<p>$ = = 0.252$</p>
+<p><span class="math inline">\(\displaystyle = \frac{0.8 \times 0.2}{0.5 \times 0.5 + 0.8 \times 0.2 + 0.75 \times 0.3} = 0.252\)</span></p>
 </div>
 </section>
 

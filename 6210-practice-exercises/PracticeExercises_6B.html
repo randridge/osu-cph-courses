@@ -2406,7 +2406,37 @@ window.Quarto = {
 <li>Construct a 2x2 contingency table for these data.</li>
 </ol>
 <div class="answer hidden">
-
+<table class="caption-top table">
+<caption>Solution table</caption>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Low Birthweight</th>
+<th>Not Low Birthweight</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Smoker</td>
+<td>30</td>
+<td>44</td>
+<td>74</td>
+</tr>
+<tr class="even">
+<td>Non-Smoker</td>
+<td>29</td>
+<td>86</td>
+<td>115</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>59</td>
+<td>130</td>
+<td>189</td>
+</tr>
+</tbody>
+</table>
 </div>
 <ol start="2" type="a">
 <li>What is the estimated probability that a baby is born with low birthweight among women who smoke? Among women who do not smoke?</li>
@@ -2427,14 +2457,13 @@ window.Quarto = {
 <p>Expected # with low birthweight = <span class="math inline">\(0.312 \times 115 = 35.9\)</span></p>
 <p>Expected # with not low birthweight = <span class="math inline">\((1-0.312) \times 115 = 79.1\)</span></p>
 </div>
-<hr>
 <ol start="4" type="a">
 <li>Calculate the chi-square test statistic using the expected counts you calculated in (c).</li>
 </ol>
 <div class="answer hidden">
 <p><span class="math inline">\(\displaystyle X^2 = \sum_{\text{all cells}} \frac{(\text{Observed} - \text{Expected})^2}{\text{Expected}}\)</span></p>
 <p><span class="math inline">\(\displaystyle = \frac{(30-23.1)^2}{23.1} + \frac{(44-50.9)^2}{50.9} + \frac{(29-35.9)^2}{35.9} + \frac{(86-79.1)^2}{79.1}\)</span></p>
-<p>$ = 2.06 + 0.935 + 1.33 + 0.602 = 4.93$</p>
+<p><span class="math inline">\(= 2.06 + 0.935 + 1.33 + 0.602 = 4.93\)</span></p>
 </div>
 <ol start="5" type="a">
 <li>Test whether there is a significant difference in the probability of a low birthweight baby for women who smoke during pregnancy and women who do not smoke using a chi-square test. Make sure to write all steps of the hypothesis test and state a conclusion.</li>

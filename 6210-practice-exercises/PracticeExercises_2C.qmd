@@ -17,8 +17,6 @@ Suppose scores on a certain standardized test are normalized so that they follow
 ::: {.answer .hidden}
 ANSWER: 0.0228
 
-~
-
 $P(Z>2) = 0.0228$ (Normal Table, Column B)
 :::
 
@@ -26,8 +24,6 @@ $P(Z>2) = 0.0228$ (Normal Table, Column B)
 
 ::: {.answer .hidden}
 ANSWER: 0.0002
-
-~
 
 $P(Z<-3.5)=P(Z>3.5)=0.0002$ (Column B)
 :::
@@ -37,9 +33,7 @@ $P(Z<-3.5)=P(Z>3.5)=0.0002$ (Column B)
 ::: {.answer .hidden}
 ANSWER: 0.6826
 
-~
-
-$P(-1 < Z < 1) = P(Z<1) - P(Z<-1) $
+$P(-1 < Z < 1) = P(Z<1) - P(Z<-1)$
 
 $= P(Z<1) - P(Z>1) = 0.8413 - 0.1587 = 0.6826$ (Columns A and B)
 :::
@@ -49,9 +43,7 @@ $= P(Z<1) - P(Z>1) = 0.8413 - 0.1587 = 0.6826$ (Columns A and B)
 ::: {.answer .hidden}
 ANSWER: 0.0456
 
-~
-
-$P(Z<-2 \text{ OR } Z>2)=P(Z<-2) + P(Z>2) $
+$P(Z<-2 \text{ OR } Z>2)=P(Z<-2) + P(Z>2)$
 
 $= P(Z>2)+P(Z>2)=2 \times P(Z>2)=2 \times 0.0228=0.0456$
 :::

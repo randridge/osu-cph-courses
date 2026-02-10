@@ -19,28 +19,24 @@ GPAs: 3.08, 2.5, 3.33, 3.75, 3.1, 2.64
 ::: {.answer .hidden}
 ANSWER: 0.456
 
-Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B.2)
+Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B #2)
 
-\begin{tabular}{lcc}
-$x_i$ & $x_i-\bar{x}$ & $(x_i-\bar{x})^2$\\ \hline
-3.08    & 0.01  & 0.0001
+| $x_i$ | $x_1-\bar{x}$ | $(x_i-\bar{x})^2$ |
+|-------|---------------|-------------------|
+| 3.08  | 0.01          | 0.0001            |
+| 2.5   | -0.57         | 0.3249            |
+| 3.33  | 0.26          | 0.0676            |
+| 3.75  | 0.68          | 0.4624            |
+| 3.1   | 0.03          | 0.0009            |
+| 2.64  | -0.43         | 0.1849            |
 
-2.5 & -0.57 & 0.3249
+: table showing calculations
 
-3.33    & 0.26  & 0.0676
+The sum of the values in the last column = 1.0408 
 
-3.75    & 0.68  & 0.4624
+Divide by 5 to get $s^2$: 1.0408/5 = 0.208 
 
-3.1 & 0.03  & 0.0009
-
-2.64    & -0.43 & 0.1849\\ \hline
-\multicolumn{2}{r}{Sum:} & 1.0408 
-
-\multicolumn{2}{r}{Divide by 5 to get $s^2$:} & 0.208 
-
-\multicolumn{2}{r}{$s=\sqrt{s^2}$:} & 0.456 
-
-\end{tabular}
+Take square root to get $s$: $s=\sqrt{s^2}=\sqrt{0.208}$ = 0.456 
 
 :::
 
@@ -49,12 +45,11 @@ $x_i$ & $x_i-\bar{x}$ & $(x_i-\bar{x})^2$\\ \hline
 ::: {.answer .hidden}
 ANSWER: 0.149
 
-Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B.2)
+Mean: $\bar{x}=3.07$ (calculated in Practice Exercise 3B #2)
 
 Standard deviation: $s=0.456$ (part (a) above)
 
 $\displaystyle cv = \frac{s}{\bar{x}}=\frac{0.456}{3.07}=0.149$
-
 :::
 
 (c) 75th percentile

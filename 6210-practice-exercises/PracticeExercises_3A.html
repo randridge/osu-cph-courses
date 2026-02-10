@@ -2402,9 +2402,6 @@ window.Quarto = {
 <section id="exercise-1" class="level1">
 <h1>Exercise 1</h1>
 <p>In the New Hampshire student survey data, one of the variables collected was where the student lives. Complete the table below with the appropriate summaries (as labeled at the top of the columns).</p>
-<div class="answer hidden">
-<p>ANSWER: (see below)</p>
-</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode text stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">tab</span> grades</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2417,11 +2414,88 @@ window.Quarto = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    Cs &amp; Ds |         12</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>------------+-----------------------------------</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      Total |        242      100.00         --</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="answer hidden">
+<p>ANSWER: (see below)</p>
+<table class="caption-top table">
+<caption>Completed table with answers</caption>
+<thead>
+<tr class="header">
+<th>Guessed Grades</th>
+<th>Freq.</th>
+<th>Percent</th>
+<th>Cum,</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>As &amp; Bs</td>
+<td>110</td>
+<td>110/242=0.45</td>
+<td>110/242=0.45</td>
+</tr>
+<tr class="even">
+<td>Bs &amp; Cs</td>
+<td>120</td>
+<td>120/242=0.50</td>
+<td>(110+120)/242=0.95</td>
+</tr>
+<tr class="odd">
+<td>Cs &amp; Ds</td>
+<td>12</td>
+<td>12/242=0.050</td>
+<td>(110+120+12)/242=1</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>242</td>
+<td>100</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </section>
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
 <p>In a study of asthma in minority youth in Detroit, Michigan, two pieces of information collected about the children were their asthma severity (3 levels: intermittent, mild persistent, moderate/severe persistent) and their family income. These data were obtained and summarized in the table below:</p>
+<table class="caption-top table">
+<caption>Income distribution and asthma severity</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Income</th>
+<th>Asthma Severity: Intermittent</th>
+<th>Asthma Severity: Mild Persistent</th>
+<th>Asthma Severity: Severe Persistent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;$15,000</td>
+<td>71 (43%)</td>
+<td>41 (53%)</td>
+<td>34 (49%)</td>
+</tr>
+<tr class="even">
+<td>$15,000-$40,000</td>
+<td>66 (40%)</td>
+<td>27 (35%)</td>
+<td>29 (41%)</td>
+</tr>
+<tr class="odd">
+<td>$40,000+</td>
+<td>28 (17%)</td>
+<td>10 (13%)</td>
+<td>7 (10%)</td>
+</tr>
+</tbody>
+</table>
 <ol type="a">
 <li>Are the percentages in this table overall percentages, row percentages, or column percentages?</li>
 </ol>

@@ -78,7 +78,7 @@ $E(X_1+X_2) = E(X_1)+E(X_2)=3.4+3.4=6.8$
 
 # Exercise 3
 
-Let $X$ be a random variable indicating the minutes after 8am that an instructor starts class. Suppose it is known that $E(X) = 2.3$ and $\V(X)=1.44$. Further assume that the start time of different days are independent of each other.
+Let $X$ be a random variable indicating the minutes after 8am that an instructor starts class. Suppose it is known that $E(X) = 2.3$ and $V(X)=1.44$. Further assume that the start time of different days are independent of each other.
 
 (a) Let $Y$ be the total number of minutes late over a random sample of 20 class days. What are the expected value and variance of $Y$?
 
@@ -163,8 +163,6 @@ By Central Limit Theorem, $\displaystyle \overline{X} \sim N\left(\mu, \frac{\si
 
 $\displaystyle P(\overline{X}>3.5) = P \left(Z> \frac{3.5-3}{\sqrt{0.045}}\right) = P(Z>2.36) = 0.00091$
 :::
-
----
 
 (c) (Challenge Problem) If this is true and you sample 20 patients, the middle 95% of all sample means would be expected to fall between what two numbers?
 

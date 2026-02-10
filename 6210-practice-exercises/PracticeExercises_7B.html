@@ -2401,40 +2401,7 @@ window.Quarto = {
 
 <section id="exercise-1" class="level1">
 <h1>Exercise 1</h1>
-<p>Linear regression was used to investigate the relationship between age (years) and systolic blood pressure (mmHg) in a sample of adults ranging from 29 to 69 years old. Partial Stata output is on the next page.</p>
-<ol type="a">
-<li>How may people were in the sample?</li>
-</ol>
-<div class="answer hidden">
-<p>29</p>
-</div>
-<ol start="2" type="a">
-<li>Test whether age is a significant predictor of SBP (at the <span class="math inline">\(\alpha=0.05\)</span> level).</li>
-</ol>
-<div class="answer hidden">
-<p><span class="math inline">\(H_0: \beta_1=0\)</span> <span class="math inline">\(\beta_1=\)</span> slope of age predicting SBP</p>
-<p><span class="math inline">\(H_a: \beta_1 \ne 0\)</span></p>
-<p>$ t= = = 8.17$</p>
-<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(t \sim t_{27}\)</span></p>
-<p>Critical value <span class="math inline">\(t^* = 2.052\)</span></p>
-<p>Is <span class="math inline">\(|t| &gt; t^*\)</span>? Yes, <span class="math inline">\(|8.17| &gt; 2.052 \rightarrow\)</span> Reject <span class="math inline">\(H_0\)</span></p>
-<p>There is evidence that age is significantly associated with SBP.</p>
-<p>Note : P-value method yields p-value <span class="math inline">\(&lt; 0.0005\)</span>.</p>
-</div>
-<ol start="3" type="a">
-<li>What is the coefficient of determination for this model? Interpret this quantity.</li>
-</ol>
-<div class="answer hidden">
-<p><span class="math inline">\(R^2=0.7122\)</span> 71.2% of the variability in SBP is explained by age.</p>
-</div>
-<ol start="4" type="a">
-<li>Calculate a 95% confidence interval for the population slope. Will 0 be in this interval?</li>
-</ol>
-<div class="answer hidden">
-<p>0 will not be in the CI because we rejected the null, <span class="math inline">\(H_0: \beta_1=0\)</span></p>
-<p><span class="math inline">\(0.9493225 \pm 2.052 \times 0.1161445\)</span></p>
-<p><span class="math inline">\((0.711, 1.19)\)</span></p>
-</div>
+<p>Linear regression was used to investigate the relationship between age (years) and systolic blood pressure (mmHg) in a sample of adults ranging from 29 to 69 years old. Partial Stata output below.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode text stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> sbp age</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2451,18 +2418,68 @@ window.Quarto = {
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         age |   .9493225   .1161445</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   97.07708   5.527552</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li>How may people were in the sample?</li>
+</ol>
+<div class="answer hidden">
+<p>29</p>
+</div>
+<ol start="2" type="a">
+<li>Test whether age is a significant predictor of SBP (at the <span class="math inline">\(\alpha=0.05\)</span> level).</li>
+</ol>
+<div class="answer hidden">
+<p><span class="math inline">\(H_0: \beta_1=0\)</span> <span class="math inline">\(\beta_1=\)</span> slope of age predicting SBP</p>
+<p><span class="math inline">\(H_a: \beta_1 \ne 0\)</span></p>
+<p><span class="math inline">\(t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{0.9493225}{0.1161445} = 8.17\)</span></p>
+<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(t \sim t_{27}\)</span></p>
+<p>Critical value <span class="math inline">\(t^* = 2.052\)</span></p>
+<p>Is <span class="math inline">\(|t| &gt; t^*\)</span>? Yes, <span class="math inline">\(|8.17| &gt; 2.052 \rightarrow\)</span> Reject <span class="math inline">\(H_0\)</span></p>
+<p>There is evidence that age is significantly associated with SBP.</p>
+<p>Note : P-value method yields p-value <span class="math inline">\(&lt; 0.0005\)</span>.</p>
+</div>
+<ol start="3" type="a">
+<li>What is the coefficient of determination for this model? Interpret this quantity.</li>
+</ol>
+<div class="answer hidden">
+<p><span class="math inline">\(R^2=0.7122\)</span></p>
+<p>71.2% of the variability in SBP is explained by age.</p>
+</div>
+<ol start="4" type="a">
+<li>Calculate a 95% confidence interval for the population slope. Will 0 be in this interval?</li>
+</ol>
+<div class="answer hidden">
+<p>0 will not be in the CI because we rejected the null, <span class="math inline">\(H_0: \beta_1=0\)</span></p>
+<p><span class="math inline">\(0.9493225 \pm 2.052 \times 0.1161445\)</span></p>
+<p><span class="math inline">\((0.711, 1.19)\)</span></p>
+</div>
 <hr>
 </section>
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
-<p>In a study of factors associated with levels of HDL, the “good cholesterol”, investigators were interested in whether or not a person’s education level might be a predictor of HDL (mg/dL). Education was measured as the number of years of education a person had. The researchers used linear regression and partial Stata output is on the next page.</p>
+<p>In a study of factors associated with levels of HDL, the “good cholesterol”, investigators were interested in whether or not a person’s education level might be a predictor of HDL (mg/dL). Education was measured as the number of years of education a person had. The researchers used linear regression and partial Stata output is below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode text stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> hdl education</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS       df       MS              Number <span class="kw">of</span> <span class="kw">obs</span> =      91</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-------------+------------------------------           <span class="fu">F</span>(  1,    89) =    0.01</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       Model |  1.52391634     1  1.52391634           Prob &gt; <span class="fu">F</span>      =  0.9385</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    Residual |  22655.4651    89  254.555788           R-squared     =  0.0001</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-------------+------------------------------           Adj R-squared = -0.0112</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       Total |   22656.989    90  251.744322           Root MSE      =  15.955</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         hdl |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>   education |  -.0322503   .4168166</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   52.33561   4.781676</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>Test whether years of education is a significant predictor of HDL (at the <span class="math inline">\(\alpha=0.05\)</span> level).</li>
 </ol>
 <div class="answer hidden">
 <p><span class="math inline">\(H_0: \beta_1=0\)</span> <span class="math inline">\(\beta_1=\)</span> slope of education predicting HDL</p>
 <p><span class="math inline">\(H_a: \beta_1 \ne 0\)</span></p>
-<p>$ t= = = -0.077$</p>
+<p><span class="math inline">\(t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{-0.0322503}{0.4168166} = -0.077\)</span></p>
 <p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(t \sim t_{89}\)</span></p>
 <p>Critical value from table using df=60 (since 89 not on table): <span class="math inline">\(t^* = 2.000\)</span></p>
 <p>Is <span class="math inline">\(|t| &gt; t^*\)</span>? No, <span class="math inline">\(|-0.077| \ngtr 2.00 \rightarrow\)</span> Fail to reject <span class="math inline">\(H_0\)</span></p>
@@ -2482,22 +2499,6 @@ window.Quarto = {
 <div class="answer hidden">
 <p>Yes, 0 would be in the CI, because we failed to reject <span class="math inline">\(H_0\)</span> at the <span class="math inline">\(\alpha=0.05\)</span> level. Thus 0 is a “plausible value” for the true slope, so 0 would be in the CI.</p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode text stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> hdl education</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS       df       MS              Number <span class="kw">of</span> <span class="kw">obs</span> =      91</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-------------+------------------------------           <span class="fu">F</span>(  1,    89) =    0.01</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       Model |  1.52391634     1  1.52391634           Prob &gt; <span class="fu">F</span>      =  0.9385</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    Residual |  22655.4651    89  254.555788           R-squared     =  0.0001</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-------------+------------------------------           Adj R-squared = -0.0112</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       Total |   22656.989    90  251.744322           Root MSE      =  15.955</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         hdl |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>   education |  -.0322503   .4168166</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   52.33561   4.781676</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 </main>

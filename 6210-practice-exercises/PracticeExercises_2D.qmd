@@ -88,7 +88,7 @@ Distribution is $N(-10,4)$
 
 # Exercise 4
 
-If a random variable $X$ is normally distributed with a mean of 25 and a standard deviation of 5, what will be the distribution of $ \frac{X-25}{5}$?
+If a random variable $X$ is normally distributed with a mean of 25 and a standard deviation of 5, what will be the distribution of $\frac{X-25}{5}$?
 
 ::: {.answer .hidden}
 ANSWER: $N(0,1)$
@@ -145,8 +145,6 @@ Let $X$ be the IQ scores for a certain population, and assume that $X$ follows a
 ::: {.answer .hidden}
 ANSWER: 110.05 (75th percentile)
 
-~
-
 25% of values \underline{above} $\rightarrow$ 75% of values \underline{below} $\rightarrow$ 75th percentile $\rightarrow P(Z<a)=0.75$
 
 From Normal Table, Column A: $P(Z<0.67)=0.7486 \rightarrow a=0.67$
@@ -158,8 +156,6 @@ $x=a \times \sigma + \mu = 0.67 \times 15 + 100=110.05$
 
 ::: {.answer .hidden}
 ANSWER: 124.75 (95th percentile)
-
-~
 
 95% of values \underline{below} $\rightarrow$ 95th percentile $\rightarrow P(Z<a)=0.95$
 
@@ -173,8 +169,6 @@ $x=a \times \sigma + \mu = 1.65 \times 15 + 100=124.75$
 ::: {.answer .hidden}
 ANSWER: 89.95 (25th percentile)
 
-~
-
 75% of values \underline{above} $\rightarrow$ 25% of values \underline{below} $\rightarrow$ 25th percentile
 $\rightarrow P(Z<a)$
 
@@ -184,9 +178,7 @@ From Normal Table, Column A: $P(Z>0.67)=0.2514 \rightarrow -a=0.67 \rightarrow a
 
 $x=a \times \sigma + \mu = -0.67 \times 15 + 100=89.95$
 
-~
+*Note: could recognize that the 25th percentile would be as far below the mean as the 75th was above*
 
-{\tiny Note: could recognize that the 25th percentile would be as far below the mean as the 75th was above\dots 
-
-The 75th percentile is $110.05=100+10.05$, thus the 25th percentile $=100-10.05=89.95$}
+*The 75th percentile is $110.05=100+10.05$, thus the 25th percentile $=100-10.05=89.95$*
 :::

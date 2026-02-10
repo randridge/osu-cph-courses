@@ -32,7 +32,6 @@ No, $0.0702 > 0.05 \rightarrow$ Fail to reject $H_0$
 There is no evidence that the mean cholesterol for people on a macrobiotic diet is different from 230 mg/dL.
 :::
 
----
 
 (b) Suppose instead the hypothesis is that people on a macrobiotic diet have cholesterol levels lower than those of the general population. Perform the appropriate significance test.
 

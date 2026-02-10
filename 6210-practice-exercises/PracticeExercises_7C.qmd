@@ -48,37 +48,7 @@ Correlation will not change, slope will change, $R^2$ will not change.
 
 # Exercise 2
 
-A summary of some of the variables in the New Hampshire student survey data is on the next page. Use this to answer the questions.
-
-(a) If I perform a linear regression using the miles away from school a student lives (\texttt{miles}) to predict his/her GPA (\texttt{gpa}), will the slope estimate be positive or negative?
-
-::: {.answer .hidden}
-positive, because $r=0.1558 >0$
-:::
-
-(b) If I perform a linear regression using the miles away from school a student lives (\texttt{miles}) to predict his/her GPA (\texttt{gpa}), what will the coefficient of determination for the regression be?
-
-::: {.answer .hidden}
-$R^2 = r^2 =0.1558^2 =  0.0243$
-:::
-
-(c) If I perform a linear regression using the miles away from school a student lives (\texttt{miles}) to predict his/her drinking score (\texttt{drink}), will the slope estimate be positive or negative?
-
-::: {.answer .hidden}
-negative, because $r=-0.2702 <0$
-:::
-
-(d) If I perform a linear regression using the miles away from school a student lives (\texttt{miles}) to predict his/her drinking score (\texttt{drink}), what will the coefficient of determination for the regression be?
-
-::: {.answer .hidden}
-$R^2 = r^2 =(-0.2702)^2 =  0.073$
-:::
-
-(e) If I perform a linear regression using drinking score (\texttt{drink} to predict the miles away from school a student lives (\texttt{miles}), what will the coefficient of determination for the regression be?
-
-::: {.answer .hidden}
-Same as in (d), $R^2=0.073$ -- switching X and Y doesn't change $r$ or $R^2$
-:::
+A summary of some of the variables in the New Hampshire student survey data is below. Use this to answer the questions.
 
 ```{.text .stata}
 
@@ -92,3 +62,34 @@ Same as in (d), $R^2=0.073$ -- switching X and Y doesn't change $r$ or $R^2$
        miles |   0.1558  -0.2702   1.0000
 
 ```
+
+(a) If I perform a linear regression using the miles away from school a student lives (`miles`) to predict his/her GPA (`gpa`), will the slope estimate be positive or negative?
+
+::: {.answer .hidden}
+positive, because $r=0.1558 >0$
+:::
+
+(b) If I perform a linear regression using the miles away from school a student lives (`miles`) to predict his/her GPA (`gpa`), what will the coefficient of determination for the regression be?
+
+::: {.answer .hidden}
+$R^2 = r^2 =0.1558^2 =  0.0243$
+:::
+
+(c) If I perform a linear regression using the miles away from school a student lives (`miles`) to predict his/her drinking score (`drink`), will the slope estimate be positive or negative?
+
+::: {.answer .hidden}
+negative, because $r=-0.2702 <0$
+:::
+
+(d) If I perform a linear regression using the miles away from school a student lives (`miles`) to predict his/her drinking score (`drink`), what will the coefficient of determination for the regression be?
+
+::: {.answer .hidden}
+$R^2 = r^2 =(-0.2702)^2 =  0.073$
+:::
+
+(e) If I perform a linear regression using drinking score (`drink`) to predict the miles away from school a student lives (`miles`), what will the coefficient of determination for the regression be?
+
+::: {.answer .hidden}
+Same as in (d), $R^2=0.073$ -- switching X and Y doesn't change $r$ or $R^2$
+:::
+

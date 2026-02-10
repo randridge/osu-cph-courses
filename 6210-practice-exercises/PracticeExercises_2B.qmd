@@ -65,9 +65,9 @@ $P(X=0)=\frac{e^{-1.8}1.8^0}{0!} = 0.1653$
 ::: {.answer .hidden}
 ANSWER: 0.5372
 
-$P(X \ge 2) = 1 - P(X < 2) = 1 - [P(X=0) + P(X=1)] = 1 - \left[\frac{e^{-1.8}1.8^0}{0!} + \frac{e^{-1.8}1.8^1}{1!}\right] $
+$P(X \ge 2) = 1 - P(X < 2) = 1 - [P(X=0) + P(X=1)] = 1 - \left[\frac{e^{-1.8}1.8^0}{0!} + \frac{e^{-1.8}1.8^1}{1!}\right]$
 
-$ = 1 - [0.1653 + 0.2975] = 1 - 0.4628 = 0.5372$
+$= 1 - [0.1653 + 0.2975] = 1 - 0.4628 = 0.5372$
 :::
 
 (d) How many births do we expect to see in a given hour at the hospital?

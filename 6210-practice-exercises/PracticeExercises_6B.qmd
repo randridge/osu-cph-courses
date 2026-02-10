@@ -15,17 +15,13 @@ In a study of low birthweight and maternal smoking, the birth outcomes of 74 wom
 (a) Construct a 2x2 contingency table for these data.
 
 ::: {.answer .hidden}
-\begin{tabular}{lccc}
- & Low & Not Low &  
+| Group      | Low Birthweight | Not Low Birthweight | Total |
+|------------|-----------------|---------------------|-------|
+| Smoker     | 30              | 44                  | 74    |
+| Non-Smoker | 29              | 86                  | 115   |
+| Total      | 59              | 130                 | 189   |
 
- & Birthweight & Birthweight & Total \\ \hline
-Smoker      & 30 & 44 & 74
-
-Non-Smoker  & 29 & 86 & 115\\ \hline
-Total       & 59 & 130 & 189
-
-\end{tabular}
-
+: Solution table
 :::
 
 (b) What is the estimated probability that a baby is born with low birthweight among women who smoke? Among women who do not smoke?
@@ -43,18 +39,16 @@ Common (overall) probability of low birthweight: $\hat{p}=\frac{30+29}{189}=\fra
 
 Women who smoke:
 
- Expected &#35; with low birthweight = $0.312 \times 74 = 23.1$
+Expected \# with low birthweight = $0.312 \times 74 = 23.1$
 
- Expected &#35; with not low birthweight = $(1-0.312) \times 74 = 50.9$
+Expected \# with not low birthweight = $(1-0.312) \times 74 = 50.9$
 
 Women who do not smoke:
 
- Expected &#35; with low birthweight = $0.312 \times 115 = 35.9$
+Expected \# with low birthweight = $0.312 \times 115 = 35.9$
 
- Expected &#35; with not low birthweight = $(1-0.312) \times 115 = 79.1$
+Expected \# with not low birthweight = $(1-0.312) \times 115 = 79.1$
 :::
-
----
 
 (d) Calculate the chi-square test statistic using the expected counts you calculated in (c).
 
@@ -63,7 +57,7 @@ $\displaystyle X^2 = \sum_{\text{all cells}} \frac{(\text{Observed} - \text{Expe
 
 $\displaystyle = \frac{(30-23.1)^2}{23.1} + \frac{(44-50.9)^2}{50.9} + \frac{(29-35.9)^2}{35.9} + \frac{(86-79.1)^2}{79.1}$
 
-$ =  2.06 + 0.935 + 1.33 + 0.602 = 4.93$
+$= 2.06 + 0.935 + 1.33 + 0.602 = 4.93$
 :::
 
 (e) Test whether there is a significant difference in the probability of a low birthweight baby for women who smoke during pregnancy and women who do not smoke using a chi-square test. Make sure to write all steps of the hypothesis test and state a conclusion.
@@ -87,20 +81,20 @@ test statistic $4.93 >$ critical value $\rightarrow$ Reject $H_0$
 
 \underline{P-value method:}
 
-p-value = $P(\chi^2(1) > 4.93) = 0.026$ from Stata   Stata code: \texttt{display chi2tail(1, 4.93)}
+p-value = $P(\chi^2(1) > 4.93) = 0.026$ from Stata Stata code: \texttt{display chi2tail(1, 4.93)}
 
 p-value = $0.026 < 0.05 \rightarrow$ Reject $H_0$
 
 \underline{Conclusion:} There is evidence that there is a significant association between smoking during pregnancy and having a low birthweight baby. (Or: There is evidence that the proportion of mothers who smoke during pregnancy who have low birthweight babies is significantly different from the proportion of mothers who do not smoke during pregnancy.)
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 2
 
 A study was done to compare the rate of chronic kidney disease (CKD) among diabetics and non-diabetics. The data from Stata are below. We are interested in whether the probability of CKD is the same for diabetics and non-diabetics.
 
-```{.text .stata}
+``` {.text .stata}
 
 . tabulate group ckd
 
@@ -111,7 +105,6 @@ A study was done to compare the rate of chronic kidney disease (CKD) among diabe
 non-diabetics |        35        190 |       225 
 --------------+----------------------+----------
         Total |        65        270 |       335 
-
 ```
 
 (a) What is the estimated probability of CKD in each group (diabetics, non-diabetics)?
@@ -126,7 +119,7 @@ $\displaystyle \hat{p}_1=\frac{30}{110}=0.273$
 $\displaystyle \hat{p}_2=\frac{35}{225}=0.156$
 :::
 
----
+------------------------------------------------------------------------
 
 (b) Use a two-sample z-test to test whether the probability of CKD is different for diabetics and non-diabetics in the population.
 
@@ -163,7 +156,7 @@ Shortcut formula for test statistic: $X^2 = \frac{n(ad-bc)^2}{(a+c)(b+d)(c+d)(a+
 
 Under $H_0, X^2 \sim \chi^2(1)$
 
-p-value = $P(\chi^2(1) > 6.49) = 0.011$ from Stata  Stata code: \texttt{display chi2tail(1,6.49)}
+p-value = $P(\chi^2(1) > 6.49) = 0.011$ from Stata Stata code: \texttt{display chi2tail(1,6.49)}
 
 Same p-value as in (b), so we draw the same conclusion.
 :::

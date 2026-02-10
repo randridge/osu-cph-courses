@@ -12,29 +12,25 @@ format:
 
 A multimedia program designed to improve dietary behavior among low-income women was evaluated by randomly assigning women to intervention and control groups. One outcome was the score on a knowledge test taken about 2 months after the program. A summary of the data is below:
 
-\begin{tabular}{lccc}
-Group & $n$ & $\xb$ & s 
+| Group        | $n$ | $\bar{x}$ | $s$  |
+|--------------|-----|-----------|------|
+| Intervention | 15  | 5.08      | 1.15 |
+| Control      | 12  | 4.33      | 1.16 |
 
-\midrule
-Intervention & 15 & 5.08 & 1.15 
-
-Control & 12 & 4.33 & 1.16
-
-\bottomrule
-\end{tabular}
+: Summary statistics
 
 Is there evidence that there is a difference between intervention and control?
 
 ::: {.answer .hidden}
-$n_1=15, \bar{x}_1=5.08, s_1=1.15$  and  $n_2=12, \bar{x}_2=4.33, s_2=1.16$
+$n_1=15, \bar{x}_1=5.08, s_1=1.15$ and $n_2=12, \bar{x}_2=4.33, s_2=1.16$
 
-$ s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} =  \frac{(15-1)1.15^2+(12-1)1.16^2}{15+12-2} = 1.33 \rightarrow s_p=\sqrt{1.33}=1.15$
+$s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} = \frac{(15-1)1.15^2+(12-1)1.16^2}{15+12-2} = 1.33 \rightarrow s_p=\sqrt{1.33}=1.15$
 
 $H_0: \mu_1=\mu_2$
 
 $H_a: \mu_1 \ne \mu_2$
 
-$ t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} = \frac{5.08 - 4.33}{1.15 \sqrt{\frac{1}{15}+\frac{1}{12}}}= \frac{0.75}{0.4454} = 1.68$
+$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} = \frac{5.08 - 4.33}{1.15 \sqrt{\frac{1}{15}+\frac{1}{12}}}= \frac{0.75}{0.4454} = 1.68$
 
 Under $H_0, T \sim t_{n_1+n_2-2}=t_{25}$
 
@@ -50,12 +46,12 @@ p-value $= 2 \times P(t_{25} > |1.68|) = 2 \times P(t_{25}>1.68)$
 
 $P(t_{25}>1.708)=0.05$ and $P(t_{25}>1.316)=0.1$, so $P(t_{25}>1.68)$ between 0.05 & 0.1
 
-Thus p-value = between $0.1$ and $0.2$  (Exact p-value from Stata = $0.105$)
+Thus p-value = between $0.1$ and $0.2$ (Exact p-value from Stata = $0.105$)
 
 Is p-value $< \alpha$? No, $\rightarrow$ Fail to reject $H_0$
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 2
 
@@ -78,13 +74,13 @@ DF = $n_1+n_2-2 = 30+30-2=58$
 (c) The $t$ statistic for comparing the mean sales is 2.06. Draw a conclusion for the entrepreneur.
 
 ::: {.answer .hidden}
-$H_0: \mu_A=\mu_B$  where $\mu_A=$ mean sales under Design A, $\mu_B=$ mean sales under Design B
+$H_0: \mu_A=\mu_B$ where $\mu_A=$ mean sales under Design A, $\mu_B=$ mean sales under Design B
 
 $H_a: \mu_A \ne \mu_B$
 
 $t=2.06$ (given)
 
-Under $H_0$, $T \sim t_{58}$  DF=58 not on table, approximate with DF=50 (closest smaller value)
+Under $H_0$, $T \sim t_{58}$ DF=58 not on table, approximate with DF=50 (closest smaller value)
 
 **Critical Value Method:**
 
@@ -98,18 +94,18 @@ p-value $\approx 2 \times P(t_{50} > |2.06|) = 2 \times P(t_{50}>2.06)$
 
 $P(t_{50}>2.403)=0.01$ and $P(t_{50}>2.009)=0.025$, so $P(t_{50}>2.06)$ between 0.01 & 0.025
 
-Thus p-value = between $0.02$ and $0.05$  (Exact p-value from Stata = $0.044$)
+Thus p-value = between $0.02$ and $0.05$ (Exact p-value from Stata = $0.044$)
 
 Is p-value $< \alpha$? Yes, $\rightarrow$ Reject $H_0$
 :::
 
----
+------------------------------------------------------------------------
 
 # Exercise 3
 
-In the University of New Hampshire student survey data, information is collected on each student's gender and his/her GPA. This sample was used to test whether there is a difference in GPA between male and female students (at UNH in 1988). Use the Stata output below to answer the questions  on the next page.
+In the University of New Hampshire student survey data, information is collected on each student's gender and his/her GPA. This sample was used to test whether there is a difference in GPA between male and female students (at UNH in 1988). Use the Stata output below to answer the questions on the next page.
 
-```{.text .stata}
+``` {.text .stata}
 
 . ttest gpa, by(gender)
 
@@ -129,10 +125,9 @@ Ho: diff = 0                                     degrees of freedom =      216
 
     Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
  Pr(T < t) = 0.9959         Pr(|T| > |t|) = 0.0083          Pr(T > t) = 0.0041
-
 ```
 
----
+------------------------------------------------------------------------
 
 (a) What is the estimate of the difference in GPA, females minus males?
 
@@ -158,7 +153,7 @@ $H_0: \mu_F=\mu_M$ where $\mu_F=$ mean GPA for females, $\mu_M=$ mean GPA for ma
 $t$=2.6648
 :::
 
-(e) What is the distribution of this test statistic under the null hypothesis? 
+(e) What is the distribution of this test statistic under the null hypothesis?
 
 ::: {.answer .hidden}
 $T \sim t_{216}$

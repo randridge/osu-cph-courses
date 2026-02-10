@@ -2403,13 +2403,38 @@ window.Quarto = {
 <section id="exercise-1" class="level1">
 <h1>Exercise 1</h1>
 <p>A multimedia program designed to improve dietary behavior among low-income women was evaluated by randomly assigning women to intervention and control groups. One outcome was the score on a knowledge test taken about 2 months after the program. A summary of the data is below:</p>
+<table class="caption-top table">
+<caption>Summary statistics</caption>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(\bar{x}\)</span></th>
+<th><span class="math inline">\(s\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intervention</td>
+<td>15</td>
+<td>5.08</td>
+<td>1.15</td>
+</tr>
+<tr class="even">
+<td>Control</td>
+<td>12</td>
+<td>4.33</td>
+<td>1.16</td>
+</tr>
+</tbody>
+</table>
 <p>Is there evidence that there is a difference between intervention and control?</p>
 <div class="answer hidden">
 <p><span class="math inline">\(n_1=15, \bar{x}_1=5.08, s_1=1.15\)</span> and <span class="math inline">\(n_2=12, \bar{x}_2=4.33, s_2=1.16\)</span></p>
-<p>$ s_p^2 = = = 1.33 s_p==1.15$</p>
+<p><span class="math inline">\(s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} = \frac{(15-1)1.15^2+(12-1)1.16^2}{15+12-2} = 1.33 \rightarrow s_p=\sqrt{1.33}=1.15\)</span></p>
 <p><span class="math inline">\(H_0: \mu_1=\mu_2\)</span></p>
 <p><span class="math inline">\(H_a: \mu_1 \ne \mu_2\)</span></p>
-<p>$ t = = = = 1.68$</p>
+<p><span class="math inline">\(t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} = \frac{5.08 - 4.33}{1.15 \sqrt{\frac{1}{15}+\frac{1}{12}}}= \frac{0.75}{0.4454} = 1.68\)</span></p>
 <p>Under <span class="math inline">\(H_0, T \sim t_{n_1+n_2-2}=t_{25}\)</span></p>
 <p><strong>Critical Value Method:</strong></p>
 <p>critical value from <span class="math inline">\(t_{25}\)</span> with 0.025 in the tail is <span class="math inline">\(t^*=2.060\)</span></p>

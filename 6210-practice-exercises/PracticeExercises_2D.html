@@ -2418,7 +2418,7 @@ window.Quarto = {
 </section>
 <section id="exercise-4" class="level1">
 <h1>Exercise 4</h1>
-<p>If a random variable <span class="math inline">\(X\)</span> is normally distributed with a mean of 25 and a standard deviation of 5, what will be the distribution of $ $?</p>
+<p>If a random variable <span class="math inline">\(X\)</span> is normally distributed with a mean of 25 and a standard deviation of 5, what will be the distribution of <span class="math inline">\(\frac{X-25}{5}\)</span>?</p>
 <div class="answer hidden">
 <p>ANSWER: <span class="math inline">\(N(0,1)\)</span></p>
 <p>This is just a z-score transformation – subtracting the mean and then dividing by the standard deviation, thus the distribution will be standard normal: <span class="math inline">\(N(0,1)\)</span></p>
@@ -2463,7 +2463,6 @@ window.Quarto = {
 </ol>
 <div class="answer hidden">
 <p>ANSWER: 110.05 (75th percentile)</p>
-<p>~</p>
 <p>25% of values <span class="math inline">\(\rightarrow\)</span> 75% of values <span class="math inline">\(\rightarrow\)</span> 75th percentile <span class="math inline">\(\rightarrow P(Z&lt;a)=0.75\)</span></p>
 <p>From Normal Table, Column A: <span class="math inline">\(P(Z&lt;0.67)=0.7486 \rightarrow a=0.67\)</span></p>
 <p><span class="math inline">\(x=a \times \sigma + \mu = 0.67 \times 15 + 100=110.05\)</span></p>
@@ -2473,7 +2472,6 @@ window.Quarto = {
 </ol>
 <div class="answer hidden">
 <p>ANSWER: 124.75 (95th percentile)</p>
-<p>~</p>
 <p>95% of values <span class="math inline">\(\rightarrow\)</span> 95th percentile <span class="math inline">\(\rightarrow P(Z&lt;a)=0.95\)</span></p>
 <p>From Normal Table, Column A: <span class="math inline">\(P(Z&lt;1.65)=0.9505 \rightarrow a=1.65\)</span></p>
 <p><span class="math inline">\(x=a \times \sigma + \mu = 1.65 \times 15 + 100=124.75\)</span></p>
@@ -2483,14 +2481,12 @@ window.Quarto = {
 </ol>
 <div class="answer hidden">
 <p>ANSWER: 89.95 (25th percentile)</p>
-<p>~</p>
 <p>75% of values <span class="math inline">\(\rightarrow\)</span> 25% of values <span class="math inline">\(\rightarrow\)</span> 25th percentile <span class="math inline">\(\rightarrow P(Z&lt;a)\)</span></p>
 <p>Need trick of symmetry to find in table: <span class="math inline">\(P(Z&lt;a)=P(Z&gt;-a)=0.25\)</span></p>
 <p>From Normal Table, Column A: <span class="math inline">\(P(Z&gt;0.67)=0.2514 \rightarrow -a=0.67 \rightarrow a = -0.67\)</span></p>
 <p><span class="math inline">\(x=a \times \sigma + \mu = -0.67 \times 15 + 100=89.95\)</span></p>
-<p>~</p>
-<p>{Note: could recognize that the 25th percentile would be as far below the mean as the 75th was above</p>
-<p>The 75th percentile is <span class="math inline">\(110.05=100+10.05\)</span>, thus the 25th percentile <span class="math inline">\(=100-10.05=89.95\)</span>}</p>
+<p><em>Note: could recognize that the 25th percentile would be as far below the mean as the 75th was above</em></p>
+<p><em>The 75th percentile is <span class="math inline">\(110.05=100+10.05\)</span>, thus the 25th percentile <span class="math inline">\(=100-10.05=89.95\)</span></em></p>
 </div>
 </section>
 

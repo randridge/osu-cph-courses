@@ -10,50 +10,7 @@ format:
 
 # Exercise 1
 
-Linear regression was used to investigate the relationship between age (years) and systolic blood pressure (mmHg) in a sample of adults ranging from 29 to 69 years old. Partial Stata output is on the next page.
-
-(a) How may people were in the sample?
-
-::: {.answer .hidden}
-29
-:::
-
-(b) Test whether age is a significant predictor of SBP (at the $\alpha=0.05$ level).
-
-::: {.answer .hidden}
-$H_0: \beta_1=0$  $\beta_1=$ slope of age predicting SBP
-
-$H_a: \beta_1 \ne 0$
-
-$ t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{0.9493225}{0.1161445} = 8.17$
-
-Under $H_0$, $t \sim t_{27}$
-
-Critical value $t^* = 2.052$
-
-Is $|t| > t^*$? Yes, $|8.17| > 2.052 \rightarrow$ Reject $H_0$
-
-There is evidence that age is significantly associated with SBP.
-
-Note : P-value method yields p-value $< 0.0005$.
-:::
-
-(c) What is the coefficient of determination for this model? Interpret this quantity.
-
-::: {.answer .hidden}
-$R^2=0.7122$  71.2% of the variability in SBP is explained by age.
-:::
-
-(d) Calculate a 95% confidence interval for the population slope. Will 0 be in this interval?
-
-::: {.answer .hidden}
-0 will not be in the CI because we rejected the null, $H_0: \beta_1=0$
-
-$0.9493225 \pm 2.052 \times 0.1161445$
-
-$(0.711, 1.19)$
-:::
-
+Linear regression was used to investigate the relationship between age (years) and systolic blood pressure (mmHg) in a sample of adults ranging from 29 to 69 years old. Partial Stata output below.
 
 ```{.text .stata}
 
@@ -75,11 +32,78 @@ $(0.711, 1.19)$
 
 ```
 
+(a) How may people were in the sample?
+
+::: {.answer .hidden}
+29
+:::
+
+(b) Test whether age is a significant predictor of SBP (at the $\alpha=0.05$ level).
+
+::: {.answer .hidden}
+$H_0: \beta_1=0$  $\beta_1=$ slope of age predicting SBP
+
+$H_a: \beta_1 \ne 0$
+
+$t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{0.9493225}{0.1161445} = 8.17$
+
+Under $H_0$, $t \sim t_{27}$
+
+Critical value $t^* = 2.052$
+
+Is $|t| > t^*$? Yes, $|8.17| > 2.052 \rightarrow$ Reject $H_0$
+
+There is evidence that age is significantly associated with SBP.
+
+Note : P-value method yields p-value $< 0.0005$.
+:::
+
+(c) What is the coefficient of determination for this model? Interpret this quantity.
+
+::: {.answer .hidden}
+$R^2=0.7122$
+
+71.2% of the variability in SBP is explained by age.
+:::
+
+(d) Calculate a 95% confidence interval for the population slope. Will 0 be in this interval?
+
+::: {.answer .hidden}
+0 will not be in the CI because we rejected the null, $H_0: \beta_1=0$
+
+$0.9493225 \pm 2.052 \times 0.1161445$
+
+$(0.711, 1.19)$
+:::
+
+
+
+
 ---
 
 # Exercise 2
 
-In a study of factors associated with levels of HDL, the "good cholesterol", investigators were interested in whether or not a person's education level might be a predictor of HDL (mg/dL). Education was measured as the number of years of education a person had. The researchers used linear regression and partial Stata output is on the next page.
+In a study of factors associated with levels of HDL, the "good cholesterol", investigators were interested in whether or not a person's education level might be a predictor of HDL (mg/dL). Education was measured as the number of years of education a person had. The researchers used linear regression and partial Stata output is below.
+
+```{.text .stata}
+
+. regress hdl education
+
+      Source |       SS       df       MS              Number of obs =      91
+-------------+------------------------------           F(  1,    89) =    0.01
+       Model |  1.52391634     1  1.52391634           Prob > F      =  0.9385
+    Residual |  22655.4651    89  254.555788           R-squared     =  0.0001
+-------------+------------------------------           Adj R-squared = -0.0112
+       Total |   22656.989    90  251.744322           Root MSE      =  15.955
+
+------------------------------------------------------------------------------
+         hdl |      Coef.   Std. Err.      t    P>|t|     [95
+-------------+----------------------------------------------------------------
+   education |  -.0322503   .4168166
+       _cons |   52.33561   4.781676
+------------------------------------------------------------------------------
+
+```
 
 (a) Test whether years of education is a significant predictor of HDL (at the $\alpha=0.05$ level).
 
@@ -88,7 +112,7 @@ $H_0: \beta_1=0$  $\beta_1=$ slope of education predicting HDL
 
 $H_a: \beta_1 \ne 0$
 
-$ t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{-0.0322503}{0.4168166} = -0.077$
+$t=\frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{-0.0322503}{0.4168166} = -0.077$
 
 Under $H_0$, $t \sim t_{89}$
 
@@ -115,22 +139,3 @@ $R^2=0.0001$
 Yes, 0 would be in the CI, because we failed to reject $H_0$ at the $\alpha=0.05$ level. Thus 0 is a "plausible value" for the true slope, so 0 would be in the CI.
 :::
 
-```{.text .stata}
-
-. regress hdl education
-
-      Source |       SS       df       MS              Number of obs =      91
--------------+------------------------------           F(  1,    89) =    0.01
-       Model |  1.52391634     1  1.52391634           Prob > F      =  0.9385
-    Residual |  22655.4651    89  254.555788           R-squared     =  0.0001
--------------+------------------------------           Adj R-squared = -0.0112
-       Total |   22656.989    90  251.744322           Root MSE      =  15.955
-
-------------------------------------------------------------------------------
-         hdl |      Coef.   Std. Err.      t    P>|t|     [95
--------------+----------------------------------------------------------------
-   education |  -.0322503   .4168166
-       _cons |   52.33561   4.781676
-------------------------------------------------------------------------------
-
-```
