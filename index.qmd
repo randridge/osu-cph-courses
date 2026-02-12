@@ -45,3 +45,13 @@ title: "OSU CPH Biostatistics Supplemental Course Materials"
 *  [Practice Exercises Block 9](./6211-practice-exercises/PUBHBIO6211_Exercises_Block9.html)
 *  [Practice Exercises Block 10](./6211-practice-exercises/PUBHBIO6211_Exercises_Block10.html)
 *  [Practice Exercises Block 11](./6211-practice-exercises/PUBHBIO6211_Exercises_Block11.html)
+
+# Distribution Tables
+
+*  [All tables below on one page](./index_tables.html)
+*  [Normal distribution](./distribution-tables/table_normal.html)
+*  [Binomial distribution](./distribution-tables/table_binomial.html)
+*  [Poisson distribution](./distribution-tables/table_poisson.html)
+*  [t distribution](./distribution-tables/table_t.html)
+*  [Chi-square distribution](./distribution-tables/table_chisquare.html)
+*  [F distribution](./distribution-tables/table_F.html)

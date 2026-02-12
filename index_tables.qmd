@@ -1,0 +1,468 @@
+---
+title: "Distribution Tables"
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    embed-resources: true
+    html-math-method: mathjax
+    css: styles.css
+    toc: true
+---
+
+## Normal distribution
+
+:::: {.columns}
+
+::: {.column width = "40%"}
+
+```{r}
+#| echo: false
+#| fig-cap: ""
+#| fig-alt: "A standard normal distribution curve (bell curve) centered at zero. The region under the curve from the far left up to a positive value 'x' is shaded, illustrating the cumulative probability P(Z < x) mentioned in Column A of the table."
+
+# Graph of area to the left
+par(mar=c(2.1,0.3,0.3,0.3))
+curve(dnorm(x),-4,4, lwd=2, lty=1, frame.plot=FALSE, yaxt="n", xaxt="n", ylim=c(0,0.45), yaxs="i")
+axis(1, at=c(-5,0,1,5), labels=c(" ","0","x"," "), lwd=2, cex.axis=1.8)
+# P(Z < x)
+xvals <- seq(-4,1,length=50)
+dvals <- dnorm(xvals)
+polygon(c(xvals, rev(xvals)), c(rep(0,50),rev(dvals)), col="grey90")
+text(-3,0.3,expression(P*(Z<x)), cex=1.8, pos=1)
+arrows(-3, 0.22, -0.5, 0.15, code=2, lwd=2, length=0.1)
+text(-4.2,0.42,expression(underline("Column A")),cex=1.5, pos=4)
+```
+
+:::
+
+::: {.column width = "10%"}
+
+:::
+
+::: {.column width = "40%"}
+
+```{r}
+#| echo: false
+#| fig-cap: ""
+#| fig-alt: "A standard normal distribution curve (bell curve) centered at zero. The region under the curve from a positive value 'x' to the far right is shaded, illustrating the cumulative probability P(Z > x) mentioned in Column B of the table."
+
+# Graph of area to the right
+par(mar=c(2.1,0.3,0.3,0.3))
+curve(dnorm(x),-4,4, lwd=2, lty=1, frame.plot=FALSE, yaxt="n", xaxt="n", ylim=c(0,0.45), yaxs="i")
+axis(1, at=c(-5,0,1,5), labels=c(" ","0","x"," "), lwd=2, cex.axis=1.8)
+# P(Z > x)
+xvals <- seq(1,4,length=50)
+dvals <- dnorm(xvals)
+polygon(c(xvals, rev(xvals)), c(rep(0,50),rev(dvals)), col="grey90")
+text(3,0.3,expression(P*(Z>x)), cex=1.8, pos=1)
+arrows(3, 0.22, 1.3, 0.08, code=2, lwd=2, length=0.1)
+text(4.2,0.42,expression(underline("Column B")),cex=1.5, pos=2)
+```
+
+:::
+
+::::
+
+Use this table to look up probabilities for the standard normal distribution. Locate your Z-score in the x column to find the corresponding area to the left (Column A) or the area to the right (Column B). The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+```{r}
+#| echo: false
+#| message: false
+library(dplyr)
+library(gt)
+
+z_values <- seq(0.00, 3.77, by = 0.01)
+
+z_df <- data.frame(
+  x = z_values,
+  lower = pnorm(z_values),               # P(Z < x)
+  upper = pnorm(z_values, lower = FALSE) # P(Z > x)
+)
+
+z_df %>%
+  gt() %>%
+  tab_header(title = "Normal Distribution") %>%
+  opt_css(css = "
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    .gt_column_spanner_outer {
+      position: sticky;
+      top: 0;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.overflow.y = "scroll"
+  ) %>%
+  tab_spanner(label = "A", columns = lower) %>%
+  tab_spanner(label = "B", columns = upper) %>%
+  cols_label(x = "x", lower = "P(Z < x)", upper = "P(Z > x)") %>%
+  fmt_number(columns = lower:upper, decimals = 4) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners())) 
+```
+
+Note: Column A is the area to the left; Column B is the area to the right.
+
+
+## Binomial distribution
+
+Use this table to look up probabilities for the binomial distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+This table provides the probability of exactly $k$ occurrences in $n$ independent trials, where each trial has a probability of success $p$.
+
+1.  **Locate the Number of Trials ($n$):** Find the horizontal section header for your specific $n$ (e.g., n = 3).
+2.  **Select the Probability of Success ($p$):** Move across the top bold header to find the column for your probability (e.g., .25).
+3.  **Identify the Number of Successes ($k$):** Find the row within your $n$ section corresponding to the number of successes you are looking for in the first bold column.
+4.  **Find the Intersection:** The value at the intersection of the $p$ column and $k$ row is your probability, $P(X = k)$
+
+These probabilities can also be calculated using the equation for the probability mass function:
+
+$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+n_values <- 2:20
+p_values <- seq(0.05, 0.50, by = 0.05)
+
+binomial_df <- expand.grid(n = n_values, p = p_values) %>%
+  group_by(n, p) %>%
+  reframe(k = 0:unique(n)) %>%
+  mutate(prob = dbinom(k, size = n, prob = p),
+         p_label = format(p, nsmall = 2),
+         n_group = paste0("n = ",n)) %>%
+  pivot_wider(id_cols = c(n_group, k), names_from = p_label, values_from = prob)
+
+fmt_no_leading_zero <- function(x) {
+  out <- sprintf("%.4f", as.numeric(x))
+  gsub("^0", "", out)
+}
+
+binomial_df %>%
+  gt(groupname_col = "n_group") %>% # Grouping by n creates the structural breaks
+  tab_header(title = "Binomial Distribution Probabilities",
+             subtitle = "P(X = k) for n trials with success probability p") %>%
+text_transform(
+    locations = cells_body(columns = -c(k)),
+    fn = fmt_no_leading_zero
+  ) %>%
+  tab_spanner(label = md("**p**"), columns = -c(k), id = "p_spanner") %>%
+  cols_label(k = md("**k**")) %>%
+  # Styling and Sticky Headers
+  opt_css(css = "
+    thead { position: sticky; top: 0; z-index: 100; background-color: white; }
+    .gt_column_spanner, .gt_col_heading { font-weight: bold !important; }
+    /* Style for the 'n' grouping rows to make them look clean */
+    .gt_group_header { 
+      background-color: #f1f1f1; 
+      font-weight: bold; 
+      text-align: left;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(600),
+    container.overflow.y = "scroll"
+  )
+```
+
+## Poisson distribution
+
+Use this table to look up probabilities for the poisson distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+This table provides the probability of exactly $k$ occurrences given an average rate ($\lambda$).
+
+1.  **Select your rate ($\lambda$):** Locate $\lambda$ across the top bold header.
+2.  **Identify your number of events/occurances ($k$):** Find the number of events in the first bold column on the left.
+3.  **Find the Probability:** The intersection of your chosen $\lambda$ and $k$ is the probability.
+
+These probabilities can also be calculated using the equation for the probability mass function:
+
+$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}$
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| column: screen-inset
+library(dplyr)
+library(tidyr)
+library(gt)
+
+lambda_values <- seq(0.5, 20, 0.5)
+k_values <- 0:40
+
+poisson_df <- expand.grid(lambda = lambda_values, k = k_values) %>%
+  mutate(prob = dpois(k, lambda),
+         # keep .0 in heading
+         lambda_label = format(lambda, nsmall = 1)) %>%
+  pivot_wider(id_cols = k, names_from = lambda_label, values_from = prob)
+
+fmt_no_leading_zero <- function(x) {
+  # Format to 4 decimals, then remove the leading '0'
+  out <- sprintf("%.4f", x)
+  gsub("^0", "", out)
+}
+
+poisson_df %>%
+  gt() %>%
+  tab_header(title = "Poisson Distribution Probabilities",
+             subtitle = "P(X = k) for various values of λ") %>%
+  # Apply the custom formatting to all columns except 'k'
+  text_transform(
+    locations = cells_body(columns = -k),
+    fn = function(x) {
+      fmt_no_leading_zero(as.numeric(x))
+    }
+  ) %>%
+  opt_css(css = "
+    /* 1. Keep the Header at the top */
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    
+    /* 2. Keep the first column (k) at the left */
+    /* Target the body cells and header cells of the first column */
+    th:first-child, td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 50;
+      background-color: #f8f9fa !important; /* Slight gray so it stands out */
+      border-right: 2px solid #dee2e6;
+    }
+
+    /* 3. Ensure the very top-left corner stays above everything */
+    thead th:first-child {
+      z-index: 150;
+    }
+    
+    .gt_column_spanner, .gt_col_heading { font-weight: bold !important; }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.width = pct(100),
+    container.overflow.y = "scroll",
+    container.overflow.x = "scroll"
+  ) %>%
+  tab_spanner(
+    label = md("**&lambda;**"),
+    columns = -k,
+    gather = FALSE
+  ) %>%
+  cols_label(k = md("**k**")) %>%
+  fmt_number(columns = -k, decimals = 4) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners(),
+              cells_body(columns = k)))
+```
+
+
+## t distribution
+
+Use this table to look up probabilities for the t distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+1.  **Identify your Degrees of Freedom (df):** Locate the appropriate row in the DF column.
+2.  **Choose your alpha ($\alpha$) or Upper Tail Area:** Move across the top header to find the column corresponding to your desired area in the upper tail (e.g., 0.05 for a one-tailed test or 0.025 for a two-tailed 95% confidence interval).
+3.  **Find the Intersection:** The value where the row and column meet is your critical value ($t^*$).
+
+Note: As degrees of freedom increase, the t-distribution approaches the Standard Normal (Z) distribution. If your exact DF is not listed, it is standard practice to use the next lower (smaller) value available in the table to be conservative.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+df_values <- c(1:30, seq(40, 120, 10), Inf)
+upper_tail_probs <- c(0.25, 0.20, 0.15, 0.10, 0.05, 0.025, 0.01, 0.005, 0.0005)
+
+t_df <- expand.grid(DF = df_values, Prob = upper_tail_probs) %>%
+  mutate(critical_value = qt(1 - Prob, df = DF),
+         Prob_Label = format(Prob, scientific = FALSE, drop0trailing = TRUE)) %>%
+  pivot_wider(id_cols = DF, names_from = Prob_Label, values_from = critical_value)
+
+t_df %>%
+  gt() %>%
+  sub_values(values = Inf, replacement = "∞") %>%
+  tab_header(title = "t Distribution Critical Values") %>%
+  opt_css(css = "
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    .gt_column_spanner_outer {
+      position: sticky;
+      top: 0;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.overflow.y = "scroll"
+  ) %>%
+  tab_spanner(
+    label = "Area in Upper Tail",
+    columns = everything(),
+    gather = FALSE
+  ) %>%
+  fmt_number(columns = -DF, decimals = 3) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners())) 
+```
+
+
+## Chi-square distribution
+
+Use this table to look up probabilities for the chi-square distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+1.  **Identify your Degrees of Freedom (DF):** Locate the appropriate row in the DF column.
+2.  **Choose your alpha ($\alpha$) or Upper Tail Area:** Move across the top header to find the column corresponding to your desired area in the upper tail (e.g., 0.05 for a one-tailed test or 0.025 for a two-tailed 95% confidence interval).
+3.  **Find the Intersection:** The value where the row and column meet is your critical value.
+
+Note: If your exact DF is not listed, it is standard practice to use the next lower (smaller) value available in the table to be conservative.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+df_values <- c(1:30, seq(40, 120, 10))
+upper_tail_probs <- c(0.25, 0.20, 0.15, 0.10, 0.05, 0.025, 0.01, 0.005, 0.001)
+
+chi2_df <- expand.grid(DF = df_values, Prob = upper_tail_probs) %>%
+  mutate(critical_value = qchisq(1 - Prob, df = DF),
+         Prob_Label = format(Prob, scientific = FALSE, drop0trailing = TRUE)) %>%
+  pivot_wider(id_cols = DF, names_from = Prob_Label, values_from = critical_value)
+
+chi2_df %>%
+  gt() %>%
+  tab_header(title = "Chi-square Distribution Critical Values") %>%
+  opt_css(css = "
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    .gt_column_spanner_outer {
+      position: sticky;
+      top: 0;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.overflow.y = "scroll"
+  ) %>%
+  tab_spanner(
+    label = "Area in Upper Tail",
+    columns = everything(),
+    gather = FALSE,
+    id = "top_spanner"
+  ) %>%
+  fmt_number(columns = -DF, decimals = 2) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners())) 
+```
+
+
+## F distribution
+
+Use this table to look up probabilities for the F distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+1.  **Find the Denominator DF:** Locate the section corresponding to your denominator DF (e.g., Denominator DF = 2).
+2.  **Select the alpha Level (**$\alpha$): Find the desired "Area in Upper Tail" (e.g., 0.050) within that section.
+3.  **Find the Numerator DF:** Look across the top bold header for the numerator DF value (e.g., **3**).
+4.  **Find the Critical Value:** The intersection of these three points is your critical value.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+den_df_values <- c(2:12, seq(14,20,2), seq(30,100,20), Inf)
+alpha_values <- c(0.100, 0.050, 0.025, 0.010, 0.005, 0.001)
+num_df_values <- c(1, 2, 3, 4, 5, 6, 7, 8, 12, 24, Inf)
+
+f_df <- expand.grid(den_df = den_df_values, alpha = alpha_values, num_df = num_df_values) %>%
+  mutate(critical_value = qf(1 - alpha, df1 = num_df, df2 = den_df),
+         den_df_label = paste0("Denominator DF = ", den_df)) %>%
+  pivot_wider(id_cols = c(den_df_label, alpha), names_from = num_df, values_from = critical_value) %>%
+  rename(`∞` = `Inf`) # Rename the Inf column to the symbol
+
+f_df %>%
+  gt(groupname_col = "den_df_label") %>%
+  tab_header(
+    title = "F-Distribution Critical Values",
+    subtitle = "Values of F for specified upper tail areas and degrees of freedom"
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(cells_column_labels(), cells_column_spanners())
+  ) %>%
+  tab_spanner(label = "Numerator Degrees of Freedom (DF)", columns = -c(alpha)) %>%
+  cols_label(alpha = "Area in Upper Tail") %>%
+  fmt_number(columns = -alpha, decimals = 2) %>%
+  opt_css(css = "
+    /* Force bold on the top-level 'Numerator Degrees of Freedom' spanner */
+    .gt_column_spanner {
+      font-weight: bold !important;
+      font-size: 1.1em; /* Optional: makes it slightly larger like a main header */
+    }
+
+    /* Force bold on the individual column headers (alpha, 1, 2, 3...) */
+    .gt_col_heading {
+      font-weight: bold !important;
+    }
+
+    /* Sticky header behavior */
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+
+    /* Style for the 'Denominator df' rows */
+    .gt_group_header {
+      background-color: #f8f9fa !important;
+      font-weight: bold !important;
+    }
+  ") %>%
+  tab_options(container.height = px(600), container.overflow.y = "scroll")
+```
