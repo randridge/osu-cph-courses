@@ -1,6 +1,6 @@
 project:
   title: "OSU CPH Courses"
-  
+
 format:
   html:
     theme:
@@ -10,3 +10,4 @@ format:
     toc: true
 
 editor: source
+
