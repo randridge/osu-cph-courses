@@ -1,0 +1,104 @@
+---
+title: "Poisson Distribution Table"
+format:
+  html:
+    embed-resources: true
+    toc: false
+    html-math-method: mathjax
+---
+
+
+Use this table to look up probabilities for the poisson distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+This table provides the probability of exactly $k$ occurrences given an average rate ($\lambda$).
+
+1.  **Select your rate ($\lambda$):** Locate $\lambda$ across the top bold header.
+2.  **Identify your number of events/occurances ($k$):** Find the number of events in the first bold column on the left.
+3.  **Find the Probability:** The intersection of your chosen $\lambda$ and $k$ is the probability.
+
+These probabilities can also be calculated using the equation for the probability mass function:
+
+$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}$
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| column: screen-inset
+library(dplyr)
+library(tidyr)
+library(gt)
+
+lambda_values <- seq(0.5, 20, 0.5)
+k_values <- 0:40
+
+poisson_df <- expand.grid(lambda = lambda_values, k = k_values) %>%
+  mutate(prob = dpois(k, lambda),
+         # keep .0 in heading
+         lambda_label = format(lambda, nsmall = 1)) %>%
+  pivot_wider(id_cols = k, names_from = lambda_label, values_from = prob)
+
+fmt_no_leading_zero <- function(x) {
+  # Format to 4 decimals, then remove the leading '0'
+  out <- sprintf("%.4f", x)
+  gsub("^0", "", out)
+}
+
+poisson_df %>%
+  gt() %>%
+  tab_header(title = "Poisson Distribution Probabilities",
+             subtitle = "P(X = k) for various values of λ") %>%
+  # Apply the custom formatting to all columns except 'k'
+  text_transform(
+    locations = cells_body(columns = -k),
+    fn = function(x) {
+      fmt_no_leading_zero(as.numeric(x))
+    }
+  ) %>%
+  opt_css(css = "
+    /* 1. Keep the Header at the top */
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    
+    /* 2. Keep the first column (k) at the left */
+    /* Target the body cells and header cells of the first column */
+    th:first-child, td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 50;
+      background-color: #f8f9fa !important; /* Slight gray so it stands out */
+      border-right: 2px solid #dee2e6;
+    }
+
+    /* 3. Ensure the very top-left corner stays above everything */
+    thead th:first-child {
+      z-index: 150;
+    }
+    
+    .gt_column_spanner, .gt_col_heading { font-weight: bold !important; }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.width = pct(100),
+    container.overflow.y = "scroll",
+    container.overflow.x = "scroll"
+  ) %>%
+  tab_spanner(
+    label = md("**&lambda;**"),
+    columns = -k,
+    gather = FALSE
+  ) %>%
+  cols_label(k = md("**k**")) %>%
+  fmt_number(columns = -k, decimals = 4) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners(),
+              cells_body(columns = k)))
+```
+

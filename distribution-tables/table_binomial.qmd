@@ -1,0 +1,75 @@
+---
+title: "Binomial Distribution Table"
+format:
+  html:
+    embed-resources: true
+    toc: false
+    html-math-method: mathjax
+---
+
+
+Use this table to look up probabilities for the binomial distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+This table provides the probability of exactly $k$ occurrences in $n$ independent trials, where each trial has a probability of success $p$.
+
+1.  **Locate the Number of Trials ($n$):** Find the horizontal section header for your specific $n$ (e.g., n = 3).
+2.  **Select the Probability of Success ($p$):** Move across the top bold header to find the column for your probability (e.g., .25).
+3.  **Identify the Number of Successes ($k$):** Find the row within your $n$ section corresponding to the number of successes you are looking for in the first bold column.
+4.  **Find the Intersection:** The value at the intersection of the $p$ column and $k$ row is your probability, $P(X = k)$
+
+These probabilities can also be calculated using the equation for the probability mass function:
+
+$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+n_values <- 2:20
+p_values <- seq(0.05, 0.50, by = 0.05)
+
+binomial_df <- expand.grid(n = n_values, p = p_values) %>%
+  group_by(n, p) %>%
+  reframe(k = 0:unique(n)) %>%
+  mutate(prob = dbinom(k, size = n, prob = p),
+         p_label = format(p, nsmall = 2),
+         n_group = paste0("n = ",n)) %>%
+  pivot_wider(id_cols = c(n_group, k), names_from = p_label, values_from = prob)
+
+fmt_no_leading_zero <- function(x) {
+  out <- sprintf("%.4f", as.numeric(x))
+  gsub("^0", "", out)
+}
+
+binomial_df %>%
+  gt(groupname_col = "n_group") %>% # Grouping by n creates the structural breaks
+  tab_header(title = "Binomial Distribution Probabilities",
+             subtitle = "P(X = k) for n trials with success probability p") %>%
+text_transform(
+    locations = cells_body(columns = -c(k)),
+    fn = fmt_no_leading_zero
+  ) %>%
+  tab_spanner(label = md("**p**"), columns = -c(k), id = "p_spanner") %>%
+  cols_label(k = md("**k**")) %>%
+  # Styling and Sticky Headers
+  opt_css(css = "
+    thead { position: sticky; top: 0; z-index: 100; background-color: white; }
+    .gt_column_spanner, .gt_col_heading { font-weight: bold !important; }
+    /* Style for the 'n' grouping rows to make them look clean */
+    .gt_group_header { 
+      background-color: #f1f1f1; 
+      font-weight: bold; 
+      text-align: left;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(600),
+    container.overflow.y = "scroll"
+  )
+```
+

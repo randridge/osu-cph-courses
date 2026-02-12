@@ -1,0 +1,67 @@
+---
+title: "t Distribution Table"
+format:
+  html:
+    embed-resources: true
+    toc: false
+    html-math-method: mathjax
+---
+
+
+Use this table to look up probabilities for the t distribution. The table is scrollable, and you can use the search function in your browser to jump to a specific value.
+
+1.  **Identify your Degrees of Freedom (df):** Locate the appropriate row in the DF column.
+2.  **Choose your alpha ($\alpha$) or Upper Tail Area:** Move across the top header to find the column corresponding to your desired area in the upper tail (e.g., 0.05 for a one-tailed test or 0.025 for a two-tailed 95% confidence interval).
+3.  **Find the Intersection:** The value where the row and column meet is your critical value ($t^*$).
+
+Note: As degrees of freedom increase, the t-distribution approaches the Standard Normal (Z) distribution. If your exact DF is not listed, it is standard practice to use the next lower (smaller) value available in the table to be conservative.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(dplyr)
+library(tidyr)
+library(gt)
+
+df_values <- c(1:30, seq(40, 120, 10), Inf)
+upper_tail_probs <- c(0.25, 0.20, 0.15, 0.10, 0.05, 0.025, 0.01, 0.005, 0.0005)
+
+t_df <- expand.grid(DF = df_values, Prob = upper_tail_probs) %>%
+  mutate(critical_value = qt(1 - Prob, df = DF),
+         Prob_Label = format(Prob, scientific = FALSE, drop0trailing = TRUE)) %>%
+  pivot_wider(id_cols = DF, names_from = Prob_Label, values_from = critical_value)
+
+t_df %>%
+  gt() %>%
+  sub_values(values = Inf, replacement = "∞") %>%
+  tab_header(title = "t Distribution Critical Values") %>%
+  opt_css(css = "
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: white;
+    }
+    .gt_column_spanner_outer {
+      position: sticky;
+      top: 0;
+    }
+  ") %>%
+  tab_options(
+    container.height = px(500),
+    container.overflow.y = "scroll"
+  ) %>%
+  tab_spanner(
+    label = "Area in Upper Tail",
+    columns = everything(),
+    gather = FALSE
+  ) %>%
+  fmt_number(columns = -DF, decimals = 3) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(style = cell_text(weight = "bold"),
+            locations = list(
+              cells_column_labels(),
+              cells_column_spanners())) 
+```
+
