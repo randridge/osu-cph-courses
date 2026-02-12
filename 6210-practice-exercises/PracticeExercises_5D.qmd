@@ -51,7 +51,7 @@ Round up: Need sample size of 35.
 
 Stata code to confirm answer: 
 
-\texttt{power onemean 170 190, power(0.9) alpha(0.05) sd(40) knownsd onesided}
+**power onemean 170 190, power(0.9) alpha(0.05) sd(40) knownsd onesided**
 :::
 
 ---
@@ -89,5 +89,5 @@ Study has 64.1% power
 
 Stata code to confirm answer: 
 
-\texttt{power onemean 450 462, n(500) alpha(0.01) sd(100) knownsd onesided}
+**power onemean 450 462, n(500) alpha(0.01) sd(100) knownsd onesided**
 :::

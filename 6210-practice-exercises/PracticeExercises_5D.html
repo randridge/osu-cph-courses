@@ -2391,7 +2391,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle n = \frac{\sigma^2 \left(z^*_\alpha + z^*_\beta \right)^2}{(\mu_a-\mu_0)^2} = \frac{40^2 (1.645+1.28)^2}{20^2} = 34.2\)</span></p>
 <p>Round up: Need sample size of 35.</p>
 <p>Stata code to confirm answer:</p>
-<p></p>
+<p><strong>power onemean 170 190, power(0.9) alpha(0.05) sd(40) knownsd onesided</strong></p>
 </div>
 <hr>
 </section>
@@ -2417,7 +2417,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle P(\overline{X} &gt; 460.41|\mu_a=462) = P\left(Z &gt; \frac{460.41-462}{100/\sqrt{500}}\right) = P(Z&gt;-0.36) = 0.6406\)</span></p>
 <p>Study has 64.1% power</p>
 <p>Stata code to confirm answer:</p>
-<p></p>
+<p><strong>power onemean 450 462, n(500) alpha(0.01) sd(100) knownsd onesided</strong></p>
 </div>
 </section>
 
