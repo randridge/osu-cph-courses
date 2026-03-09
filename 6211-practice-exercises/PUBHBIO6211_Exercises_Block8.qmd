@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 8"
 format:
   html:
     embed-resources: true
@@ -87,10 +87,6 @@ There are significant differences in mean weight between the herb 1 group and th
 
 A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of grade point average (GPA), which is measured on a 4-point scale. We are interested in whether there are differences in GPA by students' religious preferences (`relig`: 1=Protestant, 2=Catholic, 3=Jewish, 4=Other). Use the Stata output below to write a short summary of the findings.
 
-::: {.answer .hidden}
-A one-way ANOVA model was used to test for differences in mean GPA by religious preference (Protestant, Catholic, Jewish, Other). There is evidence of a significant association between GPA and religious preference (p=0.024). When comparing pairs of groups using a Tukey-Kramer adjustment, we find that, on average, Jewish students have a average GPA that is 0.26 points higher than Catholic students (p=0.049). No other significant differences between the groups were found (all p$>$0.05).
-:::
-
 ```{.none .stata}
 
 . anova gpa relig
@@ -125,29 +121,16 @@ A one-way ANOVA model was used to test for differences in mean GPA by religious 
 
 ```
 
+::: {.answer .hidden}
+A one-way ANOVA model was used to test for differences in mean GPA by religious preference (Protestant, Catholic, Jewish, Other). There is evidence of a significant association between GPA and religious preference (p=0.024). When comparing pairs of groups using a Tukey-Kramer adjustment, we find that, on average, Jewish students have a average GPA that is 0.26 points higher than Catholic students (p=0.049). No other significant differences between the groups were found (all p$>$0.05).
+:::
+
+
 ---
 
 # Exercise 3
 
-A survey of a random sample of students at the University of New Hampshire was conducted. Information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (`year`: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by sex (`gender`: 1=male, 0=female).
-
-(a) The result of a two-way ANOVA is below. Explain the results of the appropriate hypothesis tests.
-
-::: {.answer .hidden}
-The overall F-test is significant, with $p<0.00005$, so we move on to examine the interaction effect. There is not evidence of a significant interaction $(p=0.2210)$, so we move to the individual effects. There are significant effects of both year in school $(p=0.0041)$ and of sex $(p<0.00005)$.
-:::
-
-(b) What is an appropriate next analysis to do?
-
-::: {.answer .hidden}
-Pairwise comparisons of means among the years in school, appropriately adjusted for multiple comparisons (e.g., with Tukey-Kramer or Bonferroni adjustment). We don't need to do pairwise tests for sex, because there are only two categories.
-:::
-
-(c) An ANOVA plot for this model is also shown below. Explain how the results of the ANOVA are illustrated by the plot.
-
-::: {.answer .hidden}
-The lines are roughly parallel (the up-and-down difference between the lines is roughly the same for all years), consistent with no interaction. The up-and-down difference shows the significant difference between the two sexes (and it is roughly the same for all years). It's hard to see the significant effect of year, but notice that the (pairs of) dots are not all at the same height all along the plot -- looks like they are lower for senior year than the other years. We would need the pairwise comparisons to confirm where significant differences are among the years.
-:::
+A survey of a random sample of students at the University of New Hampshire was conducted. Information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (`year`: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by gender (`gender`: 1=male, 0=female). Note that gender is operationalized as a binary (2-level) variable in these (old) data.
 
 ```{.none .stata}
 
@@ -169,6 +152,25 @@ The lines are roughly parallel (the up-and-down difference between the lines is 
                    Total |  10935.218        242   45.186852  
 
 ```
+
+(a) The result of a two-way ANOVA is below. Explain the results of the appropriate hypothesis tests.
+
+::: {.answer .hidden}
+The overall F-test is significant, with $p<0.00005$, so we move on to examine the interaction effect. There is not evidence of a significant interaction $(p=0.2210)$, so we move to the individual effects. There are significant effects of both year in school $(p=0.0041)$ and of gender $(p<0.00005)$.
+:::
+
+(b) What is an appropriate next analysis to do?
+
+::: {.answer .hidden}
+Pairwise comparisons of means among the years in school, appropriately adjusted for multiple comparisons (e.g., with Tukey-Kramer or Bonferroni adjustment). We don't need to do pairwise tests for gender, because there are only two categories.
+:::
+
+(c) An ANOVA plot for this model is also shown below. Explain how the results of the ANOVA are illustrated by the plot.
+
+::: {.answer .hidden}
+The lines are roughly parallel (the up-and-down difference between the lines is roughly the same for all years), consistent with no interaction. The up-and-down difference shows the significant difference between the two genders (and it is roughly the same for all years). It's hard to see the significant effect of year, but notice that the (pairs of) dots are not all at the same height all along the plot -- looks like they are lower for senior year than the other years. We would need the pairwise comparisons to confirm where significant differences are among the years.
+:::
+
 
 ![A Plot](./figures/anovaplot_drink_year_gender.png){fig-alt="TO BE WRITTEN" width=40%}
 
@@ -212,12 +214,6 @@ Continuing the analysis from the previous problem, pairwise comparisons were con
 -   exercise: 1=None, 2=Mild, 3=Moderate, 4=Heavy  
 -   diet: 1=Diet A, 2=Diet B, 3=Diet C
 
-::: {.answer .hidden}
-After a Tukey-adjustment to control Type 1 error, hamsters in the heavy exercise group had significantly higher weight gain than hamsters in the no exercise group (estimated difference = 6 grams, $p=0.015$) and than hamsters in the moderate exercise group (estimated difference = 6 grams, $p=0.015$), controlling for diet. There were no other significant differences among the groups (all $p>0.12$).
-
-After a Tukey-adjustment to control Type 1 error, hamsters on Diet A had significantly lower weight gain than hamsters on Diet B (estimated difference = 5 grams, $p=0.011$) and lower weight gain than hamsters on Diet C (estimated difference = 4 grams, $p=0.038$), controlling for exercise. The difference between Diet B and Diet C was not significant $(p=0.764)$.
-:::
-
 ```{.none .stata}
 
 . pwcompare exercise, mcompare(tukey) effects
@@ -246,5 +242,11 @@ After a Tukey-adjustment to control Type 1 error, hamsters on Diet A had signifi
      3 vs 1  |          4   1.414214     2.83   0.038     .2270711    7.772929
      3 vs 2  |         -1   1.414214    -0.71   0.764    -4.772929    2.772929
 ------------------------------------------------------------------------------
-
 ```
+
+::: {.answer .hidden}
+After a Tukey-adjustment to control Type 1 error, hamsters in the heavy exercise group had significantly higher weight gain than hamsters in the no exercise group (estimated difference = 6 grams, $p=0.015$) and than hamsters in the moderate exercise group (estimated difference = 6 grams, $p=0.015$), controlling for diet. There were no other significant differences among the groups (all $p>0.12$).
+
+After a Tukey-adjustment to control Type 1 error, hamsters on Diet A had significantly lower weight gain than hamsters on Diet B (estimated difference = 5 grams, $p=0.011$) and lower weight gain than hamsters on Diet C (estimated difference = 4 grams, $p=0.038$), controlling for exercise. The difference between Diet B and Diet C was not significant $(p=0.764)$.
+:::
+

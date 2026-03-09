@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PUBHBIO 6211: Practice Exercises 6211</title>
+<title>PUBHBIO 6211: Practice Exercises Block 10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2383,7 +2383,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PUBHBIO 6211: Practice Exercises 6211</h1>
+<h1 class="title">PUBHBIO 6211: Practice Exercises Block 10</h1>
 </div>
 
 
@@ -2460,38 +2460,7 @@ window.Quarto = {
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
 <p>An observational study of mortality (time to death) for breast cancer patients was conducted. Patients were classified into two groups based on their tumor’s immunohistochemical response (0=negative; 1=positive). Time to death or censoring was recorded in months.</p>
-<p>The survival function estimate was separately for each group and a Kaplan-Meier plot created. A logrank test was also conducted. Stata output is on the next few pages. Use that output to answer the following questions.</p>
-<ol type="a">
-<li>What is the estimated 25th percentile of survival for each group? Interpret these quantities.</li>
-</ol>
-<div class="answer hidden">
-<p>Negative: 25th percentile = 56 months</p>
-<p><span class="math inline">\(\rightarrow\)</span> We estimate that 25% of patients with negative tumors will survive less than 56 months.</p>
-<p>Positive: 25th percentile = 38 months</p>
-<p><span class="math inline">\(\rightarrow\)</span> We estimate that 25% of patients with positive tumors will survive less than 38 months.</p>
-</div>
-<ol start="2" type="a">
-<li>What is the estimated survival probability for each group at 2 years (24 months)? At 5 years (60 months)?</li>
-</ol>
-<div class="answer hidden">
-<p>Negative: 97.22% survival at 2 years; 72.22% survival at 5 years</p>
-<p>Positive: 77.78% survival at 2 years; 55.56% survival at 5 years</p>
-</div>
-<ol start="3" type="a">
-<li>What are the null and alternative hypotheses for the logrank test that was performed? Write down the hypotheses using symbols, and also explain in words what the null and alternative hypotheses mean.</li>
-</ol>
-<div class="answer hidden">
-<p>Let <span class="math inline">\(S_0(t)\)</span> = survival function for negative group; <span class="math inline">\(S_1(t)\)</span> = survival function for the positive group</p>
-<p><span class="math inline">\(H_0: S_0(t)=S_1(t)\)</span> <span class="math inline">\(\rightarrow\)</span> the two survival functions are identical (same/overlap at all time points)</p>
-<p><span class="math inline">\(H_a: S_0(t) \ne S_1(t)\)</span> <span class="math inline">\(\rightarrow\)</span> they differ at at least one time point</p>
-</div>
-<ol start="4" type="a">
-<li>Report the p-value for the logrank test and write a one-sentence conclusion (in context). (Assume <span class="math inline">\(\alpha=0.05\)</span>.)</li>
-</ol>
-<div class="answer hidden">
-<p>p-value = 0.0191</p>
-<p>There is evidence that survival (time to death) differs between patients with negative and positive tumors.</p>
-</div>
+<p>The survival function estimate was separately for each group and a Kaplan-Meier plot created. A logrank test was also conducted. Stata output is below. Use that output to answer the following questions.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">sts</span> <span class="ot">list</span>, <span class="kw">by</span>(<span class="fu">group</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2566,6 +2535,37 @@ window.Quarto = {
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>               <span class="fu">chi2</span>(1) =       5.49</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>               Pr&gt;<span class="fu">chi2</span> =     0.0191</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li>What is the estimated 25th percentile of survival for each group? Interpret these quantities.</li>
+</ol>
+<div class="answer hidden">
+<p>Negative: 25th percentile = 56 months</p>
+<p><span class="math inline">\(\rightarrow\)</span> We estimate that 25% of patients with negative tumors will survive less than 56 months.</p>
+<p>Positive: 25th percentile = 38 months</p>
+<p><span class="math inline">\(\rightarrow\)</span> We estimate that 25% of patients with positive tumors will survive less than 38 months.</p>
+</div>
+<ol start="2" type="a">
+<li>What is the estimated survival probability for each group at 2 years (24 months)? At 5 years (60 months)?</li>
+</ol>
+<div class="answer hidden">
+<p>Negative: 97.22% survival at 2 years; 72.22% survival at 5 years</p>
+<p>Positive: 77.78% survival at 2 years; 55.56% survival at 5 years</p>
+</div>
+<ol start="3" type="a">
+<li>What are the null and alternative hypotheses for the logrank test that was performed? Write down the hypotheses using symbols, and also explain in words what the null and alternative hypotheses mean.</li>
+</ol>
+<div class="answer hidden">
+<p>Let <span class="math inline">\(S_0(t)\)</span> = survival function for negative group; <span class="math inline">\(S_1(t)\)</span> = survival function for the positive group</p>
+<p><span class="math inline">\(H_0: S_0(t)=S_1(t)\)</span> <span class="math inline">\(\rightarrow\)</span> the two survival functions are identical (same/overlap at all time points)</p>
+<p><span class="math inline">\(H_a: S_0(t) \ne S_1(t)\)</span> <span class="math inline">\(\rightarrow\)</span> they differ at at least one time point</p>
+</div>
+<ol start="4" type="a">
+<li>Report the p-value for the logrank test and write a one-sentence conclusion (in context). (Assume <span class="math inline">\(\alpha=0.05\)</span>)</li>
+</ol>
+<div class="answer hidden">
+<p>p-value = 0.0191</p>
+<p>There is evidence that survival (time to death) differs between patients with negative and positive tumors.</p>
+</div>
 <hr>
 </section>
 <section id="exercise-3" class="level1">
@@ -2590,7 +2590,7 @@ window.Quarto = {
 <p>Stage 1: 6.5 months; Stage 2: 7 months; Stage 3: 5 months; Stage 4: 1.5 months</p>
 </div>
 <ol start="3" type="a">
-<li>A logrank test was conducted; output is below. Write a one-sentence summary of the test result (in context), including reference to a p-value. (Assume <span class="math inline">\(\alpha=0.05\)</span>.)</li>
+<li>A logrank test was conducted; output is below. Write a one-sentence summary of the test result (in context), including reference to a p-value. (Assume <span class="math inline">\(\alpha=0.05\)</span>)</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">sts</span> <span class="kw">test</span> stage, <span class="kw">logrank</span></span>

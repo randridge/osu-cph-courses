@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 6"
 format:
   html:
     embed-resources: true

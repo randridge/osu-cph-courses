@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 4"
 format:
   html:
     embed-resources: true
@@ -123,7 +123,52 @@ A survey of a random sample of students at the University of New Hampshire was c
 
 One variable we are interested in is `religion`, which captures a student's religious preference (1=Protestant, 2=Catholic, 3=Other). We also have as predictors number of hours studied per week (`study`), age (years), and sex (`gender`; 1=male, 0=female).
 
-A regression model was fit to predict GPA using these variables. Use the Stata output provided at the end of the problem (note: output spans 2 pages) to answer the questions below.
+A regression model was fit to predict GPA using these variables. Use the Stata output provided below to answer the questions below.
+
+``` {.none .stata}
+
+. generate religion1 = (religion==1) if !missing(religion)
+. generate religion2 = (religion==2) if !missing(religion)
+. generate religion3 = (religion==3) if !missing(religion)
+
+. regress gpa religion1 religion2 study age gender
+
+      Source |       SS           df       MS      Number of obs   =       212
+-------------+----------------------------------   F(5, 206)       =      8.91
+       Model |  7.71521219         5  1.54304244   Prob > F        =    0.0000
+    Residual |  35.6880173       206  .173242802   R-squared       =    0.1778
+-------------+----------------------------------   Adj R-squared   =    0.1578
+       Total |  43.4032295       211  .205702509   Root MSE        =    .41622
+
+------------------------------------------------------------------------------
+         gpa |      Coef.   Std. Err.      t    P>|t|     [95
+-------------+----------------------------------------------------------------
+   religion1 |  -.0659408   .0818991    -0.81   0.422    -.2274086    .0955271
+   religion2 |  -.1738371   .0647677    -2.68   0.008    -.3015297   -.0461445
+       study |   .0123059   .0033299     3.70   0.000     .0057409     .018871
+         age |   .0375648   .0095926     3.92   0.000     .0186526    .0564771
+      gender |  -.1366602   .0584907    -2.34   0.020    -.2519773   -.0213431
+       _cons |    2.00595   .2163566     9.27   0.000     1.579393    2.432507
+------------------------------------------------------------------------------
+
+. test religion1 religion2
+
+ ( 1)  religion1 = 0
+ ( 2)  religion2 = 0
+
+       F(  2,   206) =    3.71
+            Prob > F =    0.0260
+
+. lincom religion1 - religion2
+
+ ( 1)  religion1 - religion2 = 0
+
+------------------------------------------------------------------------------
+         gpa |      Coef.   Std. Err.      t    P>|t|     [95
+-------------+----------------------------------------------------------------
+         (1) |   .1078964   .0778378     1.39   0.167    -.0455645    .2613572
+------------------------------------------------------------------------------
+```
 
 (a) What category is the reference group for the `religion` variable?
 
@@ -190,111 +235,13 @@ DF for Residual for Full Model = 206 (in ANOVA table, on the "Residual" line, un
 $\rightarrow F$(2, 206)
 :::
 
-
-``` {.none .stata}
-
-. generate religion1 = (religion==1) if !missing(religion)
-. generate religion2 = (religion==2) if !missing(religion)
-. generate religion3 = (religion==3) if !missing(religion)
-
-. regress gpa religion1 religion2 study age gender
-
-      Source |       SS           df       MS      Number of obs   =       212
--------------+----------------------------------   F(5, 206)       =      8.91
-       Model |  7.71521219         5  1.54304244   Prob > F        =    0.0000
-    Residual |  35.6880173       206  .173242802   R-squared       =    0.1778
--------------+----------------------------------   Adj R-squared   =    0.1578
-       Total |  43.4032295       211  .205702509   Root MSE        =    .41622
-
-------------------------------------------------------------------------------
-         gpa |      Coef.   Std. Err.      t    P>|t|     [95
--------------+----------------------------------------------------------------
-   religion1 |  -.0659408   .0818991    -0.81   0.422    -.2274086    .0955271
-   religion2 |  -.1738371   .0647677    -2.68   0.008    -.3015297   -.0461445
-       study |   .0123059   .0033299     3.70   0.000     .0057409     .018871
-         age |   .0375648   .0095926     3.92   0.000     .0186526    .0564771
-      gender |  -.1366602   .0584907    -2.34   0.020    -.2519773   -.0213431
-       _cons |    2.00595   .2163566     9.27   0.000     1.579393    2.432507
-------------------------------------------------------------------------------
-
-. test religion1 religion2
-
- ( 1)  religion1 = 0
- ( 2)  religion2 = 0
-
-       F(  2,   206) =    3.71
-            Prob > F =    0.0260
-
-. lincom religion1 - religion2
-
- ( 1)  religion1 - religion2 = 0
-
-------------------------------------------------------------------------------
-         gpa |      Coef.   Std. Err.      t    P>|t|     [95
--------------+----------------------------------------------------------------
-         (1) |   .1078964   .0778378     1.39   0.167    -.0455645    .2613572
-------------------------------------------------------------------------------
-```
-
 ---
 
 # Exercise 3
 
 In the University of New Hampshire student survey, information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (`year`: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by sex (`gender`; 1=male, 0=female).
 
-A regression model was fit to predict drinking score (`drink`) using year in school and sex. Use the Stata output provided at the end of the problem (note: output spans 2 pages) to answer the questions below.
-
-(a) Is there a significant effect of year in school on drinking score, adjusting for sex? Cite a p-value in your answer.
-
-::: {.answer .hidden}
-Yes -- p-value = 0.0033 -- partial F-test of $H_0: \beta_{year2} = \beta_{year3}=\beta_{year4}=0$ (from `test` output)
-:::
-
-(b) Is there a significant effect of sex on drinking score, controlling for year in school?
-
-::: {.answer .hidden}
-Yes -- p-value $<$ 0.0005 -- test of $H_0: \beta_{gender}=0$
-:::
-
-(c) Interpret the estimated coefficient for `year3` in this model
-
-::: {.answer .hidden}
-The estimated mean drinking score for juniors is 0.176 points higher than for freshman, adjusting for sex.
-:::
-
-(d) Interpret the estimated coefficient for `gender` in this model
-
-::: {.answer .hidden}
-The estimated mean drinking score for males is 3.78 points higher than for females, adjusting for year in school.
-:::
-
-(e) Complete the table below with the estimated differences in means and the p-values for the comparisons. *(Note: You may notice that this table contains a LOT of comparisons/p-values, with no adjustment for the fact that you are doing a lot of tests. Later in the course we will learn about the problem of "multiple comparisons" and ways to adjust for the fact that doing lots of tests increases the chance you find something "spurrious".)*
-
-| Group 1 | Group 2 | Estimated Mean Difference, Group 2 - Group 1 | 95% CI for Difference | P-value |
-|---------------|---------------|---------------|---------------|---------------|
-| Freshman | Sophomore |  |  |  |
-| Freshman | Junior |  |  |  |
-| Freshman | Senior |  |  |  |
-| Sophomore | Junior |  |  |  |
-| Sophomore | Senior |  |  |  |
-| Junior | Senior |  |  |  |
-
-::: {.answer .hidden}
-| Group 1 | Group 2 | Estimated Mean Difference, Group 2 - Group 1 | 95% CI for Difference | P-value |
-|---------------|---------------|---------------|---------------|---------------|
-| Freshman | Sophomore | 1.85 | (-0.649, 4.34) | 0.146 |
-| Freshman | Junior | 0.176 | (-2.25, 2.61) | 0.887 |
-| Freshman | Senior | -2.31 | (-4.82, 0.193) | 0.070 |
-| Sophomore | Junior | -1.67 | (-3.77, 0.431) | 0.119 |
-| Sophomore | Senior | -4.16 | (-6.36, -1.96) | \<0.0005 |
-| Junior | Senior | -2.49 | (-4.61, -0.366) | 0.022 |
-:::
-
-(f) Rank the years in school by estimated mean drinking score (adjusted for sex), from largest to smallest (i.e., from drinks the most to the least). (Hint: use the estimated differences from the table.)
-
-::: {.answer .hidden}
-From largest to smallest mean: Sophomores, Juniors, Freshman, Seniors
-:::
+A regression model was fit to predict drinking score (`drink`) using year in school and sex. Use the Stata output below to answer the questions below.
 
 ``` {.none .stata}
 
@@ -362,39 +309,66 @@ From largest to smallest mean: Sophomores, Juniors, Freshman, Seniors
 ------------------------------------------------------------------------------
 ```
 
+(a) Is there a significant effect of year in school on drinking score, adjusting for sex? Cite a p-value in your answer.
+
+::: {.answer .hidden}
+Yes -- p-value = 0.0033 -- partial F-test of $H_0: \beta_{year2} = \beta_{year3}=\beta_{year4}=0$ (from `test` output)
+:::
+
+(b) Is there a significant effect of sex on drinking score, controlling for year in school?
+
+::: {.answer .hidden}
+Yes -- p-value $<$ 0.0005 -- test of $H_0: \beta_{gender}=0$
+:::
+
+(c) Interpret the estimated coefficient for `year3` in this model
+
+::: {.answer .hidden}
+The estimated mean drinking score for juniors is 0.176 points higher than for freshman, adjusting for sex.
+:::
+
+(d) Interpret the estimated coefficient for `gender` in this model
+
+::: {.answer .hidden}
+The estimated mean drinking score for males is 3.78 points higher than for females, adjusting for year in school.
+:::
+
+(e) Complete the table below with the estimated differences in means and the p-values for the comparisons. *(Note: You may notice that this table contains a LOT of comparisons/p-values, with no adjustment for the fact that you are doing a lot of tests. Later in the course we will learn about the problem of "multiple comparisons" and ways to adjust for the fact that doing lots of tests increases the chance you find something "spurrious".)*
+
+| Group 1 | Group 2 | Estimated Mean Difference, Group 2 - Group 1 | 95% CI for Difference | P-value |
+|---------------|---------------|---------------|---------------|---------------|
+| Freshman | Sophomore |  |  |  |
+| Freshman | Junior |  |  |  |
+| Freshman | Senior |  |  |  |
+| Sophomore | Junior |  |  |  |
+| Sophomore | Senior |  |  |  |
+| Junior | Senior |  |  |  |
+
+::: {.answer .hidden}
+| Group 1 | Group 2 | Estimated Mean Difference, Group 2 - Group 1 | 95% CI for Difference | P-value |
+|---------------|---------------|---------------|---------------|---------------|
+| Freshman | Sophomore | 1.85 | (-0.649, 4.34) | 0.146 |
+| Freshman | Junior | 0.176 | (-2.25, 2.61) | 0.887 |
+| Freshman | Senior | -2.31 | (-4.82, 0.193) | 0.070 |
+| Sophomore | Junior | -1.67 | (-3.77, 0.431) | 0.119 |
+| Sophomore | Senior | -4.16 | (-6.36, -1.96) | \<0.0005 |
+| Junior | Senior | -2.49 | (-4.61, -0.366) | 0.022 |
+:::
+
+(f) Rank the years in school by estimated mean drinking score (adjusted for sex), from largest to smallest (i.e., from drinks the most to the least). (Hint: use the estimated differences from the table.)
+
+::: {.answer .hidden}
+From largest to smallest mean: Sophomores, Juniors, Freshman, Seniors
+:::
+
 ------------------------------------------------------------------------
 
 # Exercise 4
 
 Information on 74 automobiles was collected (in 1978) to study the relationship between gas mileage (mpg) and various features of the cars. The predictors we would like to investigate are the weight of the car (`pounds`; lbs), price of the car (`price`; \$), and whether the car is made in the U.S. (`foreign`: 0=made in U.S.; 1=made outside U.S.).
 
-We would like to know whether adding price and foreign-made status improve on a model that includes weight as the only predictor. Use the Stata output on the next 2 pages to answer this question. (Perform all steps of the appropriate hypothesis test.) Note that more output is provided than you need for the problem.
+We would like to know whether adding price and foreign-made status improve on a model that includes weight as the only predictor. Use the Stata output below to answer this question. (Perform all steps of the appropriate hypothesis test.) Note that more output is provided than you need for the problem.
 
-::: {.answer .hidden}
-Full model: $E(MPG) = \beta_0 + \beta_1 WEIGHT + \beta_2 PRICE + \beta_3 FOREIGN$
-
-Partial F-test needed
-
-$H_0: \beta_2 = \beta_3 = 0$
-
-$H_a: \beta_2 \ne 0$ and/or $\beta_3 \ne 0$
-
-test statistic:
-
-\begin{equation*}
-F = \frac{\frac{MSS_{Full} - MSS_{Reduced}}{\text{&#35; of } \beta\text{s being tested}}}{\text{Mean Square Residual for Full Model}} = \frac{\frac{1620.30716 - 1591.9902}{2}}{11.7593185} = \frac{\frac{28.31696}{2}}{11.7593185} = \frac{14.15848}{11.7593185} = 1.20
-\end{equation*}
-
-Under $H_0$, $F \sim F($\# of $\beta$s being tested, $df_{RSS,Full}) = F(2, 70)$
-
-p-value = $P(F_{(2,70)} > 1.20) = 0.31$ (Stata code: `display Ftail(2,70,1.20)`)
-
-Fail to reject $H_0$
-
-There is no evidence that price and foreign-made status are significant predictors in a model that contains weight (p=0.31).
-:::
-
-------------------------------------------------------------------------
 
 ``` {.none .stata}
 
@@ -449,3 +423,26 @@ There is no evidence that price and foreign-made status are significant predicto
        _cons |   41.95948   2.377726    17.65   0.000     37.21725     46.7017
 ------------------------------------------------------------------------------
 ```
+
+::: {.answer .hidden}
+Full model: $E(MPG) = \beta_0 + \beta_1 WEIGHT + \beta_2 PRICE + \beta_3 FOREIGN$
+
+Partial F-test needed
+
+$H_0: \beta_2 = \beta_3 = 0$
+
+$H_a: \beta_2 \ne 0$ and/or $\beta_3 \ne 0$
+
+test statistic:
+
+$F = \frac{\frac{MSS_{Full} - MSS_{Reduced}}{\# \beta\text{s being tested}}}{\text{Mean Square Residual for Full Model}} = \frac{\frac{1620.30716 - 1591.9902}{2}}{11.7593185} = \frac{\frac{28.31696}{2}}{11.7593185} = \frac{14.15848}{11.7593185} = 1.20$
+
+Under $H_0$, $F \sim F($\# of $\beta$s being tested, $df_{RSS,Full}) = F(2, 70)$
+
+p-value = $P(F_{(2,70)} > 1.20) = 0.31$ (Stata code: `display Ftail(2,70,1.20)`)
+
+Fail to reject $H_0$
+
+There is no evidence that price and foreign-made status are significant predictors in a model that contains weight (p=0.31).
+:::
+

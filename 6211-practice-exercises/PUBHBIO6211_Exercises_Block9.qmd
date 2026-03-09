@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 9"
 format:
   html:
     embed-resources: true
@@ -38,8 +38,6 @@ $\widehat{OR} = \exp(\hat{\beta}_1) = \exp(0.906812) = 2.48$
 The odds of having aggression among people in a fraternity/sorority are 2.48 times higher than the odds among people who are not in a fraternity/sorority.
 :::
 
----
-
 (b) Is there a significant effect of fraternity/sorority membership on aggression? Cite specific output in your answer. (Assume $\alpha=0.05$)
 
 ::: {.answer .hidden}
@@ -70,8 +68,6 @@ $\hat{\beta}_0=0.1636294$
 \end{align*}
 We estimate that 54% of people not in a fraternity/sorority have aggression.
 :::
-
----
 
 (e) Next, belonging to a fraternity/sorority and aggression were cross-tabulated (output below). Use this to calculate the appropriate odds ratio to confirm your answer to (a) -- the estimated OR from the logistic regression.
 
@@ -139,8 +135,6 @@ $\widehat{OR}=0.913$; The estimated odds of aggression multiply by 0.913 for eac
 There is not a significant effect of age on aggression, $p=0.068$, though this is close to the $\alpha$ cutoff.
 :::
 
----
-
 (b) There is a 95% CI for `age` on the logistic regression output. Report this CI, state what population parameter this is a CI for, and explain how the 95% CI could be used to determine if there is a significant effect of age on aggression.
 
 ::: {.answer .hidden}
@@ -155,38 +149,8 @@ Look for 1 in the CI to test $H_0: OR=1$, and if 1 is NOT in the 95% CI, then re
 
 # Exercise 3
 
-Using the New Hampshire survey, we are also interested in whether there are differences in the probability of having aggression across the years in school. A logistic regression model was run using year in school (`year`, 1=freshman, 2=sophomore, 3=junior, 4=senior) to predict aggression (`aggression`: 1=has aggression, 0=does not). Use the Stata output on the next page to answer the questions below.
+Using the New Hampshire survey, we are also interested in whether there are differences in the probability of having aggression across the years in school. A logistic regression model was run using year in school (`year`, 1=freshman, 2=sophomore, 3=junior, 4=senior) to predict aggression (`aggression`: 1=has aggression, 0=does not). Use the Stata output below to answer the questions.
 
-(a) Is there evidence of significant differences in aggression by year in school? Provide specific evidence to support your claim. (Assume $\alpha=0.05$)
-
-::: {.answer .hidden}
-Yes, p-value = 0.0193 from the "chunk test" (multivariate Wald test) of the 3 regression coefficients
-:::
-
-(b) Interpret completely the effect of year in school on aggression (using odds ratios). For each comparison you interpret, provide evidence that the comparison is or is not significant. (Assume $\alpha=0.05$)
-
-::: {.answer .hidden}
-$\hat{\beta}_{year2}=-0.040822 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year2}) = \exp(-0.040822) = 0.96$
-
-The estimated odds of aggression for sophomores are 0.96 times the odds of freshman; this effect is not significant $(p=0.922)$.
-
-$\hat{\beta}_{year3}=0.1823216 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year3}) = \exp(0.1823216) = 1.20$
-
-The estimated odds of aggression for juniors are 1.20 times the odds of freshman; this effect is not significant $(p=0.655)$.
-
-$\hat{\beta}_{year4}=-0.863647 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year4}) = \exp(-0.863647) = 0.42$
-
-The estimated odds of aggression for juniors are 0.42 times the odds of freshman; this effect is significant $(p=0.037)$.
-:::
-
-(c) CHALLENGE QUESTION: What is the estimated odds ratio comparing the odds of aggression for juniors compared to seniors?
-
-::: {.answer .hidden}
-$\widehat{OR}=\exp(\hat{\beta}_{year3}-\hat{\beta}_{year4})=\exp(0.1823216 - -0.863647)=\exp(1.0459686) = 2.85$
-
-:::
-
----
 
 ```{.none .stata}
 
@@ -219,3 +183,33 @@ Log likelihood = -160.21221                     Pseudo R2         =     0.0307
          Prob > chi2 =    0.0193
 
 ```
+
+(a) Is there evidence of significant differences in aggression by year in school? Provide specific evidence to support your claim. (Assume $\alpha=0.05$)
+
+::: {.answer .hidden}
+Yes, p-value = 0.0193 from the "chunk test" (multivariate Wald test) of the 3 regression coefficients
+:::
+
+(b) Interpret completely the effect of year in school on aggression (using odds ratios). For each comparison you interpret, provide evidence that the comparison is or is not significant. (Assume $\alpha=0.05$)
+
+::: {.answer .hidden}
+$\hat{\beta}_{year2}=-0.040822 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year2}) = \exp(-0.040822) = 0.96$
+
+The estimated odds of aggression for sophomores are 0.96 times the odds of freshman; this effect is not significant $(p=0.922)$.
+
+$\hat{\beta}_{year3}=0.1823216 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year3}) = \exp(0.1823216) = 1.20$
+
+The estimated odds of aggression for juniors are 1.20 times the odds of freshman; this effect is not significant $(p=0.655)$.
+
+$\hat{\beta}_{year4}=-0.863647 \rightarrow \widehat{OR}=\exp(\hat{\beta}_{year4}) = \exp(-0.863647) = 0.42$
+
+The estimated odds of aggression for juniors are 0.42 times the odds of freshman; this effect is significant $(p=0.037)$.
+:::
+
+(c) CHALLENGE QUESTION: What is the estimated odds ratio comparing the odds of aggression for juniors compared to seniors?
+
+::: {.answer .hidden}
+$\widehat{OR}=\exp(\hat{\beta}_{year3}-\hat{\beta}_{year4})=\exp(0.1823216 - -0.863647)=\exp(1.0459686) = 2.85$
+
+:::
+

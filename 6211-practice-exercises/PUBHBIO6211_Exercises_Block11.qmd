@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 11"
 format:
   html:
     embed-resources: true
@@ -37,10 +37,6 @@ Ho: hemo(group==0) = hemo(group==1)
     Prob > |z| =   0.0137
 
 ```
-
-(questions on next page)
-
----
 
 (a) What are the null and alternative hypotheses for this test?
 
@@ -112,15 +108,13 @@ There is no evidence that the distribution of permeability of the human chorioam
 
 A survey of a random sample of students at the University of New Hampshire was conducted. School administrators would like to use these data to test whether there are differences between male (`gender=1`) and female (`gender=0`) students in the number of hours they report studying per week (`study`).
 
-(a) A histogram of the hours studied, separated by sex, was produced and is below. Explain why we might want to use a nonparametric test to compare the two groups instead of a parametric one, and state which nonparametric test would be appropriate to use.
+(a) A histogram of the hours studied, separated by gender, was produced and is below. Explain why we might want to use a nonparametric test to compare the two groups instead of a parametric one, and state which nonparametric test would be appropriate to use.
 
 ![A Plot](./figures/hist_study_gender.png){fig-alt="TO BE WRITTEN" width=40%}
 
 ::: {.answer .hidden}
 Distribution is clearly non-normal in each group, thus the normality assumption required for a t-test or linear regression is violated. The appropriate nonparametric test would be a Wilcoxon rank sum test.
 :::
-
----
 
 (b) The nonparametric test was run in Stata, output is below. Draw a conclusion from the test (in context), referencing a p-value. Assume $\alpha=0.05$.
 
@@ -218,9 +212,6 @@ probability =     0.0023
 
 ```
 
-(questions next page)
-
----
 
 (a) What are the null and alternative hypotheses for this test?
 

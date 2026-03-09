@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PUBHBIO 6211: Practice Exercises 6211</title>
+<title>PUBHBIO 6211: Practice Exercises Block 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2384,7 +2384,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PUBHBIO 6211: Practice Exercises 6211</h1>
+<h1 class="title">PUBHBIO 6211: Practice Exercises Block 4</h1>
 </div>
 
 
@@ -2500,7 +2500,49 @@ Change: Intercept estimate, Coefficient for <code>drug2</code></p>
 <h1>Exercise 2</h1>
 <p>A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of grade point average (GPA), which is measured on a 4-point scale.</p>
 <p>One variable we are interested in is <code>religion</code>, which captures a student’s religious preference (1=Protestant, 2=Catholic, 3=Other). We also have as predictors number of hours studied per week (<code>study</code>), age (years), and sex (<code>gender</code>; 1=male, 0=female).</p>
-<p>A regression model was fit to predict GPA using these variables. Use the Stata output provided at the end of the problem (note: output spans 2 pages) to answer the questions below.</p>
+<p>A regression model was fit to predict GPA using these variables. Use the Stata output provided below to answer the questions below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion1 = (religion==1) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion2 = (religion==2) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion3 = (religion==3) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa religion1 religion2 study age gender</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       212</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(5, 206)       =      8.91</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>       Model |  7.71521219         5  1.54304244   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    Residual |  35.6880173       206  .173242802   R-squared       =    0.1778</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1578</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>       Total |  43.4032295       211  .205702509   Root MSE        =    .41622</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>   religion1 |  -.0659408   .0818991    -0.81   0.422    -.2274086    .0955271</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>   religion2 |  -.1738371   .0647677    -2.68   0.008    -.3015297   -.0461445</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>       study |   .0123059   .0033299     3.70   0.000     .0057409     .018871</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         age |   .0375648   .0095926     3.92   0.000     .0186526    .0564771</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      gender |  -.1366602   .0584907    -2.34   0.020    -.2519773   -.0213431</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |    2.00595   .2163566     9.27   0.000     1.579393    2.432507</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> religion1 religion2</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a> ( 1)  religion1 = 0</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a> ( 2)  religion2 = 0</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>       <span class="fu">F</span>(  2,   206) =    3.71</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            Prob &gt; <span class="fu">F</span> =    0.0260</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> religion1 - religion2</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a> ( 1)  religion1 - religion2 = 0</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>         (1) |   .1078964   .0778378     1.39   0.167    -.0455645    .2613572</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>What category is the reference group for the <code>religion</code> variable?</li>
 </ol>
@@ -2560,54 +2602,75 @@ Change: Intercept estimate, Coefficient for <code>drug2</code></p>
 <p>DF for Residual for Full Model = 206 (in ANOVA table, on the “Residual” line, under “df” column)</p>
 <p><span class="math inline">\(\rightarrow F\)</span>(2, 206)</p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion1 = (religion==1) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion2 = (religion==2) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> religion3 = (religion==3) <span class="kw">if</span> !<span class="fu">missing</span>(religion)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa religion1 religion2 study age gender</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       212</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(5, 206)       =      8.91</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>       Model |  7.71521219         5  1.54304244   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    Residual |  35.6880173       206  .173242802   R-squared       =    0.1778</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1578</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>       Total |  43.4032295       211  .205702509   Root MSE        =    .41622</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>   religion1 |  -.0659408   .0818991    -0.81   0.422    -.2274086    .0955271</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>   religion2 |  -.1738371   .0647677    -2.68   0.008    -.3015297   -.0461445</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>       study |   .0123059   .0033299     3.70   0.000     .0057409     .018871</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         age |   .0375648   .0095926     3.92   0.000     .0186526    .0564771</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      gender |  -.1366602   .0584907    -2.34   0.020    -.2519773   -.0213431</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |    2.00595   .2163566     9.27   0.000     1.579393    2.432507</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> religion1 religion2</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a> ( 1)  religion1 = 0</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a> ( 2)  religion2 = 0</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>       <span class="fu">F</span>(  2,   206) =    3.71</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            Prob &gt; <span class="fu">F</span> =    0.0260</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> religion1 - religion2</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a> ( 1)  religion1 - religion2 = 0</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>         (1) |   .1078964   .0778378     1.39   0.167    -.0455645    .2613572</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
 <section id="exercise-3" class="level1">
 <h1>Exercise 3</h1>
 <p>In the University of New Hampshire student survey, information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (<code>year</code>: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by sex (<code>gender</code>; 1=male, 0=female).</p>
-<p>A regression model was fit to predict drinking score (<code>drink</code>) using year in school and sex. Use the Stata output provided at the end of the problem (note: output spans 2 pages) to answer the questions below.</p>
+<p>A regression model was fit to predict drinking score (<code>drink</code>) using year in school and sex. Use the Stata output below to answer the questions below.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year1 = (<span class="fu">year</span>==1) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year2 = (<span class="fu">year</span>==2) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year3 = (<span class="fu">year</span>==3) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year4 = (<span class="fu">year</span>==4) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> drink year2 year3 year4 gender</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       243</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(4, 238)       =      9.59</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       Model |  1517.94605         4  379.486512   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    Residual |  9417.27206       238    39.56837   R-squared       =    0.1388</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1243</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>       Total |  10935.2181       242  45.1868517   Root MSE        =    6.2903</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>       year2 |   1.845409   1.266336     1.46   0.146    -.6492491    4.340067</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>       year3 |   .1760209   1.233302     0.14   0.887    -2.253561    2.605603</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>       year4 |   -2.31221   1.271725    -1.82   0.070    -4.817485    .1930656</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      gender |   3.778905   .8144889     4.64   0.000     2.174377    5.383433</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   17.46344   1.046591    16.69   0.000     15.40167     19.5252</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> year2 year3 year4</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a> ( 1)  year2 = 0</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a> ( 2)  year3 = 0</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a> ( 3)  year4 = 0</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>       <span class="fu">F</span>(  3,   238) =    4.69</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            Prob &gt; <span class="fu">F</span> =    0.0033</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year3 - year2</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a> ( 1)  - year2 + year3 = 0</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>         (1) |  -1.669388   1.066031    -1.57   0.119     -3.76945    .4306743</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year4 - year2</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a> ( 1)  - year2 + year4 = 0</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>         (1) |  -4.157619   1.114837    -3.73   0.000    -6.353827    -1.96141</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year4 - year3</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a> ( 1)  - year3 + year4 = 0</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>         (1) |  -2.488231   1.077143    -2.31   0.022    -4.610182    -.366279</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>Is there a significant effect of year in school on drinking score, adjusting for sex? Cite a p-value in your answer.</li>
 </ol>
@@ -2767,90 +2830,12 @@ Change: Intercept estimate, Coefficient for <code>drug2</code></p>
 <div class="answer hidden">
 <p>From largest to smallest mean: Sophomores, Juniors, Freshman, Seniors</p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year1 = (<span class="fu">year</span>==1) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year2 = (<span class="fu">year</span>==2) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year3 = (<span class="fu">year</span>==3) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year4 = (<span class="fu">year</span>==4) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> drink year2 year3 year4 gender</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       243</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(4, 238)       =      9.59</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       Model |  1517.94605         4  379.486512   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    Residual |  9417.27206       238    39.56837   R-squared       =    0.1388</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1243</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>       Total |  10935.2181       242  45.1868517   Root MSE        =    6.2903</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>       year2 |   1.845409   1.266336     1.46   0.146    -.6492491    4.340067</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>       year3 |   .1760209   1.233302     0.14   0.887    -2.253561    2.605603</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>       year4 |   -2.31221   1.271725    -1.82   0.070    -4.817485    .1930656</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      gender |   3.778905   .8144889     4.64   0.000     2.174377    5.383433</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   17.46344   1.046591    16.69   0.000     15.40167     19.5252</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> year2 year3 year4</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a> ( 1)  year2 = 0</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a> ( 2)  year3 = 0</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a> ( 3)  year4 = 0</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>       <span class="fu">F</span>(  3,   238) =    4.69</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            Prob &gt; <span class="fu">F</span> =    0.0033</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year3 - year2</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a> ( 1)  - year2 + year3 = 0</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>         (1) |  -1.669388   1.066031    -1.57   0.119     -3.76945    .4306743</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year4 - year2</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a> ( 1)  - year2 + year4 = 0</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>         (1) |  -4.157619   1.114837    -3.73   0.000    -6.353827    -1.96141</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>. <span class="kw">lincom</span> year4 - year3</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a> ( 1)  - year3 + year4 = 0</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>       drink |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>         (1) |  -2.488231   1.077143    -2.31   0.022    -4.610182    -.366279</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
 <section id="exercise-4" class="level1">
 <h1>Exercise 4</h1>
 <p>Information on 74 automobiles was collected (in 1978) to study the relationship between gas mileage (mpg) and various features of the cars. The predictors we would like to investigate are the weight of the car (<code>pounds</code>; lbs), price of the car (<code>price</code>; $), and whether the car is made in the U.S. (<code>foreign</code>: 0=made in U.S.; 1=made outside U.S.).</p>
-<p>We would like to know whether adding price and foreign-made status improve on a model that includes weight as the only predictor. Use the Stata output on the next 2 pages to answer this question. (Perform all steps of the appropriate hypothesis test.) Note that more output is provided than you need for the problem.</p>
-<div class="answer hidden">
-<p>Full model: <span class="math inline">\(E(MPG) = \beta_0 + \beta_1 WEIGHT + \beta_2 PRICE + \beta_3 FOREIGN\)</span></p>
-<p>Partial F-test needed</p>
-<p><span class="math inline">\(H_0: \beta_2 = \beta_3 = 0\)</span></p>
-<p><span class="math inline">\(H_a: \beta_2 \ne 0\)</span> and/or <span class="math inline">\(\beta_3 \ne 0\)</span></p>
-<p>test statistic:</p>
-<p><span class="math display">\[\begin{equation*}
-F = \frac{\frac{MSS_{Full} - MSS_{Reduced}}{\text{&amp;#35; of } \beta\text{s being tested}}}{\text{Mean Square Residual for Full Model}} = \frac{\frac{1620.30716 - 1591.9902}{2}}{11.7593185} = \frac{\frac{28.31696}{2}}{11.7593185} = \frac{14.15848}{11.7593185} = 1.20
-\end{equation*}\]</span></p>
-<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(F \sim F(\)</span># of <span class="math inline">\(\beta\)</span>s being tested, <span class="math inline">\(df_{RSS,Full}) = F(2, 70)\)</span></p>
-<p>p-value = <span class="math inline">\(P(F_{(2,70)} &gt; 1.20) = 0.31\)</span> (Stata code: <code>display Ftail(2,70,1.20)</code>)</p>
-<p>Fail to reject <span class="math inline">\(H_0\)</span></p>
-<p>There is no evidence that price and foreign-made status are significant predictors in a model that contains weight (p=0.31).</p>
-</div>
-<hr>
+<p>We would like to know whether adding price and foreign-made status improve on a model that includes weight as the only predictor. Use the Stata output below to answer this question. (Perform all steps of the appropriate hypothesis test.) Note that more output is provided than you need for the problem.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> mpg pounds</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2902,6 +2887,18 @@ F = \frac{\frac{MSS_{Full} - MSS_{Reduced}}{\text{&amp;#35; of } \beta\text{s be
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>     foreign |  -1.855891   1.289063    -1.44   0.154    -4.426846    .7150641</span>
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   41.95948   2.377726    17.65   0.000     37.21725     46.7017</span>
 <span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="answer hidden">
+<p>Full model: <span class="math inline">\(E(MPG) = \beta_0 + \beta_1 WEIGHT + \beta_2 PRICE + \beta_3 FOREIGN\)</span></p>
+<p>Partial F-test needed</p>
+<p><span class="math inline">\(H_0: \beta_2 = \beta_3 = 0\)</span></p>
+<p><span class="math inline">\(H_a: \beta_2 \ne 0\)</span> and/or <span class="math inline">\(\beta_3 \ne 0\)</span></p>
+<p>test statistic:</p>
+<p><span class="math inline">\(F = \frac{\frac{MSS_{Full} - MSS_{Reduced}}{\# \beta\text{s being tested}}}{\text{Mean Square Residual for Full Model}} = \frac{\frac{1620.30716 - 1591.9902}{2}}{11.7593185} = \frac{\frac{28.31696}{2}}{11.7593185} = \frac{14.15848}{11.7593185} = 1.20\)</span></p>
+<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(F \sim F(\)</span># of <span class="math inline">\(\beta\)</span>s being tested, <span class="math inline">\(df_{RSS,Full}) = F(2, 70)\)</span></p>
+<p>p-value = <span class="math inline">\(P(F_{(2,70)} &gt; 1.20) = 0.31\)</span> (Stata code: <code>display Ftail(2,70,1.20)</code>)</p>
+<p>Fail to reject <span class="math inline">\(H_0\)</span></p>
+<p>There is no evidence that price and foreign-made status are significant predictors in a model that contains weight (p=0.31).</p>
+</div>
 </section>
 
 </main>

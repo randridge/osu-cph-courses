@@ -1,5 +1,5 @@
 ---
-title: "PUBHBIO 6211: Practice Exercises 6211"
+title: "PUBHBIO 6211: Practice Exercises Block 10"
 format:
   html:
     embed-resources: true
@@ -71,45 +71,7 @@ First value of $\hat{S}(t)$ that is less than 0.5 is 0.3704, which first occurs 
 
 An observational study of mortality (time to death) for breast cancer patients was conducted. Patients were classified into two groups based on their tumor's immunohistochemical response (0=negative; 1=positive). Time to death or censoring was recorded in months.
 
-The survival function estimate was separately for each group and a Kaplan-Meier plot created. A logrank test was also conducted. Stata output is on the next few pages. Use that output to answer the following questions.
-
-(a) What is the estimated 25th percentile of survival for each group? Interpret these quantities.
-
-::: {.answer .hidden}
-Negative: 25th percentile = 56 months
-
-$\rightarrow$ We estimate that 25% of patients with negative tumors will survive less than 56 months.
-
-Positive: 25th percentile = 38 months
-
- $\rightarrow$ We estimate that 25% of patients with positive tumors will survive less than 38 months.
-:::
-
-(b) What is the estimated survival probability for each group at 2 years (24 months)? At 5 years (60 months)? 
-
-::: {.answer .hidden}
-Negative: 97.22% survival at 2 years; 72.22% survival at 5 years
-
-Positive: 77.78% survival at 2 years; 55.56% survival at 5 years
-:::
-
-(c) What are the null and alternative hypotheses for the logrank test that was performed? Write down the hypotheses using symbols, and also explain in words what the null and alternative hypotheses mean.
-
-::: {.answer .hidden}
-Let $S_0(t)$ = survival function for negative group; $S_1(t)$ = survival function for the positive group
-
-$H_0: S_0(t)=S_1(t)$  $\rightarrow$ the two survival functions are identical (same/overlap at all time points) 
-
-$H_a: S_0(t) \ne S_1(t)$  $\rightarrow$ they differ at at least one time point
-:::
-
-(d) Report the p-value for the logrank test and write a one-sentence conclusion (in context). (Assume $\alpha=0.05$.)
-
-::: {.answer .hidden}
-p-value = 0.0191
-
-There is evidence that survival (time to death) differs between patients with negative and positive tumors.
-:::
+The survival function estimate was separately for each group and a Kaplan-Meier plot created. A logrank test was also conducted. Stata output is below. Use that output to answer the following questions.
 
 ```{.none .stata}
 
@@ -191,6 +153,45 @@ Total    |        24          24.00
 
 ```
 
+
+(a) What is the estimated 25th percentile of survival for each group? Interpret these quantities.
+
+::: {.answer .hidden}
+Negative: 25th percentile = 56 months
+
+$\rightarrow$ We estimate that 25% of patients with negative tumors will survive less than 56 months.
+
+Positive: 25th percentile = 38 months
+
+ $\rightarrow$ We estimate that 25% of patients with positive tumors will survive less than 38 months.
+:::
+
+(b) What is the estimated survival probability for each group at 2 years (24 months)? At 5 years (60 months)? 
+
+::: {.answer .hidden}
+Negative: 97.22% survival at 2 years; 72.22% survival at 5 years
+
+Positive: 77.78% survival at 2 years; 55.56% survival at 5 years
+:::
+
+(c) What are the null and alternative hypotheses for the logrank test that was performed? Write down the hypotheses using symbols, and also explain in words what the null and alternative hypotheses mean.
+
+::: {.answer .hidden}
+Let $S_0(t)$ = survival function for negative group; $S_1(t)$ = survival function for the positive group
+
+$H_0: S_0(t)=S_1(t)$  $\rightarrow$ the two survival functions are identical (same/overlap at all time points) 
+
+$H_a: S_0(t) \ne S_1(t)$  $\rightarrow$ they differ at at least one time point
+:::
+
+(d) Report the p-value for the logrank test and write a one-sentence conclusion (in context). (Assume $\alpha=0.05$)
+
+::: {.answer .hidden}
+p-value = 0.0191
+
+There is evidence that survival (time to death) differs between patients with negative and positive tumors.
+:::
+
 ---
 
 # Exercise 3
@@ -211,7 +212,7 @@ In general, patients with higher cancer stage have worse survival -- they die so
 Stage 1: 6.5 months; Stage 2: 7 months; Stage 3: 5 months; Stage 4: 1.5 months
 :::
 
-(c) A logrank test was conducted; output is below. Write a one-sentence summary of the test result (in context), including reference to a p-value. (Assume $\alpha=0.05$.)
+(c) A logrank test was conducted; output is below. Write a one-sentence summary of the test result (in context), including reference to a p-value. (Assume $\alpha=0.05$)
 
 ```{.none .stata}
 
