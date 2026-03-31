@@ -106,11 +106,11 @@ There is no evidence that the distribution of permeability of the human chorioam
 
 # Exercise 3
 
-A survey of a random sample of students at the University of New Hampshire was conducted. School administrators would like to use these data to test whether there are differences between male (`gender=1`) and female (`gender=0`) students in the number of hours they report studying per week (`study`).
+A survey of a random sample of students at the University of New Hampshire was conducted. School administrators would like to use these data to test whether there are differences between male and female students in the number of hours they report studying per week (`study`).
 
 (a) A histogram of the hours studied, separated by gender, was produced and is below. Explain why we might want to use a nonparametric test to compare the two groups instead of a parametric one, and state which nonparametric test would be appropriate to use.
 
-![A Plot](./figures/hist_study_gender.png){fig-alt="TO BE WRITTEN" width=40%}
+![Side-by-side Histograms](./figures/hist_study_gender.png){fig-alt="Two side-by-side density histograms show the distribution of Avg. hours/week studying for Female and Male groups, both ranging from 0 to 60 hours on the x-axis. The female distribution is multi-modal, with significant peaks occurring between 5–10 hours and a primary peak near 20 hours, followed by a sparse right tail that ends around 40 hours. In contrast, the male distribution is more strongly right-skewed, featuring a singular, prominent peak between 10–12 hours. While both distributions are concentrated between 0 and 20 hours, the male graph shows a more extended, thinning tail that reaches up to 50 hours, suggesting a slightly higher frequency of extreme outliers in study time compared to the female group." width=40%}
 
 ::: {.answer .hidden}
 Distribution is clearly non-normal in each group, thus the normality assumption required for a t-test or linear regression is violated. The appropriate nonparametric test would be a Wilcoxon rank sum test.

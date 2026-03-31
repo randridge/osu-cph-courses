@@ -30,7 +30,7 @@ $E[MPG] = \beta_0 + \beta_1 FOREIGN$
        Total |  2443.45946        73  33.4720474   Root MSE        =    5.3558
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
      foreign |   4.945804   1.362162     3.63   0.001     2.230384    7.661225
        _cons |   19.82692   .7427186    26.70   0.000     18.34634    21.30751
@@ -45,8 +45,6 @@ $\hat{\beta}_1=4.95$.
 
 The estimated difference in mean mileage, foreign cars minus U.S.-made cars, is 4.95 MPG. (Mileage is higher for foreign cars.)
 :::
-
----
 
 (b) Identify the value of $\hat{\beta}_0$ and interpret this value.
 
@@ -86,7 +84,7 @@ A study compared the growth rate of 16 male and 16 female chicks. Growth, as mea
        Total |  1327.05991        31  42.8083842   Root MSE        =    6.6415
 
 ------------------------------------------------------------------------------
-      wtgain |      Coef.   Std. Err.      t    P>|t|     [95
+      wtgain |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
         male |   .6875002   2.348119     0.29   0.772   
        _cons |   27.15625   1.660371    16.36   0.000     23.76532    30.54718
@@ -144,7 +142,7 @@ A small study collected systolic blood pressure (SBP) from 32 men, along with se
 
 Two-sample t test with equal variances
 ------------------------------------------------------------------------------
-   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
 ---------+--------------------------------------------------------------------
        0 |      15       140.8    3.331237    12.90183    133.6552    147.9448
        1 |      17    147.8235    3.689448    15.21198    140.0022    155.6448
@@ -167,8 +165,6 @@ Ho: diff = 0                                     degrees of freedom =       30
 No -- p-value = 0.1723, there is no evidence of a significant difference in means.
 :::
 
----
-
 (b) A linear regression was also performed using the smoking status variable to predict SBP. The output is below -- but part of the output is missing (missing values labeled with letters A-E). Fill in the missing values, using the t-test output if necessary.
 
 ```{.none .stata}
@@ -183,7 +179,7 @@ No -- p-value = 0.1723, there is no evidence of a significant difference in mean
        Total |  6425.96875        31  207.289315   Root MSE        =    14.181
 
 ------------------------------------------------------------------------------
-         sbp |      Coef.   Std. Err.      t    P>|t|     [95
+         sbp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          smk |   ___(A)__   5.023498   __(B)_  __(C)_    -3.235823    17.28288
        _cons |      140.8   3.661472    38.45   0.000     133.3223    148.2777

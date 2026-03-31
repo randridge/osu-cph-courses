@@ -2406,20 +2406,19 @@ window.Quarto = {
 <ol type="a">
 <li>A logistic regression model was run using fraternity/sorority membership to predict aggression (output below). Based on this model, interpret the effect of fraternity/sorority membership as an odds ratio.</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression frat, coef</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(1)        =       6.78</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0092</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Log likelihood = -161.90393                     Pseudo R2         =     0.0205</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  aggression |      Coef.   Std. Err.      z    P&gt;|z|     [95</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        frat |    .906812   .3639366     2.49   0.013     .1935094    1.620115</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   .1636294   .1433355     1.14   0.254     -.117303    .4445619</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression frat, coef</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(1)        =       6.78</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0092</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Log likelihood = -161.90393                     Pseudo R2         =     0.0205</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  aggression |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        frat |    .906812   .3639366     2.49   0.013     .1935094    1.620115</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   .1636294   .1433355     1.14   0.254     -.117303    .4445619</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="answer hidden">
 <p><span class="math inline">\(\widehat{OR} = \exp(\hat{\beta}_1) = \exp(0.906812) = 2.48\)</span></p>
 <p>The odds of having aggression among people in a fraternity/sorority are 2.48 times higher than the odds among people who are not in a fraternity/sorority.</p>
@@ -2443,27 +2442,22 @@ window.Quarto = {
 </ol>
 <div class="answer hidden">
 <p><span class="math inline">\(\hat{\beta}_0=0.1636294\)</span></p>
-<p><span class="math display">\[\begin{align*}
-\text{Estimated prob of aggression for people not in frat/sorority} = \frac{\exp(\hat{\beta}_0)}{1+\exp(\hat{\beta}_0)} &amp;{}=\frac{\exp(0.1636294)}{1+\exp(0.1636294)}
-
-&amp;{}=\frac{1.17778}{1+1.17778}
-
-&amp;{} = 0.54
-\end{align*}\]</span> We estimate that 54% of people not in a fraternity/sorority have aggression.</p>
+<p>Estimated prob of aggression for people not in frat/sorority</p>
+<p><span class="math inline">\(= \frac{\exp(\hat{\beta}_0)}{1+\exp(\hat{\beta}_0)} =\frac{\exp(0.1636294)}{1+\exp(0.1636294)} =\frac{1.17778}{1+1.17778} =0.54\)</span></p>
+<p>We estimate that 54% of people not in a fraternity/sorority have aggression.</p>
 </div>
 <ol start="5" type="a">
 <li>Next, belonging to a fraternity/sorority and aggression were cross-tabulated (output below). Use this to calculate the appropriate odds ratio to confirm your answer to (a) – the estimated OR from the logistic regression.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">tabulate</span> aggression frat</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           |         frat</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>aggression |         0          1 |     Total</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>-----------+----------------------+----------</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         0 |        90         12 |       102 </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         1 |       106         35 |       141 </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>-----------+----------------------+----------</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     Total |       196         47 |       243 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">tabulate</span> aggression frat</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>           |         frat</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>aggression |         0          1 |     Total</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-----------+----------------------+----------</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         0 |        90         12 |       102 </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         1 |       106         35 |       141 </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-----------+----------------------+----------</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     Total |       196         47 |       243 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="answer hidden">
 <p>Odds of aggression for people in frat = <span class="math inline">\(\frac{35/47}{12/47} = \frac{35}{12} = 2.9166667\)</span></p>
 <p>Odds of aggression for people not in frat = <span class="math inline">\(\frac{106/196}{90/196} = \frac{106}{90} = 1.1777778\)</span></p>
@@ -2482,25 +2476,25 @@ window.Quarto = {
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
 <p>Using the New Hampshire survey, we are also interested in whether age is a predictor of aggression. A logistic regression model was run using age (<code>age</code>, in years) to predict aggression (<code>aggression</code>: 1=has aggression, 0=does not). Note that the <code>coef</code> option was left off the <code>logistic</code> command.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression age</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(1)        =       3.88</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0489</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Log likelihood = -163.35176                     Pseudo R2         =     0.0117</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  aggression | Odds Ratio   Std. Err.      z    P&gt;|z|     [95</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         age |   .9132199   .0453706    -1.83   0.068     .8284875    1.006618</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   8.774296   8.920195     2.14   0.033     1.196346    64.35283</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression age</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(1)        =       3.88</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0489</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Log likelihood = -163.35176                     Pseudo R2         =     0.0117</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  aggression | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         age |   .9132199   .0453706    -1.83   0.068     .8284875    1.006618</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   8.774296   8.920195     2.14   0.033     1.196346    64.35283</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>Interpret the effect of age on aggression. Is there a significant effect? (Assume <span class="math inline">\(\alpha=0.05\)</span>)</li>
 </ol>
 <div class="answer hidden">
-<p><span class="math inline">\(\widehat{OR}=0.913\)</span>; The estimated odds of aggression multiply by 0.913 for each one year increase in age\ (The estimated odds decrease by 8.7% for a one year increase in age).</p>
+<p><span class="math inline">\(\widehat{OR}=0.913\)</span></p>
+<p>The estimated odds of aggression multiply by 0.913 for each one year increase in age. (The estimated odds decrease by 8.7% for a one year increase in age).</p>
 <p>There is not a significant effect of age on aggression, <span class="math inline">\(p=0.068\)</span>, though this is close to the <span class="math inline">\(\alpha\)</span> cutoff.</p>
 </div>
 <ol start="2" type="a">
@@ -2516,34 +2510,33 @@ window.Quarto = {
 <section id="exercise-3" class="level1">
 <h1>Exercise 3</h1>
 <p>Using the New Hampshire survey, we are also interested in whether there are differences in the probability of having aggression across the years in school. A logistic regression model was run using year in school (<code>year</code>, 1=freshman, 2=sophomore, 3=junior, 4=senior) to predict aggression (<code>aggression</code>: 1=has aggression, 0=does not). Use the Stata output below to answer the questions.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year2 = (<span class="fu">year</span>==2) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year3 = (<span class="fu">year</span>==3) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year4 = (<span class="fu">year</span>==4) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression year2 year3 year4, coef</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(3)        =      10.16</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0173</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Log likelihood = -160.21221                     Pseudo R2         =     0.0307</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  aggression |      Coef.   Std. Err.      z    P&gt;|z|     [95</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>       year2 |   -.040822   .4143268    -0.10   0.922    -.8528875    .7712435</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>       year3 |   .1823216   .4082483     0.45   0.655    -.6178304    .9824735</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>       year4 |   -.863647   .4149159    -2.08   0.037    -1.676867   -.0504267</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   .5108256   .3265986     1.56   0.118    -.1292959    1.150947</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> year2 year3 year4</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a> ( 1)  [aggression]year2 = 0</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a> ( 2)  [aggression]year3 = 0</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a> ( 3)  [aggression]year4 = 0</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>           <span class="fu">chi2</span>(  3) =    9.92</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>         Prob &gt; <span class="fu">chi2</span> =    0.0193</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year2 = (<span class="fu">year</span>==2) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year3 = (<span class="fu">year</span>==3) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year4 = (<span class="fu">year</span>==4) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>. <span class="kw">logistic</span> aggression year2 year3 year4, coef</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Logistic regression                             Number <span class="kw">of</span> <span class="kw">obs</span>     =        243</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                                                LR <span class="fu">chi2</span>(3)        =      10.16</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                                                Prob &gt; <span class="fu">chi2</span>       =     0.0173</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Log likelihood = -160.21221                     Pseudo R2         =     0.0307</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  aggression |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>       year2 |   -.040822   .4143268    -0.10   0.922    -.8528875    .7712435</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>       year3 |   .1823216   .4082483     0.45   0.655    -.6178304    .9824735</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>       year4 |   -.863647   .4149159    -2.08   0.037    -1.676867   -.0504267</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   .5108256   .3265986     1.56   0.118    -.1292959    1.150947</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>. <span class="kw">test</span> year2 year3 year4</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a> ( 1)  [aggression]year2 = 0</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a> ( 2)  [aggression]year3 = 0</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a> ( 3)  [aggression]year4 = 0</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>           <span class="fu">chi2</span>(  3) =    9.92</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>         Prob &gt; <span class="fu">chi2</span> =    0.0193</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>Is there evidence of significant differences in aggression by year in school? Provide specific evidence to support your claim. (Assume <span class="math inline">\(\alpha=0.05\)</span>)</li>
 </ol>

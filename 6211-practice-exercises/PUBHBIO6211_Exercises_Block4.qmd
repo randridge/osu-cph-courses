@@ -28,7 +28,7 @@ We wish to test the relative effects of three drugs (numbered 1, 2, 3) on the re
        Total |  10.9773331        14  .784095222   Root MSE        =    .65498
 
 ------------------------------------------------------------------------------
-   reduction |      Coef.   Std. Err.      t    P>|t|     [95
+   reduction |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
        drug2 |      -1.16   .4142463    -2.80   0.016    -2.062565   -.2574348
        drug3 |      -1.44   .4142463    -3.48   0.005    -2.342565   -.5374348
@@ -47,7 +47,7 @@ The estimated mean reduction in fever for a child taking Drug 1 is 1.52 degrees.
 ::: {.answer .hidden}
 Yes, meaningful; tests whether there is a non-zero mean reduction in fever for children taking Drug 1.
 
-There is evidence of a significant mean reduction in fever for children taking Drug 1 (p\$\<\$0.0005).
+There is evidence of a significant mean reduction in fever for children taking Drug 1 (p<0.0005).
 :::
 
 (c) Write a one sentence interpretation of the estimated coefficient for `drug2`.
@@ -123,7 +123,7 @@ A survey of a random sample of students at the University of New Hampshire was c
 
 One variable we are interested in is `religion`, which captures a student's religious preference (1=Protestant, 2=Catholic, 3=Other). We also have as predictors number of hours studied per week (`study`), age (years), and sex (`gender`; 1=male, 0=female).
 
-A regression model was fit to predict GPA using these variables. Use the Stata output provided below to answer the questions below.
+A regression model was fit to predict GPA using these variables. Use the Stata output provided below to answer the questions.
 
 ``` {.none .stata}
 
@@ -141,7 +141,7 @@ A regression model was fit to predict GPA using these variables. Use the Stata o
        Total |  43.4032295       211  .205702509   Root MSE        =    .41622
 
 ------------------------------------------------------------------------------
-         gpa |      Coef.   Std. Err.      t    P>|t|     [95
+         gpa |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
    religion1 |  -.0659408   .0818991    -0.81   0.422    -.2274086    .0955271
    religion2 |  -.1738371   .0647677    -2.68   0.008    -.3015297   -.0461445
@@ -164,7 +164,7 @@ A regression model was fit to predict GPA using these variables. Use the Stata o
  ( 1)  religion1 - religion2 = 0
 
 ------------------------------------------------------------------------------
-         gpa |      Coef.   Std. Err.      t    P>|t|     [95
+         gpa |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          (1) |   .1078964   .0778378     1.39   0.167    -.0455645    .2613572
 ------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ The estimated mean GPA for Catholic students is 0.174 points lower than the esti
 (d) Interpret the coefficient for `study`. Is there a significant effect of hours studied on GPA?
 
 ::: {.answer .hidden}
-$\hat{\beta}_{study}=0.0123, \text{p-value} < 0.0005$. The estimated mean GPA increases by 0.0123 points for each 1 hour studied per week, controlling for religion, age, and gender. This effect is significant (p\$\<\$0.0005).
+$\hat{\beta}_{study}=0.0123, \text{p-value} < 0.0005$. The estimated mean GPA increases by 0.0123 points for each 1 hour studied per week, controlling for religion, age, and gender. This effect is significant (p<0.0005).
 :::
 
 
@@ -241,7 +241,7 @@ $\rightarrow F$(2, 206)
 
 In the University of New Hampshire student survey, information was collected on the amount of alcohol students consumed. The result was a 33-point drinking scale score, where a higher score means more alcohol consumption. We are interested in whether there are differences in alcohol consumption among the years in school (`year`: 1=Freshman, 2=Sophomore, 3=Junior, 4=Senior), and also differences by sex (`gender`; 1=male, 0=female).
 
-A regression model was fit to predict drinking score (`drink`) using year in school and sex. Use the Stata output below to answer the questions below.
+A regression model was fit to predict drinking score (`drink`) using year in school and sex. Use the Stata output below to answer the questions.
 
 ``` {.none .stata}
 
@@ -260,7 +260,7 @@ A regression model was fit to predict drinking score (`drink`) using year in sch
        Total |  10935.2181       242  45.1868517   Root MSE        =    6.2903
 
 ------------------------------------------------------------------------------
-       drink |      Coef.   Std. Err.      t    P>|t|     [95
+       drink |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
        year2 |   1.845409   1.266336     1.46   0.146    -.6492491    4.340067
        year3 |   .1760209   1.233302     0.14   0.887    -2.253561    2.605603
@@ -283,7 +283,7 @@ A regression model was fit to predict drinking score (`drink`) using year in sch
  ( 1)  - year2 + year3 = 0
 
 ------------------------------------------------------------------------------
-       drink |      Coef.   Std. Err.      t    P>|t|     [95
+       drink |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          (1) |  -1.669388   1.066031    -1.57   0.119     -3.76945    .4306743
 ------------------------------------------------------------------------------
@@ -293,7 +293,7 @@ A regression model was fit to predict drinking score (`drink`) using year in sch
  ( 1)  - year2 + year4 = 0
 
 ------------------------------------------------------------------------------
-       drink |      Coef.   Std. Err.      t    P>|t|     [95
+       drink |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          (1) |  -4.157619   1.114837    -3.73   0.000    -6.353827    -1.96141
 ------------------------------------------------------------------------------
@@ -303,7 +303,7 @@ A regression model was fit to predict drinking score (`drink`) using year in sch
  ( 1)  - year3 + year4 = 0
 
 ------------------------------------------------------------------------------
-       drink |      Coef.   Std. Err.      t    P>|t|     [95
+       drink |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          (1) |  -2.488231   1.077143    -2.31   0.022    -4.610182    -.366279
 ------------------------------------------------------------------------------
@@ -351,7 +351,7 @@ The estimated mean drinking score for males is 3.78 points higher than for femal
 | Freshman | Junior | 0.176 | (-2.25, 2.61) | 0.887 |
 | Freshman | Senior | -2.31 | (-4.82, 0.193) | 0.070 |
 | Sophomore | Junior | -1.67 | (-3.77, 0.431) | 0.119 |
-| Sophomore | Senior | -4.16 | (-6.36, -1.96) | \<0.0005 |
+| Sophomore | Senior | -4.16 | (-6.36, -1.96) |  <0.0005 |
 | Junior | Senior | -2.49 | (-4.61, -0.366) | 0.022 |
 :::
 
@@ -382,7 +382,7 @@ We would like to know whether adding price and foreign-made status improve on a 
        Total |  2443.45946        73  33.4720474   Root MSE        =    3.4389
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       pounds |  -.0060087   .0005179   -11.60   0.000    -.0070411   -.0049763
        _cons |   39.44028   1.614003    24.44   0.000     36.22283    42.65774
@@ -398,7 +398,7 @@ We would like to know whether adding price and foreign-made status improve on a 
        Total |  2443.45946        73  33.4720474   Root MSE        =     3.455
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       pounds |  -.0058175   .0006175    -9.42   0.000    -.0070489   -.0045862
        price |  -.0000935   .0001627    -0.57   0.567     -.000418    .0002309
@@ -415,7 +415,7 @@ We would like to know whether adding price and foreign-made status improve on a 
        Total |  2443.45946        73  33.4720474   Root MSE        =    3.4292
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       pounds |  -.0067758   .0009048    -7.49   0.000    -.0085805   -.0049712
        price |   .0000566   .0001922     0.29   0.769    -.0003268      .00044

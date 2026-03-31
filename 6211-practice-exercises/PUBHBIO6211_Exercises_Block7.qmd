@@ -24,7 +24,7 @@ We have a sample of 200 people, with age (in years) and bond mineral density (**
        Total |  7.49322516       199  .037654398   Root MSE        =    .17215
 
 ------------------------------------------------------------------------------
-         bmd |      Coef.   Std. Err.      t    P>|t|     [95
+         bmd |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          age |  -.0046087   .0006222    -7.41   0.000    -.0058358   -.0033817
        _cons |   1.164711   .0332406    35.04   0.000      1.09916    1.230262
@@ -50,7 +50,7 @@ $R^2=0.2170$
 
 (c) In checking the model assumptions, one useful plot is a Q-Q plot of the residuals. This plot is below. Do there appear to be any outliers based on this plot?
 
-![Plot A](./figures/regress_bmd_age_qnorm_ehat.png){fig-alt="TO BE WRITTEN" width=40%}
+![Q-Q Plot](./figures/regress_bmd_age_qnorm_ehat.png){fig-alt="A scatter plot comparing 'Residuals' on the vertical axis against 'Inverse Normal' on the horizontal axis. The x-axis ranges from -0.4 to 0.4, and the y-axis ranges from -0.5 to 1. A solid diagonal reference line passes through the origin. Dark blue data points follow the line closely in the center but deviate at the ends, sitting below the line on the far left and curving significantly above the line on the far right. The highest point is located near (0.4, 0.7) and the lowest near (-0.45, -0.5), and both of these are noticably further from the line than the rest of the points." width=40%}
 
 ::: {.answer .hidden}
 Yes, appears to be one point with a large positive residual and one with a large negative residual.
@@ -87,9 +87,9 @@ If we use -2.5 and 2 as the thresholds, then IDs 12 and 164 are also possible ou
 
 (e) Next, a leverage-versus-squared-residuals plot was generated. Two versions of the plot are shown below -- one with and one without the IDs superimposed. Are there any points that you think might be highly influential based on this plot? If so, report the ID(s) and explain why they might be highly influential.
 
-![Plot A](./figures/regress_bmd_age_lvr2plot.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot without ID labels](./figures/regress_bmd_age_lvr2plot.png){fig-alt="A scatter plot comparing Leverage on the vertical axis against Normalized residual squared on the horizontal axis. The x-axis ranges from 0 to 0.08, and the y-axis ranges from 0 to 0.04. Two red reference lines intersect near the origin, dividing the plot into four quadrants. Most dark blue data points are densely clustered in the bottom-left quadrant. A few points are scattered in the top-left and bottom-right, with one notable outlier located in the far top-right near (0.078, 0.035)." width=40%}
 
-![Plot A](./figures/regress_bmd_age_lvr2plot_IDs.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot with ID labels](./figures/regress_bmd_age_lvr2plot_IDs.png){fig-alt="A scatter plot comparing Leverage on the vertical axis against Normalized residual squared on the horizontal axis. The x-axis ranges from 0 to 0.08, and the y-axis ranges from 0 to 0.04. Two red reference lines intersect near the origin, dividing the plot into four quadrants. Most dark blue data points are densely clustered in the bottom-left quadrant. A few points are scattered in the top-left and bottom-right, with one notable outlier located in the far top-right near (0.078, 0.035). The point in the top right has ID = 151. There are also two points with large normalized residual squared values (IDs 130 and 164) but they do not have high leverage as they are close to the red horizontal reference line." width=40%}
 
 ::: {.answer .hidden}
 ID 151 has both high leverage (near the top of the plot) and a large residual (near the right of the plot). It potentially has high influence.
@@ -99,9 +99,9 @@ ID 130 (and to a lesser extent ID 164) has a large residual, as we already saw b
 
 (f) The DFBETAs for the model were calculated and plotted as shown below (once with and once without the IDs superimposed). Do the DFBETAs support your conclusion in part (e)?
 
-![A Plot](./figures/regress_bmd_age_dfbeta.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot without ID labels](./figures/regress_bmd_age_dfbeta.png){fig-alt="A box-and-whisker plot displaying 'Dfbeta age' on the vertical axis, which ranges from -0.2 to 0.8. The main blue box is centered horizontally and sits between -0.05 and 0.05, with a median line near zero. Vertical whiskers extend to approximately 0.15 and -0.15. Several dark blue individual data points are plotted as outliers beyond the whiskers. A few outliers are below the bottom whisker, reaching -0.2, while a larger string of outliers extends upward, with the most extreme point at approximately 0.73." width=40%}
 
-![A Plot](./figures/regress_bmd_age_dfbeta_IDs.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot with ID labels](./figures/regress_bmd_age_dfbeta_IDs.png){fig-alt="A box-and-whisker plot displaying 'Dfbeta age' on the vertical axis, which ranges from -0.2 to 0.8. The main blue box is centered horizontally and sits between -0.05 and 0.05, with a median line near zero. Vertical whiskers extend to approximately 0.15 and -0.15. Several dark blue individual data points are plotted as outliers beyond the whiskers. A few outliers are below the bottom whisker, reaching -0.2, while a larger string of outliers extends upward, with the most extreme point at approximately 0.73 (ID=151)." width=40%}
 
 ::: {.answer .hidden}
 There does appear to be one point that is really far above all the others, so YES, we have an influential point. The ID for this point is 151 -- the point we identified with the LVR2 plot.
@@ -121,7 +121,7 @@ The regression model was run with again, removing the one influential point. Out
        Total |  7.28112551       198  .036773361   Root MSE        =    .16545
 
 ------------------------------------------------------------------------------
-         bmd |      Coef.   Std. Err.      t    P>|t|     [95
+         bmd |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          age |  -.0050421    .000607    -8.31   0.000    -.0062392    -.003845
        _cons |   1.182745   .0322393    36.69   0.000     1.119167    1.246324
@@ -165,7 +165,7 @@ We have measured the IL-6, an inflammatory cytokine in the blood (units: pg/ml),
        Total |  463.247059        84  5.51484594   Root MSE        =    2.1194
 
 ------------------------------------------------------------------------------
-     depress |      Coef.   Std. Err.      t    P>|t|     [95
+     depress |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          il6 |   .0883511   .0196082     4.51   0.000     .0493442    .1273579
          age |   .0537898   .0556169     0.97   0.336      -.05685    .1644296
@@ -193,12 +193,14 @@ The estimated mean depression score increases by 0.054 units for each 1 year inc
 (c) What is the $R^2$ for this model? Interpret this quantity.
 
 ::: {.answer .hidden}
-$R^2=0.2049$\\ 20.5% of the variability in depression score is explained by IL-6 and age.
+$R^2=0.2049$
+
+20.5% of the variability in depression score is explained by IL-6 and age.
 :::
 
-Based on the CPR plot below, it appears that there may be a non-linear effect of IL-6, and a log-transformation may be appropriate. Thus, The model was run using natural log-transformed IL-6. Output is on the next page.
+Based on the CPR plot below, it appears that there may be a non-linear effect of IL-6, and a log-transformation may be appropriate. Thus, The model was run using natural log-transformed IL-6. Stata output is below the figure.
 
-![A Plot](./figures/regress_depress_il6_age_cprplot.png){fig-alt="TO BE WRITTEN" width=40%}
+![CPR Plot](./figures/regress_depress_il6_age_cprplot.png){fig-alt="A scatter plot displaying 'Component plus residual' on the vertical axis against 'Test' on the horizontal axis. The x-axis ranges from 0 to 50, and the y-axis ranges from -4 to 6. Dark blue data points are densely clustered between 0 and 15 on the x-axis and become sparse as values increase toward 50. Two trend lines—one straight teal line and one slightly jagged green line—both show a positive slope, rising from near (0, 0) to approximately (50, 4). The spread of points is fairly consistent across the range, with a few outliers appearing above 4 and below -2 on the y-axis." width=40%}
 
 ```{.none .stata}
 
@@ -213,7 +215,7 @@ Based on the CPR plot below, it appears that there may be a non-linear effect of
        Total |  463.247059        84  5.51484594   Root MSE        =    2.0906
 
 ------------------------------------------------------------------------------
-     depress |      Coef.   Std. Err.      t    P>|t|     [95
+     depress |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       ln_il6 |   1.034924   .2151201     4.81   0.000     .6069821    1.462867
          age |    .055592   .0548654     1.01   0.314    -.0535527    .1647368
@@ -249,7 +251,9 @@ The estimated mean depression score increases by 0.056 units for each 1 year inc
 (g) What is the $R^2$ for this model? Interpret this quantity, and compare to the $R^2$ in the original model.
 
 ::: {.answer .hidden}
-$R^2=0.2264$\\ 22.6% of the variability in depression score is explained by log-transformed IL-6 and age.
+$R^2=0.2264$
+
+22.6% of the variability in depression score is explained by log-transformed IL-6 and age.
 
 $R^2$ went up a little bit, from 0.2049 to 0.2264.
 :::
@@ -272,7 +276,7 @@ In the same sample of 85 people, we have another cytokine measured, called TNF (
        Total |  49.3748411        84  .587795727   Root MSE        =    .71472
 
 ------------------------------------------------------------------------------
-         tnf |      Coef.   Std. Err.      t    P>|t|     [95
+         tnf |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          sex |   .5026441   .1559238     3.22   0.002      .192462    .8128262
          age |   .0383495   .0187544     2.04   0.044      .001041     .075658
@@ -299,9 +303,9 @@ The estimated mean TNF is 0.503 pg/ml higher for men compared to women, adjustin
 
 (c) Based on the histogram of residuals from this model and the RVF plot (both shown below), do there appear to be any problems with model assumptions?
 
-![A Plot](./figures/regress_tnf_sex_age_ehat_hist.png){fig-alt="TO BE WRITTEN" width=40%}
+![Histogram of Residuals](./figures/regress_tnf_sex_age_ehat_hist.png){fig-alt="A density histogram with 'Residuals' on the horizontal axis and 'Density' on the vertical axis. The x-axis ranges from -2 to 2, and the y-axis ranges from 0 to 0.6. Ten tan-colored bars represent the distribution. The bars are tallest near the center, between -0.5 and 0.5, with the highest peak reaching approximately 0.64. The distribution is roughly bell-shaped but exhibits a slight right skew, with shorter bars extending further toward the positive end of the axis than the negative end." width=40%}
 
-![A Plot](./figures/regress_tnf_sex_age_rvfplot.png){fig-alt="TO BE WRITTEN" width=40%}
+![RVF Plot](./figures/regress_tnf_sex_age_rvfplot.png){fig-alt="A scatter plot with Residuals on the vertical axis and Fitted values on the horizontal axis. The x-axis ranges from 1.2 to 2.2, and the y-axis ranges from -1 to 2. The dark blue data points are distributed in a random cloud across the plot, centered around zero on the y-axis. The vertical spread of the points appears relatively constant as the fitted values increase, though the density of points is slightly higher on the right side of the plot." width=40%}
 
 ::: {.answer .hidden}
 Yes, normality looks violated because of the right-skewed residuals as seen in the histogram. Equal variance also *might* be violated as the up-and-down spread gets a little larger as you move along the X-axis of the RVF plot.
@@ -323,7 +327,7 @@ The model was re-run, using natural log-transformed TNF as the outcome. Output i
        Total |  18.1076662        84  .215567454   Root MSE        =     .4351
        
 ------------------------------------------------------------------------------
-      ln_tnf |      Coef.   Std. Err.      t    P>|t|     [95
+      ln_tnf |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          sex |   .2957837   .0949209     3.12   0.003     .1069559    .4846116
          age |    .022441    .011417     1.97   0.053    -.0002711    .0451531

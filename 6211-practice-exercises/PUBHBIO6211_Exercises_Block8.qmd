@@ -61,7 +61,7 @@ There is evidence of a difference in mean weight across the three groups (placeb
 
 ------------------------------------------------------------------------------------
                    |                            Unadjusted           Unadjusted
-                   |   Contrast   Std. Err.      t    P>|t|     [95
+                   |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------------+----------------------------------------------------------------
              group |
 herb 1 vs placebo  |       67.5   17.11887     3.94   0.003     28.77444    106.2256
@@ -72,11 +72,11 @@ herb 2 vs placebo  |      -12.5   17.11887    -0.73   0.484    -51.22556    26.2
 ```
 
 ::: {.answer .hidden}
-herb 2 vs.\ placebo: Bonferroni-adjusted p-value = $3 \times 0.003 = 0.009$
+herb 2 vs placebo: Bonferroni-adjusted p-value = $3 \times 0.003 = 0.009$
 
-herb 2 vs.\ placebo: Bonferroni-adjusted p-value = $3 \times 0.484 = 1.452 \rightarrow$ set to $1$
+herb 2 vs placebo: Bonferroni-adjusted p-value = $3 \times 0.484 = 1.452 \rightarrow$ set to $1$
 
-herb 2 vs.\ herb 1: Bonferroni-adjusted p-value = $3 \times 0.001 = 0.003$
+herb 2 vs herb 1: Bonferroni-adjusted p-value = $3 \times 0.001 = 0.003$
 
 There are significant differences in mean weight between the herb 1 group and the placebo group (herb 1 group has an estimated mean that is 67.5 pounds higher) and between the herb1 group and the herb 2 group (herb 2 group has an estimated mean that is 80 pounds lower). There is not a significant difference between the placebo and herb 2 group (estimated 12.5 pounds lower mean weight in herb 2 group).
 :::
@@ -108,7 +108,7 @@ A survey of a random sample of students at the University of New Hampshire was c
 
 ------------------------------------------------------------------------------
              |                              Tukey                Tukey
-             |   Contrast   Std. Err.      t    P>|t|     [95
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
        relig |
      2 vs 1  |  -.1750524   .0824899    -2.12   0.149    -.3886782    .0385735
@@ -122,7 +122,7 @@ A survey of a random sample of students at the University of New Hampshire was c
 ```
 
 ::: {.answer .hidden}
-A one-way ANOVA model was used to test for differences in mean GPA by religious preference (Protestant, Catholic, Jewish, Other). There is evidence of a significant association between GPA and religious preference (p=0.024). When comparing pairs of groups using a Tukey-Kramer adjustment, we find that, on average, Jewish students have a average GPA that is 0.26 points higher than Catholic students (p=0.049). No other significant differences between the groups were found (all p$>$0.05).
+A one-way ANOVA model was used to test for differences in mean GPA by religious preference (Protestant, Catholic, Jewish, Other). There is evidence of a significant association between GPA and religious preference (p=0.024). When comparing pairs of groups using a Tukey-Kramer adjustment, we find that, on average, Jewish students have a average GPA that is 0.26 points higher than Catholic students (p=0.049). No other significant differences between the groups were found (all p>0.05).
 :::
 
 
@@ -167,12 +167,12 @@ Pairwise comparisons of means among the years in school, appropriately adjusted 
 
 (c) An ANOVA plot for this model is also shown below. Explain how the results of the ANOVA are illustrated by the plot.
 
+![ANOVA Plot](./figures/anovaplot_drink_year_gender.png){fig-alt="An interaction plot comparing drinking scores by binary gender across four college years: Freshman, Sophomore, Junior, and Senior. The vertical axis represents a drinking scale and ranges from 0 to 40. The Male line (green) starts at 20, peaks at 24 for Sophomores, and then declines to 19 by Senior year. The Female line (red) starts at 18.5, remains relatively flat through Junior year, and drops to 15 in the Senior year. The green line remains consistently above the red line across all four years." width=40%}
+
+
 ::: {.answer .hidden}
 The lines are roughly parallel (the up-and-down difference between the lines is roughly the same for all years), consistent with no interaction. The up-and-down difference shows the significant difference between the two genders (and it is roughly the same for all years). It's hard to see the significant effect of year, but notice that the (pairs of) dots are not all at the same height all along the plot -- looks like they are lower for senior year than the other years. We would need the pairwise comparisons to confirm where significant differences are among the years.
 :::
-
-
-![A Plot](./figures/anovaplot_drink_year_gender.png){fig-alt="TO BE WRITTEN" width=40%}
 
 ---
 
@@ -220,7 +220,7 @@ Continuing the analysis from the previous problem, pairwise comparisons were con
 
 ------------------------------------------------------------------------------
              |                              Tukey                Tukey
-             |   Contrast   Std. Err.      t    P>|t|     [95
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
     exercise |
      2 vs 1  |          2   1.632993     1.22   0.624    -2.848195    6.848195
@@ -235,7 +235,7 @@ Continuing the analysis from the previous problem, pairwise comparisons were con
 
 ------------------------------------------------------------------------------
              |                              Tukey                Tukey
-             |   Contrast   Std. Err.      t    P>|t|     [95
+             |   Contrast   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
         diet |
      2 vs 1  |          5   1.414214     3.54   0.011     1.227071    8.772929

@@ -2403,7 +2403,72 @@ window.Quarto = {
 <section id="exercise-1" class="level1">
 <h1>Exercise 1</h1>
 <p>A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in whether how far away from campus a student lives (<code>miles</code>; number of miles away, 0 miles means student lives on campus) is associated with grade point average (GPA), which is measured on a 4-point scale.</p>
-<p>A series of models were performed and Stata output is provided at the end of the problem. Use this to answer the questions below (note: output spans 2 pages).</p>
+<p>A series of models were performed and Stata output is below. Use this to answer the questions.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa age</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       218</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 216)       =     17.64</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       Model |  3.45507544         1  3.45507544   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    Residual |  42.2966637       216  .195817887   R-squared       =    0.0755</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0712</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       Total |  45.7517391       217  .210837507   Root MSE        =    .44251</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         age |   .0415214   .0098848     4.20   0.000     .0220383    .0610045</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   1.952825   .2058752     9.49   0.000     1.547044    2.358607</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa miles</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       206</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 204)       =      5.08</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       Model |  1.04763577         1  1.04763577   Prob &gt; <span class="fu">F</span>        =    0.0253</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    Residual |  42.1070429       204  .206407073   R-squared       =    0.0243</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0195</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>       Total |  43.1546787       205  .210510628   Root MSE        =    .45432</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>       miles |   .0123695   .0054905     2.25   0.025     .0015442    .0231949</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   2.775878   .0338218    82.07   0.000     2.709193    2.842563</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> miles age</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       226</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 224)       =     31.98</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>       Model |  866.680685         1  866.680685   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    Residual |  6071.31932       224  27.1041041   R-squared       =    0.1249</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1210</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       Total |        6938       225  30.8355556   Root MSE        =    5.2062</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>       miles |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>         age |   .6477434   .1145489     5.65   0.000     .4220121    .8734748</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |  -11.23861   2.366632    -4.75   0.000    -15.90232   -6.574904</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa age miles</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       206</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(2, 203)       =      9.66</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>       Model |  3.75001816         2  1.87500908   Prob &gt; <span class="fu">F</span>        =    0.0001</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    Residual |  39.4046605       203  .194111628   R-squared       =    0.0869</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0779</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       Total |  43.1546787       205  .210510628   Root MSE        =    .44058</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>         age |   .0395682   .0106047     3.73   0.000     .0186587    .0604777</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>       miles |   .0051321   .0056668     0.91   0.366    -.0060412    .0163053</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   1.974672   .2172224     9.09   0.000      1.54637    2.402973</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>What is the unadjusted effect of miles from school on GPA? Is there evidence of a significant effect? (“unadjusted” = not adjusted for any other predictors)</li>
 </ol>
@@ -2421,76 +2486,38 @@ window.Quarto = {
 <p>Thus yes, age is a confounder of the relationship between GPA and miles from school.</p>
 </div>
 <hr>
-<div class="sourceCode" id="cb1"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa age</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       218</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 216)       =     17.64</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       Model |  3.45507544         1  3.45507544   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    Residual |  42.2966637       216  .195817887   R-squared       =    0.0755</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0712</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       Total |  45.7517391       217  .210837507   Root MSE        =    .44251</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         age |   .0415214   .0098848     4.20   0.000     .0220383    .0610045</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   1.952825   .2058752     9.49   0.000     1.547044    2.358607</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa miles</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       206</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 204)       =      5.08</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       Model |  1.04763577         1  1.04763577   Prob &gt; <span class="fu">F</span>        =    0.0253</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    Residual |  42.1070429       204  .206407073   R-squared       =    0.0243</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0195</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>       Total |  43.1546787       205  .210510628   Root MSE        =    .45432</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>       miles |   .0123695   .0054905     2.25   0.025     .0015442    .0231949</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   2.775878   .0338218    82.07   0.000     2.709193    2.842563</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> miles age</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       226</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(1, 224)       =     31.98</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>       Model |  866.680685         1  866.680685   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    Residual |  6071.31932       224  27.1041041   R-squared       =    0.1249</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.1210</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       Total |        6938       225  30.8355556   Root MSE        =    5.2062</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>       miles |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>         age |   .6477434   .1145489     5.65   0.000     .4220121    .8734748</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |  -11.23861   2.366632    -4.75   0.000    -15.90232   -6.574904</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> gpa age miles</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =       206</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(2, 203)       =      9.66</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>       Model |  3.75001816         2  1.87500908   Prob &gt; <span class="fu">F</span>        =    0.0001</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    Residual |  39.4046605       203  .194111628   R-squared       =    0.0869</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.0779</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>       Total |  43.1546787       205  .210510628   Root MSE        =    .44058</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>         age |   .0395682   .0106047     3.73   0.000     .0186587    .0604777</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>       miles |   .0051321   .0056668     0.91   0.366    -.0060412    .0163053</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   1.974672   .2172224     9.09   0.000      1.54637    2.402973</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 <section id="exercise-2" class="level1">
 <h1>Exercise 2</h1>
-<p>We are interested in quantifying the relationship between percent body fat <code>pctfat</code> and the following predictors: triceps skin-fold thickness (<code>tricep</code>), thigh circumference (<code>thigh</code>), mid-arm circumference (<code>midarm</code>). A regression model was run using these three variables to predict percent body fat. Use the Stata output provided at the end of the problem to answer the questions below.</p>
+<p>We are interested in quantifying the relationship between percent body fat <code>pctfat</code> and the following predictors: triceps skin-fold thickness (<code>tricep</code>), thigh circumference (<code>thigh</code>), mid-arm circumference (<code>midarm</code>). A regression model was run using these three variables to predict percent body fat. Use the Stata below to answer the questions.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> pctfat tricep thigh midarm</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =        20</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(3, 16)        =     21.52</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       Model |  396.984607         3  132.328202   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    Residual |  98.4049068        16  6.15030667   R-squared       =    0.8014</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.7641</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       Total |  495.389513        19  26.0731323   Root MSE        =      2.48</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      pctfat |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      tricep |   4.334085   3.015511     1.44   0.170    -2.058512    10.72668</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       thigh |  -2.856842   2.582015    -1.11   0.285    -8.330468    2.616785</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      midarm |  -2.186056   1.595499    -1.37   0.190    -5.568362     1.19625</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   117.0844   99.78238     1.17   0.258    -94.44474    328.6136</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>. <span class="kw">vif</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    Variable |       VIF       1/VIF  </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>-------------+----------------------</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      tricep |    708.84    0.001411</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>       thigh |    564.34    0.001772</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      midarm |    104.61    0.009560</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>-------------+----------------------</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    Mean VIF |    459.26</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="a">
 <li>Report the p-value from the overall F-test for this model, and write a one-sentence interpretation. (Assume <span class="math inline">\(\alpha=0.05\)</span>.)</li>
 </ol>
@@ -2517,66 +2544,11 @@ window.Quarto = {
 <p>Remove one of the predictors, probably tricep since it has the largest VIF – though might also consider which of the 3 is of most and least scientific interest.</p>
 </div>
 <hr>
-<div class="sourceCode" id="cb2"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">regress</span> pctfat tricep thigh midarm</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Source |       SS           df       MS      Number <span class="kw">of</span> <span class="kw">obs</span>   =        20</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   <span class="fu">F</span>(3, 16)        =     21.52</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       Model |  396.984607         3  132.328202   Prob &gt; <span class="fu">F</span>        =    0.0000</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    Residual |  98.4049068        16  6.15030667   R-squared       =    0.8014</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------   Adj R-squared   =    0.7641</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       Total |  495.389513        19  26.0731323   Root MSE        =      2.48</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      pctfat |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      tricep |   4.334085   3.015511     1.44   0.170    -2.058512    10.72668</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       thigh |  -2.856842   2.582015    -1.11   0.285    -8.330468    2.616785</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      midarm |  -2.186056   1.595499    -1.37   0.190    -5.568362     1.19625</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>       <span class="dt">_cons</span> |   117.0844   99.78238     1.17   0.258    -94.44474    328.6136</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>. <span class="kw">vif</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    Variable |       VIF       1/VIF  </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>-------------+----------------------</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      tricep |    708.84    0.001411</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>       thigh |    564.34    0.001772</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      midarm |    104.61    0.009560</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>-------------+----------------------</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    Mean VIF |    459.26</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 <section id="exercise-3" class="level1">
 <h1>Exercise 3</h1>
 <p>A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of grade point average (GPA), which is measured on a 4-point scale. A regression model was fit using the following predictors: age (<code>age</code>), year in school (<code>year</code>; 1=freshman, 2=sophomore, 3=junior, 4=senior), sex (<code>gender</code>; 1=male, 0=female), and how far away from school the student lives (<code>miles</code>). Note that students who live on campus would have a “0” for the <code>miles</code> variable.</p>
-<p>The age variable was centered before including it in the model – the sample mean, 20, was subtracted from all values (resulting variable: <code>age_20</code>). Use the Stata output provided at the end of the problem to answer the questions below (note: output spans 2 pages).</p>
-<ol type="a">
-<li>Interpret the estimated coefficient for <code>age_20</code>.</li>
-</ol>
-<div class="answer hidden">
-<p>Estimated mean GPA increases by 0.0345 points for each 1 year increase in age, adjusting for year in school, sex, and how far away from school the student lives.</p>
-<p>Note that the interpretation of a centered covariate is the same as a non-centered covariate when it’s not involved in an interaction.</p>
-</div>
-<ol start="2" type="a">
-<li>Carefully interpret the intercept estimate. Is this meaningful?</li>
-</ol>
-<div class="answer hidden">
-<p>The estimated mean GPA for students who are 20 years old, freshman, females, and live on campus (0 miles away) is 2.95. Yes, this is meaningful (because we centered age at 20!).</p>
-</div>
-<ol start="3" type="a">
-<li>Is there any problem with multicollinearity for this model?</li>
-</ol>
-<div class="answer hidden">
-<p>No – all VIFs are below 5 (even the ones for the dummy variables for year in school)</p>
-</div>
-<hr>
-<ol start="4" type="a">
-<li>We would like to perform backwards selection starting from this model, with 0.05 as the removal criterion. What should be the first predictor removed?</li>
-</ol>
-<div class="answer hidden">
-<p><code>miles</code> – with a p-value of 0.466. The p-value from the partial F-test for year in school is only 0.2917 so <code>miles</code> should be removed.</p>
-</div>
+<p>The age variable was centered before including it in the model – the sample mean, 20, was subtracted from all values (resulting variable: <code>age_20</code>). Use the Stata output below to answer the questions.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode none stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> age_20 = age - 20</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>. <span class="kw">generate</span> year2 = (<span class="fu">year</span>==2) <span class="kw">if</span> !<span class="fu">missing</span>(<span class="fu">year</span>)</span>
@@ -2593,7 +2565,7 @@ window.Quarto = {
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>       Total |  43.1546787       205  .210510628   Root MSE        =    .43652</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------------</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         gpa |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>-------------+----------------------------------------------------------------</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      age_20 |   .0345186   .0111388     3.10   0.002     .0125534    .0564838</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>       year2 |  -.2075202    .126369    -1.64   0.102    -.4567144     .041674</span>
@@ -2625,6 +2597,31 @@ window.Quarto = {
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>       <span class="fu">F</span>(  3,   199) =    1.25</span>
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            Prob &gt; <span class="fu">F</span> =    0.2917</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li>Interpret the estimated coefficient for <code>age_20</code>.</li>
+</ol>
+<div class="answer hidden">
+<p>Estimated mean GPA increases by 0.0345 points for each 1 year increase in age, adjusting for year in school, sex, and how far away from school the student lives.</p>
+<p>Note that the interpretation of a centered covariate is the same as a non-centered covariate when it’s not involved in an interaction.</p>
+</div>
+<ol start="2" type="a">
+<li>Carefully interpret the intercept estimate. Is this meaningful?</li>
+</ol>
+<div class="answer hidden">
+<p>The estimated mean GPA for students who are 20 years old, freshman, females, and live on campus (0 miles away) is 2.95. Yes, this is meaningful (because we centered age at 20!).</p>
+</div>
+<ol start="3" type="a">
+<li>Is there any problem with multicollinearity for this model?</li>
+</ol>
+<div class="answer hidden">
+<p>No – all VIFs are below 5 (even the ones for the dummy variables for year in school)</p>
+</div>
+<ol start="4" type="a">
+<li>We would like to perform backwards selection starting from this model, with 0.05 as the removal criterion. What should be the first predictor removed?</li>
+</ol>
+<div class="answer hidden">
+<p><code>miles</code> – with a p-value of 0.466. The p-value from the partial F-test for year in school is only 0.2917 so <code>miles</code> should be removed.</p>
+</div>
 </section>
 
 </main>

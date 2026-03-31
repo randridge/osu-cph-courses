@@ -24,7 +24,7 @@ I have observations on systolic blood pressure (SBP) and age for a sample of 30 
        Total |  14787.4667    29  509.912644           Root MSE      =  17.314
 
 ------------------------------------------------------------------------------
-         sbp |      Coef.   Std. Err.      t    P>|t|     [95
+         sbp |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          age |   .9708704   .2102157     4.62   0.000     .5402629    1.401478
        _cons |   98.71472   10.00047     9.87   0.000     78.22969    119.1997
@@ -75,7 +75,9 @@ Yes, there is evidence of a significant association, the p-value for the slope (
 (f) What is the coefficient of determination for this model? Write a one sentence interpretation of this quantity.
 
 ::: {.answer .hidden}
-$R^2=0.4324$  43% of the variability in SBP is explained by age.
+$R^2=0.4324$  
+
+43% of the variability in SBP is explained by age.
 :::
 
 ---
@@ -96,7 +98,7 @@ Information on 74 automobiles was collected (in 1978) to study the relationship 
        Total |  2443.45946        73  33.4720474   Root MSE        =    3.4389
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       pounds |  -.0060087   .0005179 
        _cons |   39.44028   1.614003    24.44   0.000     36.22283    42.65774
@@ -155,11 +157,11 @@ There is evidence of a significant effect of car weight on mileage $(p<0.0002)$.
 (f) Calculate a 95% confidence interval for $\beta_1$. Do you expect 0 to be in the interval?
 
 ::: {.answer .hidden}
-Because we rejected $H_0: \beta_1=0$, we \underline{do not} expect 0 to be in the interval.
+Because we rejected $H_0: \beta_1=0$, we **do not** expect 0 to be in the interval.
 
 95% CI: $\hat{\beta}_1 \pm t_{n-2}^* \times \widehat{SE}(\hat{\beta}_1)$
 
-$t_{n-2}^* = $ critical value from t distribution with 72 DF that has 0.05/2 = 0.025 in the upper tail
+$t_{n-2}^* =$ critical value from t distribution with 72 DF that has 0.05/2 = 0.025 in the upper tail
 
 $t_{n-2}^* = t_{72}^* = 1.99$
 
@@ -196,11 +198,11 @@ $\rightarrow$ p-value for overall F-test = $<0.0002$
 
 (k) Three plots generated after running the regression model are shown below (labeled A-C). For each plot, state the name of the plot (or what is being plotted), which assumption(s) of the model can be checked with the plot, and whether or not you see any problems with the assumptions.
 
-![Plot A](./figures/regress_mpg_pounds_qnorm_ehat.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot A](./figures/regress_mpg_pounds_qnorm_ehat.png){fig-alt="A scatter plot with a horizontal axis labeled 'Inverse Normal' and a vertical axis labeled 'Residuals.' The x-axis ranges from -10 to 10, while the y-axis ranges from -10 to 15. A solid, straight diagonal reference line is plotted. Dark blue data points follow the line closely in the center but form an S-shaped curve, sitting below the line on the lower left and rising significantly above the line on the upper right, ending with a single prominent outlier at approximately (8, 14)." width=40%}
 
-![Plot B](./figures/regress_mpg_pounds_hist_ehat.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot B](./figures/regress_mpg_pounds_hist_ehat.png){fig-alt="A histogram with horizontal axis labeled 'Residuals' and vertical axis labeled 'Density' that shows a relatively normal distribution with slight right skew." width=40%}
 
-![Plot C](./figures/regress_mpg_pounds_rvfplot.png){fig-alt="TO BE WRITTEN" width=40%}
+![Plot C](./figures/regress_mpg_pounds_rvfplot.png){fig-alt="A scatterplot with horizontal axis labeled 'Fitted values' and vertical axis labeled 'Residuals'. The points are a mostly random scatter with possibly a slight fan-shape as you move from left to right." width=40%}
 
 ::: {.answer .hidden}
 
@@ -230,7 +232,7 @@ An economist is interested in the relationship between money flowing to stock mu
        Total |   55949.858        15  3729.99053   Root MSE        =    59.881
 
 ------------------------------------------------------------------------------
-       bonds |      Coef.   Std. Err.      t    P>|t|     [95
+       bonds |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       stocks |  -.1962223   .1549669    -1.27   _____    -.5285933    .1361486
        _cons |   53.40959    22.9925     2.32   0.036      4.09557    102.7236

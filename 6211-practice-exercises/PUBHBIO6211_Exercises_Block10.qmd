@@ -16,12 +16,12 @@ $0.5* ,1,1,1,2,5* ,8* ,9,10* ,12*$
 
 (a) A Kaplan-Meier curve was generated for these data using Stata. Use this to estimate the median survival time.
 
-![A Plot](./figures/stsgraph_AIDS_months_died.png){fig-alt="TO BE WRITTEN" width=40%}
+![Kaplan-Meier Plot](./figures/stsgraph_AIDS_months_died.png){fig-alt="A Kaplan-Meier survival estimate plot showing survival probability over time. The vertical axis represents the survival estimate, ranging from 0.00 to 1.00, and the horizontal axis represents analysis time, ranging from 0 to 15. The survival curve is a blue step function that starts at 1.00 at time zero. It drops to approximately 0.68 at time 1, then to approximately 0.55 at time 2. The line remains flat until it crosses the 0.50 survival threshold at time 9, dropping to a final level of approximately 0.38, where it remains until the end of the observed period at time 12." width=40%}
 
 ::: {.answer .hidden}
 First time where the curve dips below 0.5 is just before 10 months; from the data we see this must be the 9 month data point -- so the median survival time is 9 months.
 
-![A Plot](./figures/stsgraph_AIDS_months_died_edited.png){fig-alt="TO BE WRITTEN" width=40%}
+![Kaplan-Meier Plot, Annotated](./figures/stsgraph_AIDS_months_died_edited.png){fig-alt="A Kaplan-Meier survival estimate plot showing survival probability over time. The vertical axis represents the survival estimate, ranging from 0.00 to 1.00, and the horizontal axis represents analysis time, ranging from 0 to 15. The survival curve is a blue step function that starts at 1.00 at time zero. It drops to approximately 0.68 at time 1, then to approximately 0.55 at time 2. The line remains flat until it crosses the 0.50 survival threshold at time 9, dropping to a final level of approximately 0.38, where it remains until the end of the observed period at time 12. This plot has a red circle around the point where the survival crosses 0.50 on the y-axis, with red lines going from this circle to the y-axis (intersecting at 0.5) and to the x-axis (intersecting at 9)." width=40%}
 
 :::
 
@@ -35,7 +35,7 @@ The estimated survival function was obtained in Stata.
    analysis time _t:  months
 
            Beg.          Net            Survivor      Std.
-  Time    Total   Fail   Lost           Function     Error     [95
+  Time    Total   Fail   Lost           Function     Error     [95% Conf. Int.]
 -------------------------------------------------------------------------------
     .5       10      0      1             1.0000         .          .         .
      1        9      3      0             0.6667    0.1571     0.2817    0.8783
@@ -78,7 +78,7 @@ The survival function estimate was separately for each group and a Kaplan-Meier 
 . sts list, by(group)
 
            Beg.          Net            Survivor      Std.
-  Time    Total   Fail   Lost           Function     Error     [95
+  Time    Total   Fail   Lost           Function     Error     [95% Conf. Int.]
 -------------------------------------------------------------------------------
 negative 
     19       36      1      0             0.9722    0.0274     0.8187    0.9960
@@ -131,7 +131,7 @@ positive
 ```
 
 
-![A Plot](./figures/stsgraph_BC_months_death.png){fig-alt="TO BE WRITTEN" width=40%}
+![Kaplan-Meier Plot by Group](./figures/stsgraph_BC_months_death.png){fig-alt="A Kaplan-Meier survival estimates plot comparing two groups over time, with analysis time on the x-axis (0–200) and survival probability on the y-axis (0.00–1.00). The negative group (blue line) maintains a higher survival rate, declining gradually before plateauing at approximately 0.55 after time 90, never crossing the median survival threshold. In contrast, the positive group (red line) shows a much steeper decline, crossing the 0.50 median survival mark at approximately time 75 and reaching a final survival estimate of 0.12 just before time 150." width=40%}
 
 
 ```{.none .stata}
@@ -200,7 +200,7 @@ An observational study of survival of patients with cancer of the larynx was con
 
 (a) Below is a Kaplan-Meier plot of these data. Describe what you see in terms of how survival might differ by cancer stage. (Which one has the "best" survival? Which one the "worst"?) Remember that you're not doing a test -- just describing what you see.
 
-![A Plot](./figures/stsgraph_LARYNX_months_death.png){fig-alt="TO BE WRITTEN" width=40%}
+![Kaplan-Meier Plot by Cancer Stage](./figures/stsgraph_LARYNX_months_death.png){fig-alt="A Kaplan-Meier survival estimates plot comparing four cancer stages over an analysis time of 0 to 11, with survival probability on the vertical axis. The four step-function lines are different cancer stages, with stage 1 (blue) and stage 2 (red) positioned highest on the plot, showing the most gradual declines and often overlapping. Stage 3 (green) is positioned clearly below the first two groups, indicating a lower survival probability over time. Stage 4 (orange) is the lowest line on the graph, exhibiting a very sharp and rapid descent compared to all other groups and terminating much earlier than the others." width=40%}
 
 ::: {.answer .hidden}
 In general, patients with higher cancer stage have worse survival -- they die sooner. Patients with stage 4 cancer have the worst survival, followed by patients with stage 3 cancer. There doesn't appear to be much difference between stages 1 and 2, but both have better survival than stages 3 and 4.
@@ -236,7 +236,7 @@ Total |        50          50.00
 ```
 
 ::: {.answer .hidden}
-There is evidence that the survival (time to death) is not the same for all cancer stages (p$<$0.00005).
+There is evidence that the survival (time to death) is not the same for all cancer stages (p<0.00005).
 
 Note that we cannot definitively say which group(s) are significantly different from which other groups based on this test (would need additional tests -- kind of like pairwise tests after an ANOVA).
 :::

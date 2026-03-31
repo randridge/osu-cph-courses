@@ -15,7 +15,6 @@ A survey of a random sample of students at the University of New Hampshire was c
 (a) A logistic regression model was run using fraternity/sorority membership to predict aggression (output below). Based on this model, interpret the effect of fraternity/sorority membership as an odds ratio.
 
 ```{.none .stata}
-
 . logistic aggression frat, coef
 
 Logistic regression                             Number of obs     =        243
@@ -24,7 +23,7 @@ Logistic regression                             Number of obs     =        243
 Log likelihood = -161.90393                     Pseudo R2         =     0.0205
 
 ------------------------------------------------------------------------------
-  aggression |      Coef.   Std. Err.      z    P>|z|     [95
+  aggression |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
         frat |    .906812   .3639366     2.49   0.013     .1935094    1.620115
        _cons |   .1636294   .1433355     1.14   0.254     -.117303    .4445619
@@ -59,20 +58,16 @@ Look for 0 in the CI to test $H_0: \beta_1=0$, and if 0 is NOT in the 95% CI, th
 ::: {.answer .hidden}
 $\hat{\beta}_0=0.1636294$
 
-\begin{align*}
-\text{Estimated prob of aggression for people not in frat/sorority} = \frac{\exp(\hat{\beta}_0)}{1+\exp(\hat{\beta}_0)} &{}=\frac{\exp(0.1636294)}{1+\exp(0.1636294)}
+Estimated prob of aggression for people not in frat/sorority
 
-&{}=\frac{1.17778}{1+1.17778}
+$= \frac{\exp(\hat{\beta}_0)}{1+\exp(\hat{\beta}_0)} =\frac{\exp(0.1636294)}{1+\exp(0.1636294)} =\frac{1.17778}{1+1.17778} =0.54$
 
-&{} = 0.54
-\end{align*}
 We estimate that 54% of people not in a fraternity/sorority have aggression.
 :::
 
 (e) Next, belonging to a fraternity/sorority and aggression were cross-tabulated (output below). Use this to calculate the appropriate odds ratio to confirm your answer to (a) -- the estimated OR from the logistic regression.
 
 ```{.none .stata}
-
 . tabulate aggression frat
 
            |         frat
@@ -110,7 +105,6 @@ Same as answer to (d).
 Using the New Hampshire survey, we are also interested in whether age is a predictor of aggression. A logistic regression model was run using age (`age`, in years) to predict aggression (`aggression`: 1=has aggression, 0=does not). Note that the `coef` option was left off the `logistic` command.
 
 ```{.none .stata}
-
 . logistic aggression age
 
 Logistic regression                             Number of obs     =        243
@@ -119,7 +113,7 @@ Logistic regression                             Number of obs     =        243
 Log likelihood = -163.35176                     Pseudo R2         =     0.0117
 
 ------------------------------------------------------------------------------
-  aggression | Odds Ratio   Std. Err.      z    P>|z|     [95
+  aggression | Odds Ratio   Std. Err.      z    P>|z|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          age |   .9132199   .0453706    -1.83   0.068     .8284875    1.006618
        _cons |   8.774296   8.920195     2.14   0.033     1.196346    64.35283
@@ -130,7 +124,9 @@ Log likelihood = -163.35176                     Pseudo R2         =     0.0117
 (a) Interpret the effect of age on aggression. Is there a significant effect? (Assume $\alpha=0.05$)
 
 ::: {.answer .hidden}
-$\widehat{OR}=0.913$; The estimated odds of aggression multiply by 0.913 for each one year increase in age\\ (The estimated odds decrease by 8.7% for a one year increase in age).
+$\widehat{OR}=0.913$
+
+The estimated odds of aggression multiply by 0.913 for each one year increase in age. (The estimated odds decrease by 8.7% for a one year increase in age).
 
 There is not a significant effect of age on aggression, $p=0.068$, though this is close to the $\alpha$ cutoff.
 :::
@@ -151,9 +147,7 @@ Look for 1 in the CI to test $H_0: OR=1$, and if 1 is NOT in the 95% CI, then re
 
 Using the New Hampshire survey, we are also interested in whether there are differences in the probability of having aggression across the years in school. A logistic regression model was run using year in school (`year`, 1=freshman, 2=sophomore, 3=junior, 4=senior) to predict aggression (`aggression`: 1=has aggression, 0=does not). Use the Stata output below to answer the questions.
 
-
 ```{.none .stata}
-
 . generate year2 = (year==2) if !missing(year)
 . generate year3 = (year==3) if !missing(year)
 . generate year4 = (year==4) if !missing(year)
@@ -165,7 +159,7 @@ Logistic regression                             Number of obs     =        243
 Log likelihood = -160.21221                     Pseudo R2         =     0.0307
 
 ------------------------------------------------------------------------------
-  aggression |      Coef.   Std. Err.      z    P>|z|     [95
+  aggression |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
        year2 |   -.040822   .4143268    -0.10   0.922    -.8528875    .7712435
        year3 |   .1823216   .4082483     0.45   0.655    -.6178304    .9824735

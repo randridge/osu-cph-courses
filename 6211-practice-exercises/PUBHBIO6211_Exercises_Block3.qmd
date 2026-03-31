@@ -24,7 +24,7 @@ Information on 74 automobiles was collected (in 1978) to study the relationship 
        Total |  2443.45946        73  33.4720474   Root MSE        =    3.4071
 
 ------------------------------------------------------------------------------
-         mpg |      Coef.   Std. Err.      t    P>|t|     [95
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       weight |  -.0065879   .0006371   -10.34   0.000    -.0078583   -.0053175
      foreign |  -1.650029   1.075994    -1.53   0.130      -3.7955    .4954422
@@ -47,7 +47,7 @@ The estimated mean change in MPG for a 1 pound increase in weight is -0.0066 mil
 (c) Interpret the value $-1.650029$ from the Stata output.
 
 ::: {.answer .hidden}
-The estimated mean mileage for foreign cars is 1.65 miles per gallon \underline{lower} than the mean for U.S.-made cars, controlling for weight.
+The estimated mean mileage for foreign cars is 1.65 miles per gallon **lower** than the mean for U.S.-made cars, controlling for weight.
 :::
 
 (d) Is there a significant difference in mileage between foreign and U.S.-made cars, controlling for the weight of the car? Cite specific evidence from the Stata output in your answer.
@@ -59,7 +59,7 @@ No, test of $H_0: \beta_2=0$ has p-value=0.130
 (e) Is there a significant effect of weight on mileage, controlling for foreign status? Cite specific evidence from the Stata output in your answer.
 
 ::: {.answer .hidden}
-Yes, test of $H_0: \beta_1=0$ has p-value \$\<\$0.0005 (shown on Stata output as 0.000)
+Yes, test of $H_0: \beta_1=0$ has p-value <0.0005 (shown on Stata output as 0.000)
 :::
 
 (f) How much of the variability in mileage is explained by foreign status and weight of the car together?
@@ -74,7 +74,7 @@ $R^2 = 0.6627 \rightarrow$ 66% of the variability in mileage is explained by for
 
 A survey of a random sample of students at the University of New Hampshire was conducted. We are interested in predictors of grade point average (GPA), which is measured on a 4-point scale. In particular, we would like to know whether sex is an important predictor (`gender`; 1=male, 0=female), and also whether how far away a student lives from campus (`miles`; how many miles away from school the student lives) is an important predictor. We also believe that age (`age`; years) and how many hours per week a student studies on average (`study`) might be important predictors.
 
-A regression model was fit to predict GPA. Use these results to answer the questions on the next few pages.
+A regression model was fit to predict GPA. Use these results to answer the questions.
 
 ``` {.none .stata}
 
@@ -88,7 +88,7 @@ A regression model was fit to predict GPA. Use these results to answer the quest
        Total |  42.3476416       203  .208609072   Root MSE        =    .42341
 
 ------------------------------------------------------------------------------
-         gpa |      Coef.   Std. Err.      t    P>|t|     [95
+         gpa |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
          age |   .0384382   .0102536     3.75   0.000     .0182185    .0586578
       gender |  -.1236973   .0601494    -2.06   0.041    -.2423094   -.0050852
@@ -98,12 +98,11 @@ A regression model was fit to predict GPA. Use these results to answer the quest
 ------------------------------------------------------------------------------
 ```
 
-------------------------------------------------------------------------
 
 (a) Interpret the result of the overall F-test for this model (include reference to the p-value).
 
 ::: {.answer .hidden}
-At least one of the predictors -- age, gender, hours studied, and miles away from school -- is significantly associated with GPA (p\$\<\$0.00005).
+At least one of the predictors -- age, gender, hours studied, and miles away from school -- is significantly associated with GPA (p<0.00005).
 :::
 
 (b) The $R^2$ value is missing from the output. Calculate it, and write a one sentence interpretation.
@@ -153,7 +152,7 @@ No; p-value = 0.351
 (h) Interpret the effect of hours studied on GPA, including reference to a p-value.
 
 ::: {.answer .hidden}
-The estimated mean GPA increases by 0.038 points for each one year increase in age, adjusting for age, gender, and how far away from school a student lives; this is a significant association (p\$\<\$0.0005).
+The estimated mean GPA increases by 0.038 points for each one year increase in age, adjusting for age, gender, and how far away from school a student lives; this is a significant association (p<0.0005).
 :::
 
 (i) What is the estimated GPA for a male student who is 20 years old, lives 5 miles from campus, and studies 10 hours per week?
@@ -161,9 +160,9 @@ The estimated mean GPA increases by 0.038 points for each one year increase in a
 ::: {.answer .hidden}
 $\widehat{GPA} = 1.87 + 0.038 \times AGE - 0.124 \times GENDER + 0.0128 \times STUDY + 0.00513 \times MILES$
 
-\$ = 1.87 + 0.038 \times 20 - 0.124 \times 1 + 0.0128 \times 10 + 0.00513 \times 5\$
+$= 1.87 + 0.038 \times 20 - 0.124 \times 1 + 0.0128 \times 10 + 0.00513 \times 5$
 
-\$ = 2.67\$
+$= 2.67$
 :::
 
 (j) What is the estimated difference in mean GPA between two female students who are the same age, and live the same distance from campus, but one studies 10 hours/week and the other studies 25 hours/week? (Also indicate which has the higher estimated GPA.)
@@ -176,11 +175,11 @@ Higher GPA for student who studies more (25 hours)
 
 (k) Three plots generated after running the regression model are shown below (labeled A-C). For each plot, state the name of the plot (or what is being plotted), which assumption(s) of the model can be checked with the plot, and whether or not you see any problems with the assumptions. (Carefully read the axes to make sure you understand what plot is being made.)
 
-![Plot A](./figures/regress_gpa_age_gender_study_miles_cprplot_study.png){fig-alt="TO BE WRITTEN" width="40%"}
+![Plot A](./figures/regress_gpa_age_gender_study_miles_cprplot_study.png){fig-alt="A scatter plot displaying 'Component plus residual' on the vertical axis against 'Avg. hours/week studying' on the horizontal axis. The x-axis ranges from 0 to 50, and the y-axis ranges from -1 to 1.5. Dark blue data points are densely clustered between 0 and 20 hours, often forming vertical columns. Two overlaid trend lines—one straight and one slightly curved—both show a positive slope, rising from near (0, 0) to approximately (50, 0.6). The spread of data points is wider at lower study hours and narrows as they approach 50." width="40%"}
 
-![Plot B](./figures/regress_gpa_age_gender_study_miles_rvfplot.png){fig-alt="TO BE WRITTEN" width="40%"}
+![Plot B](./figures/regress_gpa_age_gender_study_miles_rvfplot.png){fig-alt="A scatter plot comparing 'Residuals' on the vertical axis against 'Fitted values' on the horizontal axis. The x-axis ranges from 2.5 to 4, and the y-axis ranges from -1 to 1. The majority of dark blue data points are densely clustered between fitted values of 2.6 and 3.0, centered around zero. As the fitted values increase toward 4, the points become much more sparse. The distribution appears as a random cloud with no distinct geometric pattern or trend." width="40%"}
 
-![Plot C](./figures/regress_gpa_age_gender_study_miles_qnorm_ehat.png){fig-alt="TO BE WRITTEN" width="40%"}
+![Plot C](./figures/regress_gpa_age_gender_study_miles_qnorm_ehat.png){fig-alt="A scatter plot with 'Residuals' on the vertical axis and 'Inverse Normal' on the horizontal axis. Both axes range approximately from -1 to 1. A solid diagonal reference line runs from the bottom-left to the top-right corner. Numerous dark blue data points are plotted, closely following the diagonal line throughout the entire range. The points exhibit a slight, tight S curve, sitting marginally above the line in the center and marginally below or above at the extreme ends, but generally maintaining a strong linear alignment." width="40%"}
 
 ::: {.answer .hidden}
 (A) Component-plus-residual (CPR) plot for the predictor STUDY -- check for linearity for the predictor STUDY -- no obvious violation since the two lines (green and blue) lie basically on top of each other
@@ -198,9 +197,9 @@ A study collected data from 89 high school seniors about substance abuse. One re
 
 | Covariate  | $\hat{\beta}$ | t    | p-value |
 |------------|---------------|------|---------|
-| GPA        | -0.597        | 4.55 | \<0.001 |
-| Popularity | 0.340         | 2.69 | \<0.01  |
-| Depression | 0.030         | 2.69 | \<0.01  |
+| GPA        | -0.597        | 4.55 |  <0.001 |
+| Popularity | 0.340         | 2.69 |  <0.01  |
+| Depression | 0.030         | 2.69 |  <0.01  |
 
 (a) The overall F-statistic reported was 14.83. Write the regression model being estimated, then state the null and alternative hypotheses for this test statistic, give the test statistic's degrees of freedom under the null, and draw a conclusion (you will have to find a p-value or critical value to do this).
 
@@ -231,7 +230,9 @@ Depression: coefficient is positive; as depression score increases, marijuana us
 (c) Interpret the coefficient for GPA.
 
 ::: {.answer .hidden}
-$\hat{\beta}_{GPA} = -0.597$; A one point increase in GPA is associated with a 0.597 point decrease in marijuana use score, controlling for popularity score and depression score (p\$\<\$0.001).
+$\hat{\beta}_{GPA} = -0.597$
+
+A one point increase in GPA is associated with a 0.597 point decrease in marijuana use score, controlling for popularity score and depression score (p<0.001).
 :::
 
 (d) The variables in this study were measured by face-to-face interviews of the students, by trained adult interviewers. How might this affect the data/results? (This is not per se a question about statistics\dots.)
@@ -260,7 +261,7 @@ $W = \beta_0 + \beta_1 H + \beta_2 A + e  e\sim N(0,\sigma^2)$
        Total |      888.25        11       80.75   Root MSE        =    4.6598
 
 ------------------------------------------------------------------------------
-      weight |      Coef.   Std. Err.      t    P>|t|     [95
+      weight |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 -------------+----------------------------------------------------------------
       height |    .722038   .2608051     2.77   0.022     
          age |   2.050126   .9372256     2.19   0.056    
