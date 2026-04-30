@@ -2,7 +2,6 @@
 title: "OSU CPH Biostatistics Supplemental Course Materials"
 ---
 
-
 # PUBHBIO 6210
 
 *  [Practice Exercises 0A](./6210-practice-exercises/PracticeExercises_0A.html)
