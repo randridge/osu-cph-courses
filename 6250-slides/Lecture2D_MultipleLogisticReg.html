@@ -1442,22 +1442,22 @@ OR = \frac{\text{odds of CHD for } B4}{\text{odds of CHD for } A2} = \frac{\exp\
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><code>behpat2</code></td>
+<td style="text-align: left;"><code>behpat2</code> (<span class="math inline">\beta_1</span>)</td>
 <td style="text-align: right;">-0.0270462</td>
 <td style="text-align: right;">0.212792</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>behpat3</code></td>
+<td style="text-align: left;"><code>behpat3</code> (<span class="math inline">\beta_2</span>)</td>
 <td style="text-align: right;">-0.9024616</td>
 <td style="text-align: right;">0.2348663</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>behpat4</code></td>
+<td style="text-align: left;"><code>behpat4</code> (<span class="math inline">\beta_3</span>)</td>
 <td style="text-align: right;">-0.8588798</td>
 <td style="text-align: right;">0.310179</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>Intercept</code></td>
+<td style="text-align: left;"><code>Intercept</code> (<span class="math inline">\beta_0</span>)</td>
 <td style="text-align: right;">-2.049841</td>
 <td style="text-align: right;">0.1939721</td>
 </tr>
@@ -1466,7 +1466,7 @@ OR = \frac{\text{odds of CHD for } B4}{\text{odds of CHD for } A2} = \frac{\exp\
 </div></div>
 <ul>
 <li><p>OR comparing <span class="math inline">B4</span> vs. <span class="math inline">A1</span>:</p>
-<p><span class="math inline">\widehat{OR} = \exp \left( \hat{\beta}_{\texttt{behpat4}}\right) = \exp \left( -0.8588798 \right) = 0.424</span></p>
+<p><span class="math inline">\widehat{OR} = \exp \left( \hat{\beta}_{3}\right) = \exp \left( -0.8588798 \right) = 0.424</span></p>
 <ul>
 <li>The estimated odds among those with <span class="math inline">B4</span> are 0.424 times those among people with <span class="math inline">A1</span>.</li>
 <li>The estimated odds among those with <span class="math inline">B4</span> are 57.6% (i.e., <span class="math inline">1 - 0.424 = 0.576</span>) lower than those among people with <span class="math inline">A1</span>.</li>
@@ -1514,22 +1514,22 @@ OR = \frac{\text{odds of CHD for } B4}{\text{odds of CHD for } A2} = \frac{\exp\
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><code>behpat2</code></td>
+<td style="text-align: left;"><code>behpat2</code> (<span class="math inline">\beta_1</span>)</td>
 <td style="text-align: right;">-0.0270462</td>
 <td style="text-align: right;">0.212792</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>behpat3</code></td>
+<td style="text-align: left;"><code>behpat3</code> (<span class="math inline">\beta_2</span>)</td>
 <td style="text-align: right;">-0.9024616</td>
 <td style="text-align: right;">0.2348663</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>behpat4</code></td>
+<td style="text-align: left;"><code>behpat4</code> (<span class="math inline">\beta_3</span>)</td>
 <td style="text-align: right;">-0.8588798</td>
 <td style="text-align: right;">0.310179</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>Intercept</code></td>
+<td style="text-align: left;"><code>Intercept</code> (<span class="math inline">\beta_0</span>)</td>
 <td style="text-align: right;">-2.049841</td>
 <td style="text-align: right;">0.1939721</td>
 </tr>
@@ -1538,7 +1538,7 @@ OR = \frac{\text{odds of CHD for } B4}{\text{odds of CHD for } A2} = \frac{\exp\
 </div></div>
 <ul>
 <li><p>OR comparing <span class="math inline">B4</span> vs. <span class="math inline">A2</span>:</p>
-<p><span class="math inline">\widehat{OR} = \exp \left( \hat{\beta}_{\texttt{behpat4}} - \hat{\beta}_{\texttt{behpat2}} \right) = \exp \left( -0.8588798 + 0.0270462 \right) = 0.435</span></p>
+<p><span class="math inline">\widehat{OR} = \exp \left( \hat{\beta}_{3} - \hat{\beta}_{1} \right) = \exp \left( -0.8588798 + 0.0270462 \right) = 0.435</span></p>
 <ul>
 <li>The estimated odds among those with <span class="math inline">B4</span> are 0.435 times those among people with <span class="math inline">A2</span>.</li>
 <li>The estimated odds among those with <span class="math inline">B4</span> are 56.5% (i.e., <span class="math inline">1 - 0.435 = 0.565</span>) lower than those among people with <span class="math inline">A2</span>.</li>
